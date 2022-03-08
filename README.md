@@ -13,6 +13,8 @@ Estrutura
 - JavaScript
 - Java
        
-<div style="display: flex;">
-       <img src="./public/assets/images/svg/logo_git.svg" alt="">
+___
+<div style="display:flex;">
+<img src="./Colaboradores/renan.jpeg" width="200px" height="200" title="Lucas Feitosa">
+
 </div>
