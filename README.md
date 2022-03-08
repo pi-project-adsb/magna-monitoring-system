@@ -18,4 +18,5 @@ ___
 
 <div style="display:flex;">
 <img src="./Colaboradores/renan.jpeg" width="200px" height="200" title="Renan Oliveira">
+<img src="https://github.com/gustavo-moliveira.png" width="200px" height="200" title="Lucas Feitosa">
 </div>
