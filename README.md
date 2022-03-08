@@ -17,6 +17,5 @@ Estrutura
 ___
 
 <div style="display:flex;">
-<img src="./Colaboradores/renan.jpeg" width="200px" height="200" title="Lucas Feitosa">
-
+<img src="./Colaboradores/renan.jpeg" width="200px" height="200" title="Renan Oliveira">
 </div>
