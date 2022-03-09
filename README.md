@@ -1,5 +1,11 @@
 # MAGNA
 
+
+
+<div style="display:flex;">
+<img src="./Colaboradores/logo.jpeg" width="200px" height="200" title="Magna">
+</div>
+
 Este é um projeto em grupo para avaliar o conhecimento do seus participantes durante o segundo semestre do curso de Análise e Desenvolvimento de Sistemas na Faculdade SPTech, esse projeto agrega em conteúdos técnicos quanto em conhecimentos de négocio, todo o conteúdo é implementado utilizando metodologia ágil, tendo tarefas separadas por sprints.
 
 # CONTEXTO
