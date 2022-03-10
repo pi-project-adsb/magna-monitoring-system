@@ -77,16 +77,18 @@ header {
 
 .banner img {
     flex: 1;
-    padding: 0 8vw;
+    padding: 0 7vw;
 }
 
 .banner .banner_text {
     flex: 2;
-    align-items: center;
-    justify-content: center;
     font-weight: 100;
-    font-size: 40px;
-    padding: 10vh 10vw;
+    font-size: 50px;
+    margin: 50px -20px;
+}
+
+.banner_text p {
+    margin-top: 10px;
 }
 
 .border {
