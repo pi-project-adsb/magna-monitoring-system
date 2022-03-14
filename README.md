@@ -19,7 +19,7 @@ ___
 <div style="display:flex;">
 <img src="./Colaboradores/gustavo.jpeg" width="200px" height="200" title="Gustavo Moraes">
 <img src="./Colaboradores/renan.jpeg" width="200px" height="200" title="Renan Oliveira">
-<img src="./Colaboradores/osakwe.jpeg" width="200px" height="200" title="Lucas Osakwe">
+<img src="./Colaboradores/osakwe.jpg" width="200px" height="200" title="Lucas Osakwe">
 <img src="./Colaboradores/lacerda.jpeg" width="200px" height="200" title="Lucas Lacerda">
 <img src="./Colaboradores/vinicius.jpeg" width="200px" height="200" title="Vinicius Augusto">
 </div>
