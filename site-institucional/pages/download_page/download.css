@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    overflow-x: hidden;
+}
+header {
+    height: 100px;
+    background-color: #131515;
+    color: #fff;
+}
+
+.header {
+    max-width: 1140px;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+ .logoimg img {
+    width: 150px;
+    height: 80px;
+}
+
+.logo {
+    width: 100px;
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu ul,
+.menu li {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu ul {
+    display: flex;
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-bottom: 5px solid #131515;
+
+}
+
+.menu li a:hover,
+.menu .active a {
+    border-bottom: 5px solid #02d8f0;
+    color: #ccc;
+    transition: 0.5s;
+}
+
+main{
+    margin: 2vh 1.5vw 0.2vh 1.5vw;
+    width: 100%;
+    height: fit-content;
+}
+
+#section_one{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.content-box{
+    width: 400px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    user-select: none;
+}
+.title{
+    
+}
+.box-desc{
+    text-align: justify;
+    line-height: 18px;
+}
+.button{
+    display: inline-block;
+    background-color: #02d8f0;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 30px;
+    margin-top: 30px;
+}
