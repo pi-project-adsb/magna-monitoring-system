@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Projeto Omega </title>
+    <title>Magna | Update Password</title>
 
-    <!-- link do script -->
-    <script src="./js/avaliacao.js"></script>
+    <!-- Link do Script -->
     <script src="./js/funcoes.js"></script>
 
-    <!-- Link CSS e ICON -->
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="./css/formulario.css">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/formulario.css">
+    
     <link rel="shortcut icon" type="imagex/png" href="./assets/images/logos-png/logo_simplified.ico">
     <link rel="stylesheet" href="./css/trocar_senha.css">
     <link rel="shortcut icon" href="css/src/icon.png" type="image/x-icon">
@@ -33,18 +33,18 @@
             <div class="logo">
                 <div class="logoimg">
                     <a href="./home.html">
-                        <img src="./assets/images/logos-png/magna_logo_white.png" alt="">
+                        <img src="../../assets/images/logos-png/magna_logo_white.png" alt="">
                     </a>
                 </div>
             </div>
             <div class="menu">
                 <nav>
                     <ul>
-                        <li class="active"><a href="home.html">Home</a></li>
+                        <li><a href="../../index.html">Home</a></li>
                         <li><a href="#abrirLogin"> Login </a></li>
                         <li><a href="#abrirCadastro"> Cadastro </a></li>
-                        <li><a href="pages/equipe/equipe.html">Equipe</a></li>
-                        <li><a href="pages/contato/contato.html">Contato</a></li>
+                        <li><a href="../../pages/equipe/equipe.html">Equipe</a></li>
+                        <li><a href="../../pages/contato/contato.html">Contato</a></li>
                     </ul>
                 </nav>
             </div>
@@ -60,20 +60,25 @@
                 <img class="logo_form" src="./css/src/logo_inicial.png" alt="">
             </div>
 
-            <div class="div_ipt_form">
-                <div>
-                    <p>Email:</p>
-                    <input id="email_login" class="ipt_form" type="email" placeholder="joao@provedor.com">
-
-                    <p>Senha:</p>
-                    <input id="senha_login" class="ipt_form" type="password" placeholder="senha123">
+            <div class="right-contact-box">
+                <div class="form-box">
+                    <span class="form-title">Email</span>
+                    <input id="email_login" class="inpt-box" type="email" placeholder="joao@provedor.com">       
                 </div>
             </div>
+
+            <div class="right-contact-box">
+                <div class="form-box">
+                    <span class="form-title">Senha</span>
+                    <input id="senha_login" class="inpt-box" type="password" placeholder="senha123">       
+                </div>
+            </div>
+
             <a href="./trocar_senha.html">
                 <p class="esqueci_senha">Esqueci minha senha </p>
             </a>
 
-            <button class="botao_form" onclick="entrar()">Entrar</button>
+            <button class="form-box btn" onclick="entrar()">Entrar</button>
             <div class="clique_cadastrar">Não tem cadastro? <a href="#abrirCadastro"> Clique aqui </a></div>
 
         </div>

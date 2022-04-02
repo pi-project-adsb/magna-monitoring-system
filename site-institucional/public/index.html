@@ -10,14 +10,14 @@
     <!-- Link do Script -->
     <script src="./js/funcoes.js"></script>
 
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/formulario.css">
+    
+    <link rel="shortcut icon" type="imagex/png" href="./assets/images/logos-png/logo_simplified.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Link CSS e ICON -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./css/formulario.css">
-    <link rel="shortcut icon" type="imagex/png" href="./assets/images/logos-png/logo_simplified.ico">
 
 </head>
 
@@ -28,7 +28,7 @@
         <div class="header">
             <div class="logo">
                 <div class="logoimg">
-                    <a href="./home.html">
+                    <a href="index.html">
                         <img src="./assets/images/logos-png/magna_logo_white.png" alt="">
                     </a>
                 </div>
@@ -36,7 +36,7 @@
             <div class="menu">
                 <nav>
                     <ul>
-                        <li class="active"><a href="home.html">Home</a></li>
+                        <li class="active"><a href="index.html">Home</a></li>
                         <li><a href="#abrirLogin"> Login </a></li>
                         <li><a href="#abrirCadastro"> Cadastro </a></li>
                         <li><a href="pages/equipe/equipe.html">Equipe</a></li>
@@ -47,30 +47,34 @@
         </div>
     </header>
 
-
     <!-- Login -->
     <div id="abrirLogin" class="modal">
         <div class="form_conteudo">
             <a href="#fecharLogin" title="Fechar" class="fechar">x</a>
 
-            <div class="div_logo_form">
-                <img class="logo_form" alt="">
+            <div class="logoimg">
+                <img class="logo_form" src="./assets/images/logos-png/magna_logo_black.png" alt="">
             </div>
 
-            <div class="div_ipt_form">
-                <div>
-                    <p>Email:</p>
-                    <input id="email_login" class="ipt_form" type="email" placeholder="joao@provedor.com">
-
-                    <p>Senha:</p>
-                    <input id="senha_login" class="ipt_form" type="password" placeholder="senha123">
+            <div class="right-contact-box">
+                <div class="form-box">
+                    <span class="form-title">Email</span>
+                    <input id="email_login" class="inpt-box" type="email" placeholder="joao@provedor.com">       
                 </div>
             </div>
+
+            <div class="right-contact-box">
+                <div class="form-box">
+                    <span class="form-title">Senha</span>
+                    <input id="senha_login" class="inpt-box" type="password" placeholder="senha123">       
+                </div>
+            </div>
+
             <a href="./trocar_senha.html">
                 <p class="esqueci_senha">Esqueci minha senha </p>
             </a>
 
-            <button class="botao_form" onclick="entrar()">Entrar</button>
+            <button class="form-box btn" onclick="entrar()">Entrar</button>
             <div class="clique_cadastrar">Não tem cadastro? <a href="#abrirCadastro"> Clique aqui </a></div>
 
         </div>
@@ -316,149 +320,150 @@
     </footer>
 
 </body>
+
 </html>
 
 <script>
-function cadastrar() {
-    // aguardar();
+    function cadastrar() {
+        // aguardar();
 
-    var nomeVar = nome_cadastro.value;
-    var generoVar = genero_cadastro.value;
-    var filmeVar = filme_cadastro.value;
+        var nomeVar = nome_cadastro.value;
+        var generoVar = genero_cadastro.value;
+        var filmeVar = filme_cadastro.value;
 
-    var emailVar = email_cadastro.value;
-    var senhaVar = senha_cadastro.value;
-    var confirmacaoSenhaVar = confirmacao_senha_cadastro.value;
+        var emailVar = email_cadastro.value;
+        var senhaVar = senha_cadastro.value;
+        var confirmacaoSenhaVar = confirmacao_senha_cadastro.value;
 
-    if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
 
-        window.alert("Preencha todos os campos para prosseguir!");
-        if (nomeVar == "") {
-            console.log('nome está em branco')
+            window.alert("Preencha todos os campos para prosseguir!");
+            if (nomeVar == "") {
+                console.log('nome está em branco')
+            }
+            if (emailVar == "") {
+                console.log('email está em branco')
+            }
+            if (senhaVar == "") {
+                console.log('senha está em branco')
+            }
+            if (confirmacaoSenhaVar == "") {
+                console.log('confirmacaoSenha está em branco')
+            }
+            return false;
         }
-        if (emailVar == "") {
-            console.log('email está em branco')
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            return false;
         }
-        if (senhaVar == "") {
-            console.log('senha está em branco')
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+            return false;
         }
-        if (confirmacaoSenhaVar == "") {
-            console.log('confirmacaoSenha está em branco')
-        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                generoServer: generoVar,
+                filmeServer: filmeVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "#abrirLogin";
+                limparFormulario();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
         return false;
     }
 
-    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-        return false;
-    }
+    function entrar() {
+        // aguardar();
 
-    if (senhaVar != confirmacaoSenhaVar) {
-        window.alert("As senhas inseridas devem ser iguais para prosseguir!");
-        return false;
-    }
+        var emailVar = email_login.value;
+        var senhaVar = senha_login.value;
 
-    fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-            generoServer: generoVar,
-            filmeServer: filmeVar
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (emailVar == "" || senhaVar == "") {
+            window.alert("Preencha todos os campos para prosseguir!");
+            return false;
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            return false;
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    window.location = "./metrica.html";
+
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
         })
-    }).then(function (resposta) {
 
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-            window.alert("Cadastro realizado com sucesso!");
-            window.location = "#abrirLogin";
-            limparFormulario();
-        } else {
-            throw ("Houve um erro ao tentar realizar o cadastro!");
-        }
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
-
-    return false;
-}
-
-function entrar() {
-    // aguardar();
-
-    var emailVar = email_login.value;
-    var senhaVar = senha_login.value;
-
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
-
-    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-    if (emailVar == "" || senhaVar == "") {
-        window.alert("Preencha todos os campos para prosseguir!");
         return false;
     }
 
-    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-        return false;
-    }
+    function limparFormulario() {
+        nome_cadastro.value = '';
+        genero_cadastro.value = '';
+        filme_cadastro.value = '';
 
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar
-        })
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
-
-                window.location = "./metrica.html";
-                    
-
-            });
-
-        } else {
-
-            console.log("Houve um erro ao tentar realizar o login!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-
-    return false;
-}
-
-function limparFormulario() {
-    nome_cadastro.value = '';
-    genero_cadastro.value = '';
-    filme_cadastro.value = '';
-
-    email_cadastro.value = ''; 
-    senha_cadastro.value = '';
-    confirmacao_senha_cadastro.value = '';
-};
+        email_cadastro.value = '';
+        senha_cadastro.value = '';
+        confirmacao_senha_cadastro.value = '';
+    };
 </script>

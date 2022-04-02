@@ -6,7 +6,7 @@ function testar(req, res) {
     console.log("ENTRAMOS NA usuarioController");
     res.json("ESTAMOS FUNCIONANDO!");
 }
-
+ 
 function listar(req, res) {
     usuarioModel.listar()
         .then(function (resultado) {
