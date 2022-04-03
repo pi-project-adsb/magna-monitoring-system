@@ -138,37 +138,38 @@
             </div>
 
             <div class="form-box btn">
-                <button class="btn_1" title="CADASTRAR" onclick="entrar()">CADASTRAR</button>
+                <button class="btn_1" title="CADASTRAR" onclick="cadastrar()">CADASTRAR</button>
             </div>
 
         </div>
     </div>
 
     <!-- Trocar Senha -->
-    <div class="trocar_senha">
-        <div class="form_conteudo login_trocar">
-
-            <div class="div_logo_trocar">
-                <img class="logo_form" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
+    <div class="trocar-context">
+        <div class="teste">
+            <div class="modal-context-logo">
+                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
             </div>
 
-            <div class="div_ipt_form">
-                <div>
-                    <p>Digite sua nova senha:</p>
-                    <input id="senha_trocar" class="ipt_form" type="text" placeholder="senha123">
-
-                    <p>Confirme sua nova senha:</p>
-                    <input id="confirmar_senha_trocar" class="ipt_form" type="text" placeholder="senha123">
-
-
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Nova Senha</span>
+                    <input class="inpt-box" id="senha_trocar" type="text" placeholder="senha123">
                 </div>
             </div>
 
-            <button class="botao_form" onclick="atualizarSenha()">Enviar</button>
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Confirme sua nova senha</span>
+                    <input class="inpt-box" id="confirmar_senha_trocar" type="text" placeholder="senha123">
+                </div>
+            </div>
 
+            <div class="form-box btn">
+                <button class="btn_1" onclick="atualizarSenha()">ATUALIZAR</button>
+            </div>
         </div>
     </div>
 
 </body>
-
 </html>

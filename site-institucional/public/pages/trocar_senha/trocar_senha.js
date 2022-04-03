@@ -13,10 +13,10 @@ function trocar() {
         return false;
     }
 
-    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-        return false;
-    }
+    // if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+    //     window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+    //     return false;
+    // }
 
     fetch("/usuarios/trocar", {
         method: "POST",
@@ -41,7 +41,7 @@ function trocar() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
-                window.location = "../../atualizar_senha.html";
+                window.location = "../../pages/atualizar_senha/atualizar_senha.html";
 
             });
 

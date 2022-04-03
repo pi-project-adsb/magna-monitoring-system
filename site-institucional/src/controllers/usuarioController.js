@@ -99,7 +99,7 @@ function trocar(req, res) {
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (empresa == undefined) {
-        res.status(400).send("Seu filme está undefined!");
+        res.status(400).send("Sua empresa está undefined!");
     } else {
         
         usuarioModel.trocar(email, empresa)
