@@ -114,24 +114,24 @@ a:active {
     color: black;
 }
 
-.div_cadastro {
-    height: 70%;
+.modal-cadastro {
+    height: 75%;
     width: 50%;
     display: flex;
 }
 
-.teste {
+.modal-cadastro-form {
     display: flex;
     justify-content: center;
 }
 
-.teste1 {
+.modal-cadastro-form-left {
     width: 40%;
     margin-right: 25px;
     height: 100%;
 }
 
-.teste2 {
+.modal-cadastro-form-right {
     width: 40%;
     height: 100%;
     margin-left: 25px;

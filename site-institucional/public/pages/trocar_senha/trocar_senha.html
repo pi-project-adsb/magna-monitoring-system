@@ -7,23 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magna | Alter Password</title>
 
-    <!-- link do script -->
+    <!-- Link do Script -->
     <script src="../../js/funcoes.js"></script>
+    <script src="../../js/cadastro.js"></script>
+    <script src="../../js/login.js"></script>
+    <script src="trocar_senha.js"></script>
 
     <!-- Link CSS -->
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../css/formulario.css">
-    <link rel="stylesheet" href="../../css/trocar_senha.css">
+    <link rel="stylesheet" href="../../assets/css/formulario.css">
     <link rel="stylesheet" href="../../assets/css/modal.css">
-    
-    <link rel="shortcut icon" href="css/src/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="trocar_senha.css">
 
     <link rel="shortcut icon" type="imagex/png" href="../../assets/images/logos-png/logo_simplified.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -55,95 +55,91 @@
 
     <!-- Login -->
     <div id="abrirLogin" class="modal">
-        <div class="form_conteudo">
+        <div class="modal-context">
             <a href="#fecharLogin" title="Fechar" class="fechar">x</a>
 
-            <div class="div_logo_form">
-                <img class="logo_form" src="../../css/src/logo_inicial.png" alt="">
+            <div class="modal-context-logo">
+                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
             </div>
 
-            <div class="div_ipt_form">
-                <div>
-                    <p>Email:</p>
-                    <input id="email_login" class="ipt_form" type="email" placeholder="joao@provedor.com">
-
-                    <p>Senha:</p>
-                    <input id="senha_login" class="ipt_form" type="password" placeholder="senha123">
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Email</span>
+                    <input class="inpt-box" id="email_login" type="email" placeholder="alex@provedor.com">
                 </div>
             </div>
-            <a href="../../trocar_senha.html">
-                <p class="esqueci_senha">Esqueci minha senha </p>
-            </a>
 
-            <button class="botao_form" onclick="entrar()">Entrar</button>
-            <div class="clique_cadastrar">Não tem cadastro? <a href="#abrirCadastro"> Clique aqui </a></div>
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Senha</span>
+                    <input class="inpt-box" id="senha_login" type="password" placeholder="senha123">
+                </div>
+
+                <a class="form-tag" href="../trocar_senha/trocar_senha.html">Esqueci minha senha</a>
+            </div>
+
+
+            <div class="form-box btn">
+                <button class="btn_1" title="Entrar" onclick="entrar()">ENTRAR</button>
+            </div>
+            <div class="">Não tem cadastro? <a href="#abrirCadastro"> Clique aqui </a></div>
 
         </div>
     </div>
 
     <!-- Cadastro -->
     <div id="abrirCadastro" class="modal">
-        <div class="form_conteudo div_cadastro">
+        <div class="modal-context modal-cadastro">
             <a href="#fecharCadastro" title="Fechar" class="fechar">x</a>
 
-            <div class="div_logo_form">
-                <img class="logo_form" src="../../css/src/logo_inicial.png" alt="">
+            <div class="modal-context-logo">
+                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
             </div>
 
-            <div class="div_ipt_form">
-                <div class="div_cadastro_left">
-                    <p>Nome:</p>
-                    <input id="nome_cadastro" class="ipt_form" type="text" placeholder="Pedro">
-
-                    <p>Genero:</p>
-                    <select id="genero_cadastro" class="ipt_form">
-                        <option value=""> - Selecione uma opcao - </option>
-                        <option value="M"> Masculino </option>
-                        <option value="F"> Feminino </option>
-                        <option value="N"> Neutro </option>
-                    </select>
-
-                    <p>Filme preferido:</p>
-                    <select id="filme_cadastro" class="ipt_form">
-                        <datalist id="algo">
-                            <option value="">Informe seu Filme favorito</option>
-                            <option value="0">Não tenho</option>
-                            <option value="1">A Guerra do Amanhã</option>
-                            <option value="2">Esquadrão Suicida</option>
-                            <option value="3">Eternos</option>
-                            <option value="4">Liga da Justiça: SnyderCut</option>
-                            <option value="5">Alerta Vermelho</option>
-                            <option value="6">Deadpool 2</option>
-                            <option value="7">Shazam</option>
-                            <option value="8">Nobody</option>
-                            <option value="9">Lucca</option>
-                            <option value="10">Mulher Maravilha</option>
-                            <option value="11">Madagascar</option>
-                            <option value="12">Hulk</option>
-                            <option value="13">Vingadores</option>
-                            <option value="14">Esquadrão 6</option>
-                            <option value="15">Space Jam</option>
-                            <option value="16">Viuva Negra</option>
-                            <option value="17">Shang Chi: A Lenda dos Dez Anéis</option>
-                            <option value="18">Raya</option>
-                        </datalist>
-                    </select>
-
+            <div class="modal-cadastro-form">
+                <div class="modal-cadastro-form-left">
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Nome</span>
+                            <input class="inpt-box" id="nome_cadastro" type="email" placeholder="Ex: Lucas Augusto Osakwe Moraes da Silva">
+                        </div>
+                    </div>
+    
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Email</span>
+                            <input class="inpt-box" id="email_cadastro" type="email" placeholder="kaline@provedor.com">
+                        </div>
+                    </div>
+    
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Empresa</span>
+                            <input class="inpt-box" id="empresa_cadastro" type="email" placeholder="Magna Enterprises">
+                        </div>
+                    </div>
                 </div>
-
-                <div>
-                    <p>Email:</p>
-                    <input id="email_cadastro" class="ipt_form" type="email" placeholder="joao@provedor.com">
-
-                    <p>Senha:</p>
-                    <input id="senha_cadastro" class="ipt_form" type="password" placeholder="senha123">
-
-                    <p>Confirme sua senha:</p>
-                    <input id="confirmacao_senha_cadastro" class="ipt_form" type="password" placeholder="senha123">
+    
+                <div class="modal-cadastro-form-right">
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Senha</span>
+                            <input class="inpt-box" id="senha_cadastro" type="password" placeholder="senha123">
+                        </div>
+                    </div>
+    
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Confirme sua senha</span>
+                            <input class="inpt-box" id="confirmacao_senha_cadastro" type="password" placeholder="senha123">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <button class="botao_form botao_cadastrar" onclick="cadastrar()">Cadastrar</button>
+            <div class="form-box btn">
+                <button class="btn_1" title="CADASTRAR" onclick="entrar()">CADASTRAR</button>
+            </div>
 
         </div>
     </div>
@@ -153,38 +149,18 @@
         <div class="trocar_conteudo">
 
             <div class="div_logo_trocar">
+                <img class="logo_form" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
             </div>
 
             <div class="div_ipt_form">
                 <div>
                     <p>Informe seu email:</p>
-                    <input id="email_trocar" class="ipt_form" type="email" placeholder="joao@provedor.com">
+                    <input id="email_trocar" class="ipt_form" type="email" placeholder="alex@provedor.com">
 
-                    <p>Qual seu filme preferido?</p>
-                    <select id="filme_trocar" class="ipt_form">
-                        <option value="">Informe seu Filme favorito</option>
-                        <option value="0">Não tenho</option>
-                        <option value="1">A Guerra do Amanhã</option>
-                        <option value="2">Esquadrão Suicida</option>
-                        <option value="3">Eternos</option>
-                        <option value="4">Liga da Justiça: SnyderCut</option>
-                        <option value="5">Alerta Vermelho</option>
-                        <option value="6">Deadpool 2</option>
-                        <option value="7">Shazam</option>
-                        <option value="8">Nobody</option>
-                        <option value="9">Lucca</option>
-                        <option value="10">Mulher Maravilha</option>
-                        <option value="11">Madagascar</option>
-                        <option value="12">Hulk</option>
-                        <option value="13">Vingadores</option>
-                        <option value="14">Esquadrão 6</option>
-                        <option value="15">Space Jam</option>
-                        <option value="16">Viuva Negra</option>
-                        <option value="17">Shang Chi: A Lenda dos Dez Anéis</option>
-                        <option value="18">Raya</option>
-                    </select>
-
+                    <p>Informe seu email:</p>
+                    <input id="empresa_trocar" class="ipt_form" type="text" placeholder="Magna Enterprises">
                 </div>
+
                 <button class="botao_form" onclick="trocar()">Enviar</button>
             </div>
 
@@ -195,219 +171,3 @@
 </body>
 
 </html>
-<script>
-
-    var cont = 0;
-
-    function trocar() {
-        // aguardar();
-
-        var emailVar = email_trocar.value;
-        var filmeVar = filme_trocar.value;
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", filmeVar);
-
-        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (emailVar == "" || filmeVar == "") {
-            window.alert("Preencha todos os campos para prosseguir!");
-            return false;
-        }
-
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            return false;
-        }
-
-        fetch("/usuarios/trocar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                filmeServer: filmeVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    window.location = "../../atualizar_senha.html";
-
-                });
-
-            } else {
-                alert('Email ou filme inválidos')
-                cont++;
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                if (cont >= 3) {
-                    alert('Você atingiu o limite de tentativas hoje, volte mais tarde para tentar novamente')
-                    filmeVar = '';
-                }
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function cadastrar() {
-        // aguardar();
-
-        var nomeVar = nome_cadastro.value;
-        var generoVar = genero_cadastro.value;
-        var filmeVar = filme_cadastro.value;
-
-        var emailVar = email_cadastro.value;
-        var senhaVar = senha_cadastro.value;
-        var confirmacaoSenhaVar = confirmacao_senha_cadastro.value;
-
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-
-            window.alert("Preencha todos os campos para prosseguir!");
-            if (nomeVar == "") {
-                console.log('nome está em branco')
-            }
-            if (emailVar == "") {
-                console.log('email está em branco')
-            }
-            if (senhaVar == "") {
-                console.log('senha está em branco')
-            }
-            if (confirmacaoSenhaVar == "") {
-                console.log('confirmacaoSenha está em branco')
-            }
-            return false;
-        }
-
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            return false;
-        }
-
-        if (senhaVar != confirmacaoSenhaVar) {
-            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
-            return false;
-        }
-
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                generoServer: generoVar,
-                filmeServer: filmeVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                window.alert("Cadastro realizado com sucesso!");
-                window.location = "#abrirLogin";
-                limparFormulario();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-    }
-
-    function entrar() {
-        // aguardar();
-
-        var emailVar = email_login.value;
-        var senhaVar = senha_login.value;
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (emailVar == "" || senhaVar == "") {
-            window.alert("Preencha todos os campos para prosseguir!");
-            return false;
-        }
-
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            return false;
-        }
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    window.location = "../../metrica.html";
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function limparFormulario() {
-        nome_cadastro.value = '';
-        genero_cadastro.value = '';
-        filme_cadastro.value = '';
-
-        email_cadastro.value = '';
-        senha_cadastro.value = '';
-        confirmacao_senha_cadastro.value = '';
-    };
-</script>

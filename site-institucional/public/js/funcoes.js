@@ -98,3 +98,11 @@ function pesquisar() {
         return false;
     
 }
+
+function limparFormulario() {
+    nome_cadastro.value = '';
+    empresa_cadastro.value = '';
+    email_cadastro.value = '';
+    senha_cadastro.value = '';
+    confirmacao_senha_cadastro.value = '';
+};

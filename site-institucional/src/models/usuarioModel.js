@@ -18,20 +18,20 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrar(nome, email, senha, genero, filme) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
+function cadastrar(nome, empresa, email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, empresa, email, senha);
     var instrucao = `
-        INSERT INTO usuario (nome, email, senha, genero, fkFilme) VALUES ('${nome}', '${email}', md5('${senha}'), '${genero}', ${filme});
+        INSERT INTO usuario (nome, empresa, email, senha) VALUES ('${nome}', '${empresa}', '${email}', md5('${senha}'));
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 
 }
 
-function trocar(email, filme) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function trocar(): ", email, filme)
+function trocar(email, empresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function trocar(): ", email, empresa)
     var instrucao = `
-        SELECT * FROM usuario WHERE email = '${email}' AND fkFilme = ${filme};
+        SELECT * FROM usuario WHERE email = '${email}' AND fkFilme = ${empresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

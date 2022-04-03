@@ -1,140 +1,248 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Magna | Team</title>
 
-        <!-- Link CSS -->
-        <link rel="stylesheet" href="equipe.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magna | Team</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" type="imagex/png" href="/site-institucional/assets/images/logos-png/logo_simplified.ico">
-        <script src="https://kit.fontawesome.com/e2229bd305.js" crossorigin="anonymous"></script>
+    <!-- Link do Script -->
+    <script src="../../js/funcoes.js"></script>
+    <script src="../../js/cadastro.js"></script>
+    <script src="../../js/login.js"></script>
 
-    </head>
-    <body>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/formulario.css">
+    <link rel="stylesheet" href="../../assets/css/modal.css">
+    <link rel="stylesheet" href="equipe.css">
 
-        <!-- Header -->
-        <header>
-            <div class="header">
-                <div class="logo">
-                    <div class="logoimg">
-                        <a href="../../index.html">
-                            <img src="../../assets/images/logos-png/magna_logo_white.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="menu">
-                    <nav>
-                        <ul>
-                            <li><a href="../../index.html">Home</a></li>
-                            <li><a href="#abrirLogin"> Login </a></li>
-                            <li><a href="#abrirCadastro"> Cadastro </a></li>
-                            <li class="active"><a href="../../pages/equipe/equipe.html">Equipe</a></li>
-                            <li><a href="../../pages/contato/contato.html">Contato</a></li>
-                        </ul>
-                    </nav>
+    <link rel="shortcut icon" type="imagex/png" href="../../assets/images/logos-png/logo_simplified.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e2229bd305.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header">
+            <div class="logo">
+                <div class="logoimg">
+                    <a href="../../index.html">
+                        <img src="../../assets/images/logos-png/magna_logo_white.png" alt="">
+                    </a>
                 </div>
             </div>
-        </header>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="#abrirLogin"> Login </a></li>
+                        <li><a href="#abrirCadastro"> Cadastro </a></li>
+                        <li class="active"><a href="../../pages/equipe/equipe.html">Equipe</a></li>
+                        <li><a href="../../pages/contato/contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-        <!-- Main -->
-        <main id="main-container">
-            <div id="left-container">
+    <!-- Login -->
+    <div id="abrirLogin" class="modal">
+        <div class="modal-context">
+            <a href="#fecharLogin" title="Fechar" class="fechar">x</a>
 
-                <h1 class="title">Conheça nosso time</h1>
-                <div id="team-div">
+            <div class="modal-context-logo">
+                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
+            </div>
 
-                    <div class="employ-div">
-                        <div class="employ-img">
-                            <img src="../../assets/images/osakwe-icon.png" alt="">
-                        </div>
-                        <div class="employ-info">
-                            <p class="employ-name">Lucas Osakwe</p>
-                            <p class="employ-office">Desenvolvedor</p>
-                            <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maiores suscipit, non quaerat</p>
-                            <span class="employ-social_media">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <i class="fa-brands fa-github"></i>
-                                <i class="fa-solid fa-envelope"></i>
-                            </span>
-                        </div>
-                    </div>
-    
-                    <div class="employ-div">
-                        <div class="employ-img">
-                            <img src="../../assets/images/gustavo-icon.png" alt="">
-                        </div>
-                        <div class="employ-info">
-                            <p class="employ-name">Gustavo Moraes</p>
-                            <p class="employ-office">Desenvolvedor</p>
-                            <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maiores suscipit, non quaerat</p>
-                            <span class="employ-social_media">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <i class="fa-brands fa-github"></i>
-                                <i class="fa-solid fa-envelope"></i>
-                            </span>
-                        </div>
-                    </div>
-    
-                    <div class="employ-div">
-                        <div class="employ-img">
-                            <img src="../../assets/images/lucas-icon.png" alt="">
-                        </div>
-                        <div class="employ-info">
-                            <p class="employ-name">Lucas Lacerda</p>
-                            <p class="employ-office">Desenvolvedor</p>
-                            <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maiores suscipit, non quaerat</p>
-                            <span class="employ-social_media">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <i class="fa-brands fa-github"></i>
-                                <i class="fa-solid fa-envelope"></i>
-                            </span>
-                        </div>
-                    </div>
-    
-                    <div class="employ-div">
-                        <div class="employ-img">
-                            <img src="../../assets/images/renan-icon.png" alt="">
-                        </div>
-                        <div class="employ-info">
-                            <p class="employ-name">Renan Oliveira</p>
-                            <p class="employ-office">Desenvolvedor</p>
-                            <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maiores suscipit, non quaerat</p>
-                            <span class="employ-social_media">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <i class="fa-brands fa-github"></i>
-                                <i class="fa-solid fa-envelope"></i>
-                            </span>
-                        </div>
-                    </div>
-    
-                    <div class="employ-div">
-                        <div class="employ-img">
-                            <img src="../../assets/images/vinicius-icon.png" alt="">
-                        </div>
-                        <div class="employ-info">
-                            <p class="employ-name">Vinicius Augusto</p>
-                            <p class="employ-office">Desenvolvedor</p>
-                            <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maiores suscipit, non quaerat</p>
-                            <span class="employ-social_media">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <i class="fa-brands fa-github"></i>
-                                <i class="fa-solid fa-envelope"></i>
-                            </span>
-                        </div>
-                    </div>
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Email</span>
+                    <input class="inpt-box" id="email_login" type="email" placeholder="alex@provedor.com">
                 </div>
             </div>
 
-            
-            <div id="right-div"></div>
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Senha</span>
+                    <input class="inpt-box" id="senha_login" type="password" placeholder="senha123">
+                </div>
 
-        </main>
+                <a class="form-tag" href="../trocar_senha/trocar_senha.html">Esqueci minha senha</a>
+            </div>
 
-    </body>
+
+            <div class="form-box btn">
+                <button class="btn_1" title="Entrar" onclick="entrar()">ENTRAR</button>
+            </div>
+            <div class="">Não tem cadastro? <a href="#abrirCadastro"> Clique aqui </a></div>
+
+        </div>
+    </div>
+
+    <!-- Cadastro -->
+    <div id="abrirCadastro" class="modal">
+        <div class="modal-context modal-cadastro">
+            <a href="#fecharCadastro" title="Fechar" class="fechar">x</a>
+
+            <div class="modal-context-logo">
+                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
+            </div>
+
+            <div class="modal-cadastro-form">
+                <div class="modal-cadastro-form-left">
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Nome</span>
+                            <input class="inpt-box" id="nome_cadastro" type="email" placeholder="Ex: Lucas Augusto Osakwe Moraes da Silva">
+                        </div>
+                    </div>
+    
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Email</span>
+                            <input class="inpt-box" id="email_cadastro" type="email" placeholder="kaline@provedor.com">
+                        </div>
+                    </div>
+    
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Empresa</span>
+                            <input class="inpt-box" id="empresa_cadastro" type="email" placeholder="Magna Enterprises">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="modal-cadastro-form-right">
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Senha</span>
+                            <input class="inpt-box" id="senha_cadastro" type="password" placeholder="senha123">
+                        </div>
+                    </div>
+    
+                    <div class="modal-context-form">
+                        <div class="form-box">
+                            <span class="form-title">Confirme sua senha</span>
+                            <input class="inpt-box" id="confirmacao_senha_cadastro" type="password" placeholder="senha123">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-box btn">
+                <button class="btn_1" title="CADASTRAR" onclick="entrar()">CADASTRAR</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main id="main-container">
+        <div id="left-container">
+
+            <h1 class="title">Conheça nosso time</h1>
+            <div id="team-div">
+
+                <div class="employ-div">
+                    <div class="employ-img">
+                        <img src="../../assets/images/osakwe-icon.png" alt="">
+                    </div>
+                    <div class="employ-info">
+                        <p class="employ-name">Lucas Osakwe</p>
+                        <p class="employ-office">Desenvolvedor</p>
+                        <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+                            maiores suscipit, non quaerat</p>
+                        <span class="employ-social_media">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="employ-div">
+                    <div class="employ-img">
+                        <img src="../../assets/images/gustavo-icon.png" alt="">
+                    </div>
+                    <div class="employ-info">
+                        <p class="employ-name">Gustavo Moraes</p>
+                        <p class="employ-office">Desenvolvedor</p>
+                        <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+                            maiores suscipit, non quaerat</p>
+                        <span class="employ-social_media">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="employ-div">
+                    <div class="employ-img">
+                        <img src="../../assets/images/lucas-icon.png" alt="">
+                    </div>
+                    <div class="employ-info">
+                        <p class="employ-name">Lucas Lacerda</p>
+                        <p class="employ-office">Desenvolvedor</p>
+                        <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+                            maiores suscipit, non quaerat</p>
+                        <span class="employ-social_media">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="employ-div">
+                    <div class="employ-img">
+                        <img src="../../assets/images/renan-icon.png" alt="">
+                    </div>
+                    <div class="employ-info">
+                        <p class="employ-name">Renan Oliveira</p>
+                        <p class="employ-office">Desenvolvedor</p>
+                        <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+                            maiores suscipit, non quaerat</p>
+                        <span class="employ-social_media">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="employ-div">
+                    <div class="employ-img">
+                        <img src="../../assets/images/vinicius-icon.png" alt="">
+                    </div>
+                    <div class="employ-info">
+                        <p class="employ-name">Vinicius Augusto</p>
+                        <p class="employ-office">Desenvolvedor</p>
+                        <p class="employ-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+                            maiores suscipit, non quaerat</p>
+                        <span class="employ-social_media">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="right-div"></div>
+
+    </main>
+
+</body>
+
 </html>
