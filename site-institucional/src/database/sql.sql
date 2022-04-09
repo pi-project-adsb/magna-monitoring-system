@@ -2,11 +2,14 @@
 create DATABASE if not exists magna;
 USE magna;
 
+-- drop table usuario; 
+
 create TABLE if not exists usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
-	empresa VARCHAR(50),
     email VARCHAR(50),
+	empresa VARCHAR(50),
+	cnpj VARCHAR(50),
     senha VARCHAR(50),
     desde datetime
 );
@@ -34,8 +37,7 @@ values
 ("Cristian", "cristian@bandtec.com", "cristian"),
 ("Enzo", "enzo@bandtec.com", "enzo"),
 ("Jorge", "jorge@bandtec.com", "jorge"),
-("Ana", "ana@bandtec.com", "ana"),
-("Marina", "marina@bandtec.com", "marina");
+("Ana", "ana@bandtec.com", "ana");
 
 select * from usuario;							
 

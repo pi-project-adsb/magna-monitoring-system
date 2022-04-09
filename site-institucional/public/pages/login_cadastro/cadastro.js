@@ -2,14 +2,21 @@ function cadastrar() {
     // aguardar();
 
     var nomeVar = nome_cadastro.value;
-    var empresaVar = empresa_cadastro.value;
     var emailVar = email_cadastro.value;
+    var cnpjVar = cnpj_cadastro.value;
+    var empresaVar = empresa_cadastro.value;
     var senhaVar = senha_cadastro.value;
     var confirmacaoSenhaVar = confirmacao_senha_cadastro.value;
 
-    if (empresaVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+    if (nomeVar == "" || cnpjVar == ""|| empresaVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
 
         window.alert("Preencha todos os campos para prosseguir!");
+        if (nomeVar == "") {
+            console.log('Nome está em branco')
+        }
+        if (cnpjVar == "") {
+            console.log('CNPJ está em branco')
+        }
         if (empresaVar == "") {
             console.log('empresa está em branco')
         }
@@ -42,8 +49,9 @@ function cadastrar() {
         },
         body: JSON.stringify({
             nomeServer: nomeVar,
-            empresaServer: empresaVar,
             emailServer: emailVar,
+            cnpjServer: cnpjVar,
+            empresaServer: empresaVar,
             senhaServer: senhaVar,
         })
     }).then(function (resposta) {
@@ -52,7 +60,7 @@ function cadastrar() {
 
         if (resposta.ok) {
             window.alert("Cadastro realizado com sucesso!");
-            window.location = "#abrirLogin";
+            window.location = "../../index.html";
             limparFormulario();
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");

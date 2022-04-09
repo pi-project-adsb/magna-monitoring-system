@@ -7,7 +7,6 @@ function trocar() {
     console.log("FORM LOGIN: ", emailVar);
     console.log("FORM SENHA: ", empresaVar);
 
-    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
     if (emailVar == "" || empresaVar == "") {
         window.alert("Preencha todos os campos para prosseguir!");
         return false;

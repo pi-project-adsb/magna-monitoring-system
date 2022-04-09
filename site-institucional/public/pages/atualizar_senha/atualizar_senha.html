@@ -43,106 +43,14 @@
                 <nav>
                     <ul>
                         <li><a href="../../index.html">Home</a></li>
-                        <li><a href="#abrirLogin"> Login </a></li>
-                        <li><a href="#abrirCadastro"> Cadastro </a></li>
-                        <li><a href="../../pages/equipe/equipe.html">Equipe</a></li>
-                        <li><a href="../../pages/contato/contato.html">Contato</a></li>
+                        <li><a href="../login_cadastro/login_cadastro.html"> Login </a></li>
+                        <li><a href="../equipe/equipe.html">Equipe</a></li>
+                        <li><a href="../contato/contato.html">Contato</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
-
-    <!-- Login -->
-    <div id="abrirLogin" class="modal">
-        <div class="modal-context">
-            <a href="#fecharLogin" title="Fechar" class="fechar">x</a>
-
-            <div class="modal-context-logo">
-                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
-            </div>
-
-            <div class="modal-context-form">
-                <div class="form-box">
-                    <span class="form-title">Email</span>
-                    <input class="inpt-box" id="email_login" type="email" placeholder="alex@provedor.com">
-                </div>
-            </div>
-
-            <div class="modal-context-form">
-                <div class="form-box">
-                    <span class="form-title">Senha</span>
-                    <input class="inpt-box" id="senha_login" type="password" placeholder="senha123">
-                </div>
-
-                <a class="form-tag" href="../trocar_senha/trocar_senha.html">Esqueci minha senha</a>
-            </div>
-
-
-            <div class="form-box btn">
-                <button class="btn_1" title="Entrar" onclick="entrar()">ENTRAR</button>
-            </div>
-            <div class="">Não tem cadastro? <a href="#abrirCadastro"> Clique aqui </a></div>
-
-        </div>
-    </div>
-
-    <!-- Cadastro -->
-    <div id="abrirCadastro" class="modal">
-        <div class="modal-context modal-cadastro">
-            <a href="#fecharCadastro" title="Fechar" class="fechar">x</a>
-
-            <div class="modal-context-logo">
-                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
-            </div>
-
-            <div class="modal-cadastro-form">
-                <div class="modal-cadastro-form-left">
-                    <div class="modal-context-form">
-                        <div class="form-box">
-                            <span class="form-title">Nome</span>
-                            <input class="inpt-box" id="nome_cadastro" type="email" placeholder="Ex: Lucas Augusto Osakwe Moraes da Silva">
-                        </div>
-                    </div>
-    
-                    <div class="modal-context-form">
-                        <div class="form-box">
-                            <span class="form-title">Email</span>
-                            <input class="inpt-box" id="email_cadastro" type="email" placeholder="kaline@provedor.com">
-                        </div>
-                    </div>
-    
-                    <div class="modal-context-form">
-                        <div class="form-box">
-                            <span class="form-title">Empresa</span>
-                            <input class="inpt-box" id="empresa_cadastro" type="email" placeholder="Magna Enterprises">
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="modal-cadastro-form-right">
-                    <div class="modal-context-form">
-                        <div class="form-box">
-                            <span class="form-title">Senha</span>
-                            <input class="inpt-box" id="senha_cadastro" type="password" placeholder="senha123">
-                        </div>
-                    </div>
-    
-                    <div class="modal-context-form">
-                        <div class="form-box">
-                            <span class="form-title">Confirme sua senha</span>
-                            <input class="inpt-box" id="confirmacao_senha_cadastro" type="password" placeholder="senha123">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-box btn">
-                <button class="btn_1" title="CADASTRAR" onclick="cadastrar()">CADASTRAR</button>
-            </div>
-
-        </div>
-    </div>
 
     <!-- Trocar Senha -->
     <div class="trocar-context">

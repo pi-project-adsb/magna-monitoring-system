@@ -62,8 +62,9 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
-    var empresa = req.body.empresaServer;
+    var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
+    var empresa = req.body.empresaServer;
     var senha = req.body.senhaServer;
 
     if (nome == undefined) {
@@ -74,7 +75,7 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
-        usuarioModel.cadastrar(nome, empresa, email, senha)
+        usuarioModel.cadastrar(nome, cnpj, email, empresa, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -40,8 +40,7 @@ function entrar() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
-                window.location = "./index.html";
-
+                window.location = "../../index.html";
 
             });
 
