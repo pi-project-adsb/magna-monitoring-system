@@ -71,7 +71,7 @@
           <Color blue="41" green="3f" red="3c" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/magna/magna-banner.jpg"/>
+          <Image iconType="3" name="/com/magna/signup/magna-banner.jpg"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
       </Properties>
