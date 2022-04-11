@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magna | Update Password</title>
+
+    <!-- Link do Script -->
+    <script src="../../js/funcoes.js"></script>
+    <script src="../../js/cadastro.js"></script>
+    <script src="../../js/login.js"></script>
+    <script src="atualizar_senha.js"></script>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/formulario.css">
+    <link rel="stylesheet" href="../../assets/css/modal.css">
+    <link rel="stylesheet" href="atualizar_senha.css">
+
+    <link rel="shortcut icon" type="imagex/png" href="../../assets/images/logos-png/logo_simplified.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header">
+            <div class="logo">
+                <div class="logoimg">
+                    <a href="../../index.html">
+                        <img src="../../assets/images/logos-png/magna_logo_white.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../login_cadastro/login_cadastro.html"> Login </a></li>
+                        <li><a href="../equipe/equipe.html">Equipe</a></li>
+                        <li><a href="../contato/contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trocar Senha -->
+    <div class="trocar-context">
+        <div class="teste">
+            <div class="modal-context-logo">
+                <img class="modal-logo" src="../../assets/images/logos-png/magna_logo_black.png" alt="">
+            </div>
+
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Nova Senha</span>
+                    <input class="inpt-box" id="senha_trocar" type="text" placeholder="senha123">
+                </div>
+            </div>
+
+            <div class="modal-context-form">
+                <div class="form-box">
+                    <span class="form-title">Confirme sua nova senha</span>
+                    <input class="inpt-box" id="confirmar_senha_trocar" type="text" placeholder="senha123">
+                </div>
+            </div>
+
+            <div class="form-box btn">
+                <button class="btn_1" onclick="atualizarSenha()">ATUALIZAR</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

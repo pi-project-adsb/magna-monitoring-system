@@ -1,0 +1,122 @@
+/* BOXES CONTACT */
+.boxes-contact{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+    background-color: #131515;
+}
+.contact-uni-box{
+    width: 15%;
+    text-align: center;
+    height: 190px;
+    user-select: none;
+}
+.contact-uni-box i{
+    display: block;
+    font-size: 40px;
+    color: #02d8f0;
+    margin: 3vh;
+}
+.box-title{
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+}
+.box-desc{
+    margin: 2vh;
+    display: block;
+    font-size: 12px;
+    color: #ccc;
+}
+
+
+/* =========================== */
+
+.left-contact-box, .right-contact-box{
+    width: 40%;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.right-contact-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contact-main-box{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 4.9vh 0 2vh 0;
+    width: 100%;
+    height: 50vh;
+}
+
+/* LEFT BOX */
+.social-media{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 23px;
+    width: 20%;
+}
+.social-media a{
+    text-decoration: none;
+    color: #131515;
+    font-size: 30px;
+}
+.desc-text{
+    text-align: justify;
+    margin: 1vh 0 0 0;
+}
+.desc-text.first{
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+/* FORM-BOX */
+.form-box{
+    border-bottom: 1px solid #131515;
+    height: fit-content;
+    width: 50%;
+}
+.inpt-box{
+    border: none;
+    margin: 5px 0 5px 0;
+    width: 100%;
+    background-color: transparent;
+    padding-left: 10px;
+}
+.inpt-box:focus{
+    outline: none;
+}
+.inpt-box::placeholder{
+    font-size: 12px;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+.form-title{
+    font-weight: bold;
+    color: #131515;
+}
+
+.form-box.btn{
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_1{
+    border: 0;
+    font-weight: 0;
+    font-size: 12px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #131515;
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    cursor: pointer;
+
+}

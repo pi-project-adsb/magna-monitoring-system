@@ -1,0 +1,143 @@
+a {
+    color: #131515;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+/* quando o ponteiro do mouse passa no link */
+a:hover {
+    color: #02d8f0;
+}
+
+/* quando o link for selecionado */
+a:active {
+    color: black;
+}
+
+/* Formulario Login e Cadastro */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.fechar {
+    position: absolute;
+    width: 30px;
+    right: -5px;
+    top: -10px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 5px;
+    background: #ff4545;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #8d0000;
+}
+
+.modal-context {
+    position: relative;
+    background-color: white;
+    display: flex;
+    height: 70%;
+    width: 30%;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    font-size: 18px;
+    flex-direction: column;
+}
+
+.modal-context-logo {
+    height: 100px;
+    width: 100%;
+    margin: 30px auto 30px auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+.modal-logo {
+    height: 100px;
+}
+
+.modal-context-form {
+    height: 80px;
+}
+
+.modal-context-form .form-box {
+    width: 100%;
+}
+
+.btn_1 {
+    border: 0;
+    font-weight: 0;
+    font-size: 12px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #131515;
+    width: 120px;
+    align-self: center;
+    font: lighter;
+    margin: 10px;
+}
+
+.form-tag {
+    border: 0;
+    background-color: transparent;
+    text-align: center;
+    font-size: 14px;
+    font: lighter;
+    width: 100%;
+    cursor: pointer;
+    margin: 80px 80px 30px auto;
+    color: black;
+}
+
+.modal-cadastro {
+    height: 75%;
+    width: 50%;
+    display: flex;
+}
+
+.modal-cadastro-form {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-cadastro-form-left {
+    width: 40%;
+    margin-right: 25px;
+    height: 100%;
+}
+
+.modal-cadastro-form-right {
+    width: 40%;
+    height: 100%;
+    margin-left: 25px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+/* Formulario Login e Cadastro */
