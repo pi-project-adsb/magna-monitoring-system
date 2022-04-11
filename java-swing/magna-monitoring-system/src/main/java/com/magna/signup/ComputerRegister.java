@@ -64,7 +64,7 @@ public class ComputerRegister extends javax.swing.JFrame {
         );
 
         jLabel4.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel4.setIcon(new javax.swing.ImageIcon("/home/gustavo.moraes@VALEMOBI.CORP/Downloads/Novo Projeto (3).jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/magna/magna-banner.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
