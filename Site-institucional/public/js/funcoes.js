@@ -1,33 +1,26 @@
-// sessão
 function validarSessao() {
-    // aguardar();
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
-
     var h1LoginUsuario = document.getElementById("h1_login_usuario");
 
     if (email != null && nome != null) {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
         if (h1LoginUsuario != undefined) {
             h1LoginUsuario.innerHTML = email;
         }
+
         b_usuario.innerHTML = nome;
 
-        // finalizarAguardar();
     } else {
         window.location = "../index.html";
     }
 }
 
 function limparSessao() {
-    // aguardar();
     sessionStorage.clear();
-    // finalizarAguardar();
     window.location = "../index.html";
 }
 
-// modal
 function mostrarModal() {
     var divModal = document.getElementById("div_modal");
     divModal.style.display = "flex";
@@ -44,7 +37,6 @@ function pesquisar() {
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
     
-        // Validações de senha
         if (emailVar == "" || senhaVar == "") {
             window.alert("Preencha todos os campos para prosseguir!");
             return false;
@@ -54,7 +46,6 @@ function pesquisar() {
             window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
             return false;
         }
-    
         
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -66,11 +57,8 @@ function pesquisar() {
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-    
             if (resposta.ok) {
                 console.log(resposta);
-    
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
@@ -79,7 +67,6 @@ function pesquisar() {
     
                     window.location = "./dashboard/cards.html";
                         
-    
                 });
     
             } else {
