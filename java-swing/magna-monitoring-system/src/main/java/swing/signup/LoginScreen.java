@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.magna.signup;
+package swing.signup;
 
-/**
- *
- * @author gustavo.moraes@VALEMOBI.CORP
- */
+import database.connectiondb.Connection;
+import database.table.Totem;
+import external.Network;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.List;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 public class LoginScreen extends javax.swing.JFrame {
-
+    ComputerRegister computerRegister = new ComputerRegister();
     /**
      * Creates new form Home
      */
@@ -30,9 +32,9 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         userPass = new javax.swing.JLabel();
-        userEmail1 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        password = new javax.swing.JPasswordField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         btnSignUp = new javax.swing.JButton();
@@ -53,7 +55,7 @@ public class LoginScreen extends javax.swing.JFrame {
         );
 
         jLabel4.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/magna/signup/magna-banner.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/magna-banner.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
@@ -64,30 +66,30 @@ public class LoginScreen extends javax.swing.JFrame {
         userPass.setText("Senha");
         jPanel2.add(userPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, 20));
 
-        userEmail1.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail1.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail1.setBorder(null);
-        userEmail1.addActionListener(new java.awt.event.ActionListener() {
+        email.setBackground(new java.awt.Color(32, 33, 35));
+        email.setForeground(new java.awt.Color(255, 255, 255));
+        email.setBorder(null);
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail1ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        jPanel2.add(userEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 340, 20));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 340, 20));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 340, -1));
 
-        jPasswordField1.setBackground(new java.awt.Color(32, 33, 35));
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setBorder(null);
-        jPasswordField1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        password.setBackground(new java.awt.Color(32, 33, 35));
+        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setBorder(null);
+        password.setCaretColor(new java.awt.Color(255, 255, 255));
+        password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passwordActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 340, 20));
+        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 340, 20));
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,7 +108,13 @@ public class LoginScreen extends javax.swing.JFrame {
         btnSignUp.setBorderPainted(false);
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignUpActionPerformed(evt);
+                try {
+                    btnSignUpActionPerformed(evt);
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                } catch (SocketException e) {
+                    e.printStackTrace();
+                }
             }
         });
         jPanel2.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 340, 40));
@@ -135,19 +143,51 @@ public class LoginScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail1ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail1ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        this.dispose();
-        new ComputerRegister().setVisible(true);
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) throws UnknownHostException, SocketException {//GEN-FIRST:event_btnSignUpActionPerformed
+        String myPass = String.valueOf(password.getPassword());
+        Network net = new Network();
+        InetAddress addr = InetAddress.getLocalHost();
+
+
+        
+        Connection config = new Connection();
+        JdbcTemplate con = new JdbcTemplate(config.getDataSource());
+        
+        
+        if (email.getText().equals("admin@gmail.com") && myPass.equals("g123")) {
+            this.dispose();
+            
+//            MacAddress mac = new MacAddress();
+//            String sql = "SELECT * FROM network WHERE mac = ?";
+//            if (mac.getMAC().equals()) {
+//
+//            }
+
+            computerRegister.userOperationalSystem.setText(System.getProperty("os.name"));
+            computerRegister.setVisible(true);
+            computerRegister.userOperationalSystem.setEditable(false);
+
+            computerRegister.userLocalHost.setText(net.getLocalHost());
+            computerRegister.userLocalHost.setEditable(false);
+            
+            con.update(
+                "INSERT INTO TOTEM VALUES(null, ?, ?, ?, ?, ?)",
+                "Segundo andar", "Rodando", System.getProperty("os.name")
+                , computerRegister.userLocalHost.getText(), net.getMac(addr));
+        
+        }
+       
+
         
     }//GEN-LAST:event_btnSignUpActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,14 +227,14 @@ public class LoginScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignUp;
+    private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField userEmail1;
+    private javax.swing.JPasswordField password;
     private javax.swing.JLabel userPass;
     // End of variables declaration//GEN-END:variables
 }

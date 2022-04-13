@@ -1,6 +1,10 @@
 package com.magna;
 
-import com.magna.signup.LoginScreen;
+
+
+import database.connectiondb.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
+import swing.signup.LoginScreen;
 
 public class MagnaMonitoringSystem {
 

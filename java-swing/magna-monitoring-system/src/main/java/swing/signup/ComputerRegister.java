@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.magna.signup;
+package swing.signup;
+
+import external.Network;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 
 /**
  *
@@ -29,24 +33,19 @@ public class ComputerRegister extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        userEmail1 = new javax.swing.JTextField();
+        lblTitle1 = new javax.swing.JLabel();
+        lblTitle2 = new javax.swing.JLabel();
+        lblLocalhost = new javax.swing.JLabel();
+        userLocalHost = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        btnSignUp = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        userEmail2 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        lblOperationalSystem = new javax.swing.JLabel();
+        userOperationalSystem = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        userEmail3 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        btnSignUp = new javax.swing.JButton();
+        lblOperationalSystem1 = new javax.swing.JLabel();
+        userLocalization1 = new javax.swing.JTextField();
+        lblLocalization1 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
-        userEmail4 = new javax.swing.JTextField();
-        jSeparator8 = new javax.swing.JSeparator();
-        userEmail5 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,31 +63,63 @@ public class ComputerRegister extends javax.swing.JFrame {
         );
 
         jLabel4.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/magna/signup/magna-banner.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/magna-banner.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userEmail1.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail1.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail1.setBorder(null);
-        userEmail1.addActionListener(new java.awt.event.ActionListener() {
+        lblTitle1.setBackground(new java.awt.Color(240, 240, 240));
+        lblTitle1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle1.setText("Verificamos que essa máquina não está cadastrada,");
+        jPanel2.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+
+        lblTitle2.setBackground(new java.awt.Color(240, 240, 240));
+        lblTitle2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblTitle2.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle2.setText("faça o cadastro da mesma para utilizar o sistema.");
+        jPanel2.add(lblTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+
+        lblLocalhost.setBackground(new java.awt.Color(240, 240, 240));
+        lblLocalhost.setForeground(new java.awt.Color(57, 113, 117));
+        lblLocalhost.setText("Nome da Máquina");
+        jPanel2.add(lblLocalhost, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, 20));
+
+        userLocalHost.setBackground(new java.awt.Color(32, 33, 35));
+        userLocalHost.setForeground(new java.awt.Color(255, 255, 255));
+        userLocalHost.setBorder(null);
+        userLocalHost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail1ActionPerformed(evt);
+                userLocalHostActionPerformed(evt);
             }
         });
-        jPanel2.add(userEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 340, 20));
+        jPanel2.add(userLocalHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 340, 20));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 340, -1));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 340, -1));
 
-        jLabel3.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("faça o cadastro da mesma para utilizar o sistema.");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+        lblOperationalSystem.setBackground(new java.awt.Color(240, 240, 240));
+        lblOperationalSystem.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(lblOperationalSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, 20));
+
+        userOperationalSystem.setBackground(new java.awt.Color(32, 33, 35));
+        userOperationalSystem.setForeground(new java.awt.Color(255, 255, 255));
+        userOperationalSystem.setActionCommand("<Not Set>");
+        userOperationalSystem.setBorder(null);
+        userOperationalSystem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userOperationalSystemActionPerformed(evt);
+            }
+        });
+        jPanel2.add(userOperationalSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 340, 20));
+        userOperationalSystem.getAccessibleContext().setAccessibleName("");
+        userOperationalSystem.getAccessibleContext().setAccessibleDescription("");
+
+        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 340, -1));
 
         btnSignUp.setBackground(new java.awt.Color(0, 200, 255));
         btnSignUp.setFont(new java.awt.Font("Noto Mono", 1, 15)); // NOI18N
@@ -101,94 +132,31 @@ public class ComputerRegister extends javax.swing.JFrame {
                 btnSignUpActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 340, 40));
+        jPanel2.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 340, 40));
 
-        jLabel5.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel5.setForeground(new java.awt.Color(57, 113, 117));
-        jLabel5.setText("Nome da Máquina");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, 20));
+        lblOperationalSystem1.setBackground(new java.awt.Color(240, 240, 240));
+        lblOperationalSystem1.setForeground(new java.awt.Color(57, 113, 117));
+        lblOperationalSystem1.setText("Sistema Operacional");
+        jPanel2.add(lblOperationalSystem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, 20));
 
-        jLabel6.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Verificamos que essa máquina não está cadastrada,");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 340, -1));
-
-        userEmail2.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail2.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail2.setBorder(null);
-        userEmail2.addActionListener(new java.awt.event.ActionListener() {
+        userLocalization1.setBackground(new java.awt.Color(32, 33, 35));
+        userLocalization1.setForeground(new java.awt.Color(255, 255, 255));
+        userLocalization1.setBorder(null);
+        userLocalization1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail2ActionPerformed(evt);
+                userLocalization1ActionPerformed(evt);
             }
         });
-        jPanel2.add(userEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 340, 20));
+        jPanel2.add(userLocalization1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 340, 20));
 
-        jLabel7.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel7.setForeground(new java.awt.Color(57, 113, 117));
-        jLabel7.setText("Localização");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, 20));
-
-        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 340, -1));
-
-        userEmail3.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail3.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail3.setBorder(null);
-        userEmail3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(userEmail3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 340, 20));
-
-        jLabel8.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel8.setForeground(new java.awt.Color(57, 113, 117));
-        jLabel8.setText("Sistema Operacional");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, 20));
-
-        jLabel9.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel9.setForeground(new java.awt.Color(57, 113, 117));
-        jLabel9.setText("Número de Série");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, 20));
+        lblLocalization1.setBackground(new java.awt.Color(240, 240, 240));
+        lblLocalization1.setForeground(new java.awt.Color(57, 113, 117));
+        lblLocalization1.setText("Localização");
+        jPanel2.add(lblLocalization1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, 20));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 340, -1));
-
-        userEmail4.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail4.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail4.setBorder(null);
-        userEmail4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail4ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(userEmail4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 340, 20));
-
-        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 340, -1));
-
-        userEmail5.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail5.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail5.setBorder(null);
-        userEmail5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(userEmail5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 340, 20));
-
-        jLabel10.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel10.setForeground(new java.awt.Color(57, 113, 117));
-        jLabel10.setText("Modelo");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, 20));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 340, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,29 +182,21 @@ public class ComputerRegister extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail1ActionPerformed
+    private void userLocalHostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userLocalHostActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail1ActionPerformed
+    }//GEN-LAST:event_userLocalHostActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSignUpActionPerformed
 
-    private void userEmail2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail2ActionPerformed
+    private void userOperationalSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userOperationalSystemActionPerformed
+        
+    }//GEN-LAST:event_userOperationalSystemActionPerformed
 
-    private void userEmail3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail3ActionPerformed
+    private void userLocalization1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userLocalization1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail3ActionPerformed
-
-    private void userEmail4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail4ActionPerformed
-
-    private void userEmail5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail5ActionPerformed
+    }//GEN-LAST:event_userLocalization1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,39 +225,35 @@ public class ComputerRegister extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        //</editora
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ComputerRegister().setVisible(true);
-                
+                new ComputerRegister().userOperationalSystem.setText("aaaaaaa");
+                new ComputerRegister().userOperationalSystem.getText();
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignUp;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField userEmail1;
-    private javax.swing.JTextField userEmail2;
-    private javax.swing.JTextField userEmail3;
-    private javax.swing.JTextField userEmail4;
-    private javax.swing.JTextField userEmail5;
+    private javax.swing.JLabel lblLocalhost;
+    private javax.swing.JLabel lblLocalization1;
+    private javax.swing.JLabel lblOperationalSystem;
+    private javax.swing.JLabel lblOperationalSystem1;
+    private javax.swing.JLabel lblTitle1;
+    private javax.swing.JLabel lblTitle2;
+    public javax.swing.JTextField userLocalHost;
+    private javax.swing.JTextField userLocalization1;
+    public javax.swing.JTextField userOperationalSystem;
     // End of variables declaration//GEN-END:variables
 }
