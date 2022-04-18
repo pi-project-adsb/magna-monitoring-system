@@ -1,6 +1,6 @@
 package com.magna;
 
-import com.magna.signup.LoginScreen;
+import swing.signup.LoginScreen;
 
 public class MagnaMonitoringSystem {
 

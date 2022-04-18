@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.magna.signup;
+package swing.signup;
 
 /**
  *
@@ -64,7 +64,7 @@ public class ComputerRegister extends javax.swing.JFrame {
         );
 
         jLabel4.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/magna/signup/magna-banner.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/magna_banner.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
