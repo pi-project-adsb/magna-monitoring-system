@@ -1,13 +1,25 @@
 package api.entity;
 
 import com.github.britooo.looca.api.group.processador.Processador;
+import database.Connection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Cpu {
+    Connection config = new Connection();
+    JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+    Processador processador = new Processador();
+
     public void showCpu() {
-        Processador processador = new Processador();
-
-        System.out.println(processador);
         System.out.println("-".repeat(30));
+    }
 
+    public void saveCpu() throws InterruptedException {
+        Thread.sleep(500);
+
+        con.update("INSERT INTO cpu VALUES(null, ?, ?, ?, ?, ?)",
+                processador.getNome(), processador.getFrequencia(),
+                processador.getNumeroCpusFisicas(), processador.getNumeroCpusFisicas(), processador.getUso());
     }
 }
