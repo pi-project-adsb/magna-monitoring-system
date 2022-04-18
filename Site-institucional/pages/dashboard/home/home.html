@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e2229bd305.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <title>Document</title>
+</head>
+
+<body onload="fakeData();">
+    <header class="header">
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <div class="left-nav-items">
+                    <i class="fa-solid fa-bars"></i>
+                    <a href="#">
+                        <li class="nav-item">DASHBOARD - MAGNA</li>
+                    </a>
+                </div>
+                <div class="right-nav-items">
+                    <li class="nav-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                    <li class="nav-item">
+                        <span>
+                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </span>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+
+        <!-- <aside class="aside-navbar">
+            <nav class="aside-navBlock">
+                <div class="nav-header">
+                    <img src="/public/assets/images/logos-png/magna_logo_black.png" alt="">
+                </div>
+                <hr>
+                <ul>
+                    <li></li>
+                </ul>
+            </nav>
+        </aside> -->
+
+        <div class="sections">
+            <section class="first-section" id="cpu_container">
+                <div class="section-header">
+                    <div class="left-content">
+                        <span class="first-title">
+                            Performance
+                        </span>
+                        <h1 class="title-section">
+                            CPU
+                            <i class="fa-solid fa-circle-info" onclick="modal(2)"></i>
+                            <span class="status-component">| Status: OK</span>
+                        </h1>
+                    </div>
+                    <div class="right-content">
+                        <div class="buttons">
+                            <button class="btn-header active" onclick="page(1)">CPU</button>
+                            <button class="btn-header" onclick="page(2)">RAM</button>
+                            <button class="btn-header" onclick="page(3)">Disco</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart">
+                    <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
+                </div>
+            </section>
+
+            <section class="first-section" id="ram_container" style="display: none;">
+                <div class="section-header">
+                    <div class="left-content">
+                        <span class="first-title">
+                            Performance
+                        </span>
+                        <h1 class="title-section">
+                            Memória RAM
+                            <i class="fa-solid fa-circle-info" onclick="modal(3)"></i>
+                            <span class="status-component">| Status: OK</span>
+                        </h1>
+                    </div>
+                    <div class="right-content">
+                        <div class="buttons">
+                            <button class="btn-header" onclick="page(1)">CPU</button>
+                            <button class="btn-header active" onclick="page(2)">RAM</button>
+                            <button class="btn-header" onclick="page(3)">Disco</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart">
+                    <canvas id="myChart2" style="width: 100%; height: 100%;"></canvas>
+                </div>
+            </section>
+
+            <section class="first-section" id="disk_container" style="display: none;">
+                <div class="section-header">
+                    <div class="left-content">
+                        <span class="first-title">
+                            Performance
+                        </span>
+                        <h1 class="title-section">
+                            Disco
+                            <i class="fa-solid fa-circle-info" onclick="modal(4)"></i>
+                            <span class="status-component">| Status: OK</span>
+                        </h1>
+                    </div>
+                    <div class="right-content">
+                        <div class="buttons">
+                            <button class="btn-header" onclick="page(1)">CPU</button>
+                            <button class="btn-header" onclick="page(2)">RAM</button>
+                            <button class="btn-header active" onclick="page(3)">Disco</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart">
+                    <canvas id="myChart3" style="width: 100%; height: 100%"></canvas>
+                </div>
+            </section>
+
+            <section class="second-section">
+                <div class="card-box-1">
+                    <div class="card-box-header">
+                        <i class="fa-solid fa-hard-drive"></i>
+                        <div class="card-box-info">
+                            <span class="box-info-title">Disco livre</span>
+                            <span class="box-info-number">396GB</span>
+                        </div>
+                    </div>
+                    <hr class="line">
+                    <div class="update">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                        <span>Atualizar</span>
+                    </div>
+                </div>
+                <div class="card-box-1">
+                    <div class="card-box-header">
+                        <i class="fa-solid fa-calendar"></i>
+                        <div class="card-box-info">
+                            <span class="box-info-title">Dias sem manutenção</span>
+                            <span class="box-info-number">30</span>
+                        </div>
+                    </div>
+                    <hr class="line">
+                    <div class="update">
+                        <i class="fa-solid fa-calendar-pen"></i>
+                        <span onclick="modal(1)">Agendar</span>
+                    </div>
+                </div>
+                <div class="card-box-1">
+
+                </div>
+                <div class="card-box-1">
+                    <div class="card-box-header">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <div class="card-box-info">
+                            <span class="box-info-title">Número de erros</span>
+                            <span class="box-info-number">10</span>
+                        </div>
+                    </div>
+                    <hr class="line">
+                    <div class="update">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                        <span>Atualizar</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="third-section">
+                <div class="card-box-2">
+                    <h1 class="card-title">Logs de erro</h1>
+                    <h2 class="card-subtitle">mês</h2>
+                    <div class="chart">
+                        <canvas id="myChart4" style="width: 100%; height: 100%"></canvas>
+                    </div>
+                </div>
+                <div class="card-box-2">
+                    <h1 class="card-title">Manutenções</h1>
+                    <h2 class="card-subtitle">Principais motivos</h2>
+                    <div class="chart">
+                        <canvas id="myChart5" style="width: 100%; height: 100%"></canvas>
+                    </div>
+                </div>
+                <div class="card-box-2">
+
+                </div>
+            </section>
+
+            <section class="fourth-section">
+                <div class="box">
+                    <h1 class="table-box-title">Processos</h1>
+                    <table class="table process">
+                        <tr>
+                            <th class="table-header">
+                                <div>Nome</div>
+                            </th>
+                            <th class="table-header">
+                                <div>
+                                    <span>Status</span>
+                                </div>
+                            </th>
+                            <th class="table-header">
+                                <div>
+                                    <span class="cpu_usage"></span>
+                                    <span>CPU</span>
+                                </div>
+                            </th>
+                            <th class="table-header">
+                                <div>
+                                    <span class="memory_usage"></span>
+                                    <span>Memória</span>
+                                </div>
+                            </th>
+                            <th class="table-header">
+                                <div>
+                                    <span class="disk_usage"></span>
+                                    <span>Disco</span>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc process">Windows Explorer</td>
+                            <td class="table-desc process">OK</td>
+                            <td class="table-desc process">0.1%</td>
+                            <td class="table-desc process">59.7 MB</td>
+                            <td class="table-desc process">0 MB/s</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="box">
+                    <h1 class="table-box-title">Users</h1>
+                    <table class="table user">
+                        <tr>
+                            <th class="table-header user">
+                                <div>
+                                    <span>User</span>
+                                </div>
+                            </th>
+                            <th class="table-header user">
+                                <div>
+                                    <span>Status</span>
+                                </div>
+                            </th>
+                            <th class="table-header user">
+                                <div>
+                                    <span class="cpu_usage">25%</span>
+                                    CPU
+                                </div>
+                            </th>
+                            <th class="table-header user">
+                                <div>
+                                    <span class="memory_usage">50%</span>
+                                    Memória
+                                </div>
+                            </th>
+                            <th class="table-header user">
+                                <div>
+                                    <span class="disk_usage">0%</span>
+                                    Disco
+                                </div>
+                            </th>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc user">magnams@gmail.com</td>
+                            <td class="table-desc user">OK</td>
+                            <td class="table-desc user">10.6%</td>
+                            <td class="table-desc user">3.388.9 MB</td>
+                            <td class="table-desc user">0.1 MB/s</td>
+                        </tr>
+                        <tr class="table-row-desc">
+                            <td class="table-desc user">magnams2@gmail.com</td>
+                            <td class="table-desc user">OK</td>
+                            <td class="table-desc user">10.6%</td>
+                            <td class="table-desc user">3.388.9 MB</td>
+                            <td class="table-desc user">0.1 MB/s</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="myModal_1" class="modal">
+
+        <div class="modal-content">
+            <span id="close_1" class="close">&times;</span>
+
+            <div id="box_content-modal">
+                <img src="/public/assets/images/logos-png/magna_logo_black.png" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="myModal_2" class="modal">
+
+        <div class="modal-content">
+            <span id="close_2" class="close">&times;</span>
+
+            <div id="box_content-modal">
+                <div class="left-content">
+                    <h1 class="component-title">CPU</h1>
+                    <h2 class="component-name">Intel(R) Core(TM) i7-2600k CPU @ 3.40GHz</h2>
+                    <div class="component-desc">
+                        <div class="component-desc-box">
+                            <span>Utilização</span>
+                            <span>20%</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Velocidade</span>
+                            <span>3.96 GHz</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Processos</span>
+                            <span>341</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Threads</span>
+                            <span>5100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="myModal_3" class="modal">
+
+        <div class="modal-content">
+            <span id="close_3" class="close">&times;</span>
+
+            <div id="box_content-modal">
+                <div class="left-content">
+                    <h1 class="component-title">Memória RAM</h1>
+                    <h2 class="component-name">16GB DDR3</h2>
+                    <div class="component-desc">
+                        <div class="component-desc-box">
+                            <span>Em uso</span>
+                            <span>9.2 GB</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Disponível</span>
+                            <span>6.7 GB</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Cached</span>
+                            <span>6.5 GB</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Velocidade</span>
+                            <span>1867 MHz</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Slots usados</span>
+                            <span>2 de 4</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <i class="fa-solid fa-memory"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="myModal_4" class="modal">
+
+        <div class="modal-content">
+            <span id="close_4" class="close">&times;</span>
+
+            <div id="box_content-modal">
+                <div class="left-content">
+                    <h1 class="component-title">Disco</h1>
+                    <h2 class="component-name">Samsung SSD 850 EVO 500GB</h2>
+                    <div class="component-desc">
+                        <div class="component-desc-box">
+                            <span>Tempo de leitura</span>
+                            <span>16.4 KB/s</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Tempo de escrita</span>
+                            <span>348 KB/s</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Capacidade</span>
+                            <span>466GB</span>
+                        </div>
+                        <div class="component-desc-box">
+                            <span>Tipo</span>
+                            <span>SSD</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <i class="fa-solid fa-hard-drive"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="nav-list-footer">
+                <li><a href="#">CONTATO</a></li>
+                <li><a href="#">SOBRE NÓS</a></li>
+                <li><a href="#">MAGNA</a></li>
+            </ul>
+    
+            <img src="/public/assets/images/logos-png/magna_logo_white.png" alt="">
+        </div>
+    </footer>
+
+</body>
+<script src="app.js"></script>
+<script src="app2.js"></script>
+</html>
