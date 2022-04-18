@@ -4,7 +4,10 @@
     <groupId>com.magna</groupId>
     <artifactId>magna-monitoring-system</artifactId>
     <version>1.0-SNAPSHOT</version>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -12,6 +15,7 @@
         <exec.mainClass>com.magna.MagnaMonitoringSystem</exec.mainClass>
     </properties>
     
+<<<<<<< HEAD
     <build>
         <plugins>
             <plugin>
@@ -41,6 +45,8 @@
         </plugins>
     </build>
     
+=======
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
     <dependencies>
         <dependency>
             <groupId>org.netbeans.external</groupId>
@@ -49,14 +55,21 @@
         </dependency>
         
         <dependency>
+<<<<<<< HEAD
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>5.0.5.RELEASE</version>
+=======
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
         </dependency>
         
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
+<<<<<<< HEAD
             <version>2.5.0</version>
         </dependency>
 
@@ -64,6 +77,21 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.199</version>
+=======
+            <version>2.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
         </dependency>
     </dependencies>
 </project>

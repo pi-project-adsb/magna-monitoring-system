@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -5,6 +6,12 @@
 package swing.signup;
 
 import database.connection.Connection;
+=======
+package swing.signup;
+
+import database.connectiondb.Connection;
+import database.table.Totem;
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
 import external.Network;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -13,11 +20,16 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+<<<<<<< HEAD
 /**
  *
  * @author gustavo.moraes@VALEMOBI.CORP
  */
 public class LoginScreen extends javax.swing.JFrame {
+=======
+public class LoginScreen extends javax.swing.JFrame {
+    ComputerRegister computerRegister = new ComputerRegister();
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
     /**
      * Creates new form Home
      */
@@ -37,11 +49,18 @@ public class LoginScreen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+<<<<<<< HEAD
         lblEmail = new javax.swing.JLabel();
         userEmail1 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         lblPass = new javax.swing.JLabel();
         userPass = new javax.swing.JPasswordField();
+=======
+        userPass = new javax.swing.JLabel();
+        email = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        password = new javax.swing.JPasswordField();
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
         jSeparator4 = new javax.swing.JSeparator();
         btnSignUp = new javax.swing.JButton();
 
@@ -61,7 +80,11 @@ public class LoginScreen extends javax.swing.JFrame {
         );
 
         jLabel4.setForeground(new java.awt.Color(60, 63, 65));
+<<<<<<< HEAD
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/magna_banner.jpg"))); // NOI18N
+=======
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/magna-banner.jpg"))); // NOI18N
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
         jLabel4.setText("jLabel4");
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
@@ -72,20 +95,21 @@ public class LoginScreen extends javax.swing.JFrame {
         lblEmail.setText("Email");
         jPanel2.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, 20));
 
-        userEmail1.setBackground(new java.awt.Color(32, 33, 35));
-        userEmail1.setForeground(new java.awt.Color(255, 255, 255));
-        userEmail1.setBorder(null);
-        userEmail1.addActionListener(new java.awt.event.ActionListener() {
+        email.setBackground(new java.awt.Color(32, 33, 35));
+        email.setForeground(new java.awt.Color(255, 255, 255));
+        email.setBorder(null);
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userEmail1ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        jPanel2.add(userEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 340, 20));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 340, 20));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 340, -1));
 
+<<<<<<< HEAD
         lblPass.setBackground(new java.awt.Color(240, 240, 240));
         lblPass.setForeground(new java.awt.Color(57, 113, 117));
         lblPass.setText("Senha");
@@ -101,6 +125,18 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(userPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 340, 20));
+=======
+        password.setBackground(new java.awt.Color(32, 33, 35));
+        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setBorder(null);
+        password.setCaretColor(new java.awt.Color(255, 255, 255));
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 340, 20));
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,9 +153,15 @@ public class LoginScreen extends javax.swing.JFrame {
                 try {
                     btnSignUpActionPerformed(evt);
                 } catch (UnknownHostException e) {
+<<<<<<< HEAD
                     throw new RuntimeException(e);
                 } catch (SocketException e) {
                     throw new RuntimeException(e);
+=======
+                    e.printStackTrace();
+                } catch (SocketException e) {
+                    e.printStackTrace();
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
                 }
             }
         });
@@ -149,10 +191,46 @@ public class LoginScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmail1ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userEmail1ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) throws UnknownHostException, SocketException {//GEN-FIRST:event_btnSignUpActionPerformed
+        String myPass = String.valueOf(password.getPassword());
+        Network net = new Network();
+        InetAddress addr = InetAddress.getLocalHost();
+
+
+        
+        Connection config = new Connection();
+        JdbcTemplate con = new JdbcTemplate(config.getDataSource());
+        
+        
+        if (email.getText().equals("admin@gmail.com") && myPass.equals("g123")) {
+            this.dispose();
+            
+//            MacAddress mac = new MacAddress();
+//            String sql = "SELECT * FROM network WHERE mac = ?";
+//            if (mac.getMAC().equals()) {
+//
+//            }
+
+            computerRegister.userOperationalSystem.setText(System.getProperty("os.name"));
+            computerRegister.setVisible(true);
+            computerRegister.userOperationalSystem.setEditable(false);
+
+            computerRegister.userLocalHost.setText(net.getLocalHost());
+            computerRegister.userLocalHost.setEditable(false);
+            
+            con.update(
+                "INSERT INTO TOTEM VALUES(null, ?, ?, ?, ?, ?)",
+                "Segundo andar", "Rodando", System.getProperty("os.name")
+                , computerRegister.userLocalHost.getText(), net.getMac(addr));
+        
+        }
+       
+
+<<<<<<< HEAD
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) throws UnknownHostException, SocketException {//GEN-FIRST:event_btnSignUpActionPerformed
         ComputerRegister computerRegister = new ComputerRegister();
         String passwordGetText = new String(userPass.getPassword());
@@ -172,13 +250,21 @@ public class LoginScreen extends javax.swing.JFrame {
             
         }
 
+=======
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
         
 
     }//GEN-LAST:event_btnSignUpActionPerformed
 
+<<<<<<< HEAD
     private void userPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userPassActionPerformed
+=======
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
 
     /**
      * @param args the command line arguments
@@ -218,14 +304,24 @@ public class LoginScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignUp;
+<<<<<<< HEAD
+=======
+    private javax.swing.JTextField email;
+    private javax.swing.JLabel jLabel3;
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+<<<<<<< HEAD
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblPass;
     private javax.swing.JTextField userEmail1;
     private javax.swing.JPasswordField userPass;
+=======
+    private javax.swing.JPasswordField password;
+    private javax.swing.JLabel userPass;
+>>>>>>> 3df25c40c5e6762fd7852d7a3f2c6349e411f64c
     // End of variables declaration//GEN-END:variables
 }
