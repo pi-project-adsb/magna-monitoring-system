@@ -19,7 +19,6 @@ function entrar(email, senha) {
 }
 
 function cadastrar(nome, cnpj, email, empresa, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, cnpj, email, empresa, senha);
     var instrucao = `
         INSERT INTO usuario (nome, email, empresa, cnpj, senha) VALUES ('${nome}', '${email}', '${empresa}', '${cnpj}', md5('${senha}'));
     `;
