@@ -19,4 +19,5 @@ router.post("/trocar", function (req, res) {
     usuarioController.trocar(req, res);
 });
 
+
 module.exports = router;

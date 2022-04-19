@@ -1,5 +1,4 @@
 function entrar() {
-    // aguardar();
 
     var emailVar = email_login.value;
     var senhaVar = senha_login.value;
@@ -27,8 +26,7 @@ function entrar() {
             senhaServer: senhaVar
         })
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
+        
         if (resposta.ok) {
             console.log(resposta);
 
@@ -40,14 +38,12 @@ function entrar() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
-                window.location = "../../index.html";
+                window.location = "Site-institucional/public/pages/dashboard/home/home.html";
 
             });
 
         } else {
-
-            console.log("Houve um erro ao tentar realizar o login!");
-
+            window.alert('Erro ao tentar realizar o login');
             resposta.text().then(texto => {
                 console.error(texto);
             });

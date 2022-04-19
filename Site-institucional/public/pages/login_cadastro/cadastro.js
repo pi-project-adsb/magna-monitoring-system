@@ -1,5 +1,4 @@
 function cadastrar() {
-    // aguardar();
 
     var nomeVar = nome_cadastro.value;
     var emailVar = email_cadastro.value;
@@ -60,8 +59,7 @@ function cadastrar() {
 
         if (resposta.ok) {
             window.alert("Cadastro realizado com sucesso!");
-            window.location = "../../index.html";
-            limparFormulario();
+            window.location = "Site-institucional/public/index.html";
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
