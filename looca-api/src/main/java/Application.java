@@ -5,11 +5,11 @@ import api.entity.Temperature;
 import api.entity.groups.Disk;
 import api.entity.groups.Process;
 import api.entity.groups.Service;
-import io.bretty.console.table.Alignment;
-import tech.tablesaw.api.Table;
+
+import java.net.UnknownHostException;
 
 public class Application {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, UnknownHostException {
         Disk disk = new Disk();
         Cpu cpu = new Cpu();
         Memory memory = new Memory();
@@ -28,7 +28,7 @@ public class Application {
 
         while (true) {
             memory.saveMemory();
-            cpu.saveCpu();
+//            cpu.saveCpu();
         }
     }
 }

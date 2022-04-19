@@ -16,7 +16,7 @@ public class Cpu {
     }
 
     public void saveCpu() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         con.update("INSERT INTO cpu VALUES(null, ?, ?, ?, ?, ?)",
                 processador.getNome(), processador.getFrequencia(),
