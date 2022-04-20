@@ -1,0 +1,3 @@
+2022-04-20 11:59:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TOTEM" not found; SQL statement:
+INSERT INTO totem VALUES (?, ?, ?, ?) [42102-200]
