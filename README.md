@@ -18,8 +18,8 @@ ___
 
 <div style="display:flex;">
 <img src="./Site-institucional/public/assets/images/Colaboradores/gustavo.jpeg" width="200px" height="200" title="Gustavo Moraes">
-<img src="./Colaboradores/renan.jpeg" width="200px" height="200" title="Renan Oliveira">
-<img src="./Colaboradores/osakwe.jpg" width="200px" height="200" title="Lucas Osakwe">
-<img src="./Colaboradores/lacerda.jpeg" width="200px" height="200" title="Lucas Lacerda">
-<img src="./Colaboradores/vinicius.jpeg" width="200px" height="200" title="Vinicius Augusto">
+<img src="./Site-institucional/public/assets/images/Colaboradores/renan.jpeg" width="200px" height="200" title="Renan Oliveira">
+<img src="./Site-institucional/public/assets/images/Colaboradores/osakwe.jpg" width="200px" height="200" title="Lucas Osakwe">
+<img src="./Site-institucional/public/assets/images/Colaboradores/lacerda.jpeg" width="200px" height="200" title="Lucas Lacerda">
+<img src="./Site-institucional/public/assets/images/Colaboradores/vinicius.jpeg" width="200px" height="200" title="Vinicius Augusto">
 </div>
