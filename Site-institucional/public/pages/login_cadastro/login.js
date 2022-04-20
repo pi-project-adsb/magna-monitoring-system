@@ -16,7 +16,7 @@ function entrar() {
         return false;
     }
 
-    fetch("/usuarios/autenticar", {
+    fetch("/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -34,9 +34,9 @@ function entrar() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.EMAIL_EMPRESA = json.email;
+                sessionStorage.NOME_EMPRESA = json.nome;
+                sessionStorage.ID_EMPRESA = json.id;
 
                 window.location = "Site-institucional/public/pages/dashboard/home/home.html";
 
