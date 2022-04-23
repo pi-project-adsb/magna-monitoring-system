@@ -23,10 +23,13 @@ public class Memory {
 
         Integer toMb = 1024;
 
+        System.out.println("Coletando dados da memória ram...");
+
         Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
                 "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);
 
         con.update("INSERT INTO ram(uso, disponivel, total, fk_totem) VALUES(?, ?, ?, ?) ",
                 memoria.getEmUso() / toMb / toMb, memoria.getDisponivel() / toMb / toMb, memoria.getTotal() / toMb / toMb, fkTotem);
+
     }
 }

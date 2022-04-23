@@ -4,12 +4,11 @@ import database.Connection;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import repository.EmpresaRepository;
-import repository.TotemRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class EmailValidation {
+public class Validation {
     Connection config = new Connection();
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
     Scanner leitor = new Scanner(System.in);
