@@ -1,18 +1,14 @@
 function cadastrar() {
 
-    var nomeVar = nome_cadastro.value;
     var emailVar = email_cadastro.value;
     var cnpjVar = cnpj_cadastro.value;
     var empresaVar = empresa_cadastro.value;
     var senhaVar = senha_cadastro.value;
     var confirmacaoSenhaVar = confirmacao_senha_cadastro.value;
 
-    if (nomeVar == "" || cnpjVar == ""|| empresaVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+    if (cnpjVar == ""|| empresaVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
 
         window.alert("Preencha todos os campos para prosseguir!");
-        if (nomeVar == "") {
-            console.log('Nome está em branco')
-        }
         if (cnpjVar == "") {
             console.log('CNPJ está em branco')
         }
@@ -41,16 +37,15 @@ function cadastrar() {
         return false;
     }
 
-    fetch("/usuarios/cadastrar", {
+    fetch("/users/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nomeServer: nomeVar,
             emailServer: emailVar,
-            cnpjServer: cnpjVar,
             empresaServer: empresaVar,
+            cnpjServer: cnpjVar,
             senhaServer: senhaVar,
         })
     }).then(function (resposta) {
@@ -59,6 +54,7 @@ function cadastrar() {
 
         if (resposta.ok) {
             window.alert("Cadastro realizado com sucesso!");
+            console.log(resposta.json);
             window.location = "Site-institucional/public/index.html";
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");

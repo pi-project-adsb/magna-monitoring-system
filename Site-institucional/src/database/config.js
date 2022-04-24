@@ -1,7 +1,7 @@
 var sql = require('mssql');
 
-// SQL SERVER CREDENTIALS
-var connection = ({
+// AZURE CREDENTIALS
+var config = ({
     user: "admin-magna",
     password: "2ads#grupo6",
     database: "bd-magna",
@@ -17,17 +17,22 @@ var connection = ({
     }
 })
 
-
 function execQuery(qry) {
-    sql.connect(connection)
-        .then(() => {
+    return new Promise((resolve, reject) => {
+        sql.connect(config).then(function () {
             return sql.query(qry);
-        }).then((result) => {
-            console.log(result);
-        }).catch((err) => {
-            console.log(err);
-        })
-};
+        }).then(function (resultados) {
+            console.log(resultados);
+            resolve(resultados.recordset);
+        }).catch(function (erro) {
+            reject(erro);
+            console.log('ERRO: ', erro);
+        });
+        sql.on('error', function (erro) {
+            return ("ERRO NO SQL SERVER (Azure): ", erro);
+        });
+    })
+}
 
 module.exports = {
     execQuery
