@@ -38,8 +38,6 @@ public class Disk {
 
         for (Disco disco : discos) {
             for (Volume volume : volumeGroup) {
-
-
                 Long memUso = (volume.getTotal() - volume.getDisponivel()) / 1024 / 1024 / 1024;
 
                 Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
@@ -47,8 +45,6 @@ public class Disk {
 
                 con.update("INSERT INTO armazenamento(modelo, uso, disponivel, total,fk_totem) VALUES(?, ?, ?, ?, ?) ",
                         disco.getModelo(), memUso, volume.getDisponivel() / 1024 / 1024 / 1024, volume.getTotal() / 1024 / 1024 / 1024, fkTotem);
-
-
             }
         }
     }

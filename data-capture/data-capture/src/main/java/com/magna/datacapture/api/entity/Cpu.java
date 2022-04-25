@@ -13,6 +13,8 @@ public class Cpu {
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
     Processador processador = new Processador();
     DecimalFormat formatador = new DecimalFormat("0.00");
+    Double usoProcessador = Math.round((processador.getUso() / 1024 /1024)  * 100.0)/100.0;
+    Double frequencia = processador.getFrequencia() * 0.000000001;
 
     public void showCpu() {
         System.out.println(Math.round(processador.getUso() * 100.0)/100.0);
@@ -21,10 +23,7 @@ public class Cpu {
     }
 
     public void saveCpu() throws InterruptedException, UnknownHostException {
-        Thread.sleep(1000);
-
-        Double usoProcessador = Math.round((processador.getUso() / 1024 /1024)  * 100.0)/100.0;
-        Double frequencia = processador.getFrequencia() * 0.000000001;
+        Thread.sleep(1500);
 
         Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
                 "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);

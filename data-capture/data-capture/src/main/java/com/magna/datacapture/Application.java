@@ -44,8 +44,8 @@ public class Application {
 
         while (true) {
             memory.saveMemory();
-            cpu.saveCpu();
             disk.saveDisk();
+            cpu.saveCpu();
             process.saveProcess();
         }
     }

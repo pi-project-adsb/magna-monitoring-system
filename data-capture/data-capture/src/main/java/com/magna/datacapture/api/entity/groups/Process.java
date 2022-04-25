@@ -29,7 +29,6 @@ public class Process {
     }
 
     public void saveProcess() throws InterruptedException, UnknownHostException {
-
         Looca looca = new Looca();
         ProcessosGroup processosGroup = looca.getGrupoDeProcessos();
         List<Processo> processos = processosGroup.getProcessos();
@@ -43,7 +42,6 @@ public class Process {
             con.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
                     processo.getPid(), processo.getNome(), processo.getUsoCpu(), processo.getUsoMemoria(), fkTotem);
         }
-
         System.out.println("Quantidade de processos: " + processosGroup.getTotalProcessos());
     }
 
