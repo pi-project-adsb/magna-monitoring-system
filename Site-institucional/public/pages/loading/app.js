@@ -5,7 +5,7 @@ function loading() {
         setTimeout(() => {
             welcome_loading.style.display = 'block';
             setTimeout(() => {
-                window.location= "public/pages/dashboard/home/home.html";
+                window.location= "../dashboard/totem-hub/totens.html";
             }, 3000);
         }, 1200);
     }, 5000);

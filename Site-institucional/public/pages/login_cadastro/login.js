@@ -43,7 +43,7 @@ function entrar() {
                 // sessionStorage.CPF_USUARIO = json.cpf_cnpj;
 
                 setTimeout(function () {
-                    window.location = "public/index.html";
+                    window.location = "../loading/loading.html";
                 }, 1000); // apenas para exibir o loading
 
             });

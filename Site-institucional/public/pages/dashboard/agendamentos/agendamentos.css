@@ -1,0 +1,19 @@
+.scheduling-box{
+    height: 800px;
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    user-select: none;
+}
+
+.title-box{
+    border-bottom: 1px solid #02d8f0;
+    text-align: center;
+}
+.title-agend{
+    padding: 5px;
+}
+
+.agend-header{
+    display: flex;
+    align-items: center;
+}

@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style/home.css">
+    <title>Dashboard</title>
 </head>
 
 <body onload="fakeData();">
@@ -19,7 +19,6 @@
         <nav class="nav-bar">
             <ul class="nav-list">
                 <div class="left-nav-items">
-                    <i class="fa-solid fa-bars"></i>
                     <a href="#">
                         <li class="nav-item">DASHBOARD - MAGNA</li>
                     </a>
@@ -41,17 +40,57 @@
 
     <main class="main-container">
 
-        <!-- <aside class="aside-navbar">
-            <nav class="aside-navBlock">
-                <div class="nav-header">
-                    <img src="/public/assets/images/logos-png/magna_logo_black.png" alt="">
-                </div>
-                <hr>
+        <div class="container_navigation">
+            <div class="navigation">
                 <ul>
-                    <li></li>
+                    <li class="toggle">
+                        <i class="fa-solid fa-bars open"></i>
+                        <i class="fa-solid fa-xmark close"></i>
+                    </li>
+                    <li class="list active">
+                        <b></b>
+                        <b></b>
+                        <a href="home.html">
+                            <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <b></b>
+                        <b></b>
+                        <a href="../limites/limites.html">
+                            <span class="icon"><i class="fa-solid fa-chart-bar"></i></span>
+                            <span class="title">Limites</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <b></b>
+                        <b></b>
+                        <a href="../agendamentos/agendamentos.html">
+                            <span class="icon"><i class="fa-solid fa-calendar-check"></i></span>
+                            <span class="title">Agendamentos</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <b></b>
+                        <b></b>
+                        <a href="../alertas/alertas.html">
+                            <span class="icon"><i class="fa-solid fa-bell"></i></span>
+                            <span class="title">Alertas</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <b></b>
+                        <b></b>
+                        <a href="#">
+                            <span class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                            <span class="title">Log-out</span>
+                        </a>
+                    </li>
                 </ul>
-            </nav>
-        </aside> -->
+            </div>
+        </div>
+        
 
         <div class="sections">
             <section class="first-section" id="cpu_container">
@@ -193,7 +232,35 @@
                     </div>
                 </div>
                 <div class="card-box-2">
-
+                    <div class="card-box-header2">
+                        <div class="card-box-title">
+                            <h1 class="card-title">Sistema do totem</h1>
+                            <h2 class="card-subtitle">Especificações</h2>
+                        </div>
+                        <i class="fa-brands fa-windows"></i>
+                    </div>
+                    <div class="card-box-content">
+                        <span class="specification-box">
+                            <span class="name_specification">Sistema operacional: </span>
+                            <span class="specification">Windows 10</span>
+                        </span>
+                        <span class="specification-box">
+                            <span class="name_specification">Tipo de arquitetura: </span>
+                            <span class="specification">64Bits</span>
+                        </span>
+                        <span class="specification-box">
+                            <span class="name_specification">Nome do dispositivo: </span>
+                            <span class="specification">DESKTOP-JHKL14S</span>
+                        </span>
+                        <span class="specification-box">
+                            <span class="name_specification">Tipo de usuário:</span>
+                            <span class="specification">Administrador</span>
+                        </span>
+                        <span class="specification-box">
+                            <span class="name_specification">ID do dispositivo: </span>
+                            <span class="specification">E941C838-934D-4430-A65E-83979D773D9F</span>
+                        </span>
+                    </div>
                 </div>
             </section>
 
@@ -512,11 +579,12 @@
                 <li><a href="#">MAGNA</a></li>
             </ul>
     
-            <img src="/public/assets/images/logos-png/magna_logo_white.png" alt="">
+            <img src="/site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
         </div>
     </footer>
 
 </body>
-<script src="app.js"></script>
-<script src="app2.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/app2.js"></script>
+    <script src="../global/global.js"></script>
 </html>
