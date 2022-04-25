@@ -23,13 +23,14 @@ public class Cpu {
     public void saveCpu() throws InterruptedException, UnknownHostException {
         Thread.sleep(1000);
 
-        Double usoProcessador = Math.round(processador.getUso() * 100.0)/100.0;
+        Double usoProcessador = Math.round((processador.getUso() / 1024 /1024)  * 100.0)/100.0;
+        Double frequencia = processador.getFrequencia() * 0.000000001;
 
         Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
                 "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);
 
         con.update("INSERT INTO cpu(nome, frequencia, nucleos, threads, uso,fk_totem) VALUES(?, ?, ?, ?, ?, ?) ",
-                processador.getNome(), processador.getFrequencia() / 10000000, processador.getNumeroCpusFisicas(),
-                processador.getNumeroCpusLogicas(), usoProcessador, fkTotem);
+                processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+                processador.getNumeroCpusLogicas(), processador.getUso(), fkTotem);
     }
 }

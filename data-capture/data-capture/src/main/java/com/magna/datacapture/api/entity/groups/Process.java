@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Process {
@@ -36,14 +37,11 @@ public class Process {
         System.out.println("Coletando dados dos processos...");
         for (Processo processo : processos) {
 
-
-
             Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
                     "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);
 
-            con.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, bytes_utilizados, swap_utilizada,fk_totem) VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                    processo.getPid(), processo.getNome(), processo.getUsoCpu(), processo.getUsoMemoria(),
-                    processo.getBytesUtilizados() / 1024, processo.getMemoriaVirtualUtilizada() / 1024, fkTotem);
+            con.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
+                    processo.getPid(), processo.getNome(), processo.getUsoCpu(), processo.getUsoMemoria(), fkTotem);
         }
 
         System.out.println("Quantidade de processos: " + processosGroup.getTotalProcessos());
