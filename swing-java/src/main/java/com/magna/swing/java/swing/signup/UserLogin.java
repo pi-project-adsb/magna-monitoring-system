@@ -6,11 +6,19 @@ package com.magna.swing.java.swing.signup;
 
 import com.magna.swing.java.api.Memory;
 import com.magna.swing.java.database.connection.Connection;
+import com.magna.swing.java.database.connection.repository.EmpresaRepository;
+import com.magna.swing.java.database.connection.repository.TotemRepository;
+import com.magna.swing.java.external.Network;
 import java.net.InetAddress;
+
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.magna.swing.java.external.Network;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -18,12 +26,21 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * @author Gustavo
  */
 public class UserLogin extends javax.swing.JFrame {
+    List<EmpresaRepository> userAdvancedUse;
+    Network network = new Network();
+
 
     /**
      * Creates new form Signup
+     * @throws java.lang.InterruptedException
+     * @throws java.net.UnknownHostException
      */
-    public UserLogin() {
+    public UserLogin() throws InterruptedException, UnknownHostException {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        pack();
+        lblError.setVisible(false);
     }
 
     /**
@@ -43,6 +60,7 @@ public class UserLogin extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         separatorSenha = new javax.swing.JSeparator();
         fieldSenha = new javax.swing.JPasswordField();
+        lblError = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bannerMagna = new javax.swing.JLabel();
 
@@ -99,27 +117,28 @@ public class UserLogin extends javax.swing.JFrame {
         fieldSenha.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldSenha.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
+        lblError.setForeground(new java.awt.Color(255, 0, 50));
+        lblError.setText("Usuário ou senha incorreto.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(separatorSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                .addComponent(lblSenha)
-                                .addComponent(fieldSenha))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(separatorEmail)
-                                .addComponent(lblEmail)
-                                .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                    .addComponent(lblError)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(separatorSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(lblSenha)
+                            .addComponent(fieldSenha))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(separatorEmail)
+                            .addComponent(lblEmail)
+                            .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(59, 59, 59))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +155,9 @@ public class UserLogin extends javax.swing.JFrame {
                 .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(separatorSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
+                .addGap(18, 18, 18)
+                .addComponent(lblError)
+                .addGap(78, 78, 78)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,12 +170,15 @@ public class UserLogin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bannerMagna, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bannerMagna, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(bannerMagna, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bannerMagna)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -185,25 +209,52 @@ public class UserLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) throws UnknownHostException, SocketException, InterruptedException {//GEN-FIRST:event_btnLoginActionPerformed
         TotemSignup totemSignup = new TotemSignup();
         String passwordGetText = new String(fieldSenha.getPassword());
-        Network net = new Network();
+//        Network net = new Network();
         Connection config = new Connection();
         JdbcTemplate con = new JdbcTemplate(config.getDataSource());
-        Memory memory = new Memory();
+
         
-        if (fieldEmail.getText().equals("admin@gmail.com") && passwordGetText.equals("123")) {
+        userAdvancedUse = con.query("SELECT * FROM empresa WHERE email = ? AND senha = ?",
+        new BeanPropertyRowMapper<>(EmpresaRepository.class), fieldEmail.getText(), passwordGetText);
+        
+        
+        if (userAdvancedUse.isEmpty()) {
+            lblError.setVisible(true);
+        }
+        
+        else {
             InetAddress addr = InetAddress.getLocalHost();
             
-            this.dispose();
-            totemSignup.setVisible(true);
+            List<TotemRepository> macAdvancedUse = con.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
+                new BeanPropertyRowMapper<>(TotemRepository.class), new Object[]{network.getMAC(addr)});
             
-            con.update("INSERT INTO totem VALUES (?, ?, ?, ?)",
-                null, "Primeiro andar", "Rodando", net.getMAC(addr), InetAddress.getLocalHost().getHostAddress());
+            if (macAdvancedUse.isEmpty()) {
+                
+                this.dispose();
+                totemSignup.setResizable(false);
+                totemSignup.setLocationRelativeTo(null);
+                totemSignup.pack();
+                totemSignup.setVisible(true);
+                lblError.setVisible(false);
+
+                Integer fkEmpresa = con.queryForObject("SELECT id FROM empresa WHERE email = ?",
+                    Integer.class, fieldEmail.getText());
+
+                con.update("INSERT INTO totem (hostname, localizacao, totem_status, sistema_operacional, fk_empresa, endereco_mac)VALUES (?, ?, ?, ?, ?, ?)",
+                        InetAddress.getLocalHost().getHostName(), null, null, System.getProperty("os.name"), fkEmpresa, network.getMAC(addr));
+                lblError.setVisible(true);
             
-            while (true) {
-                memory.saveMemory();
+            } else {
+                this.dispose();
+
+                RunningScreen runningScreen = new RunningScreen();
+
+
             }
             
+            
         }
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -237,7 +288,13 @@ public class UserLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserLogin().setVisible(true);
+                try {
+                    new UserLogin().setVisible(true);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnknownHostException ex) {
+                    Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -250,6 +307,7 @@ public class UserLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JSeparator separatorEmail;
     private javax.swing.JSeparator separatorSenha;

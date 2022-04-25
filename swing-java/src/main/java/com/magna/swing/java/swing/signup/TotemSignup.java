@@ -4,6 +4,11 @@
  */
 package com.magna.swing.java.swing.signup;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Gustavo
@@ -12,9 +17,17 @@ public class TotemSignup extends javax.swing.JFrame {
 
     /**
      * Creates new form Signup
+     * @throws java.net.UnknownHostException
      */
-    public TotemSignup() {
+    public TotemSignup() throws UnknownHostException {
         initComponents();
+        fieldSistema.setEditable(false);
+        fieldHostname.setEditable(false);
+        fieldSistema.setText(System.getProperty("os.name"));
+        fieldHostname.setText(InetAddress.getLocalHost().getHostName());
+        setResizable(false);
+        setLocationRelativeTo(null);
+        pack();
     }
 
     /**
@@ -30,12 +43,12 @@ public class TotemSignup extends javax.swing.JFrame {
         lblHostname = new javax.swing.JLabel();
         fieldHostname = new javax.swing.JTextField();
         separatorHostname = new javax.swing.JSeparator();
+        lblSistema = new javax.swing.JLabel();
+        fieldSistema = new javax.swing.JTextField();
+        separatorSistema = new javax.swing.JSeparator();
         lblLocalizacao = new javax.swing.JLabel();
-        fieldLocalizacao = new javax.swing.JTextField();
         separatorLocalizacao = new javax.swing.JSeparator();
-        lblSenha = new javax.swing.JLabel();
-        separatorSenha = new javax.swing.JSeparator();
-        fieldSenha = new javax.swing.JPasswordField();
+        fieldLocalizacao = new javax.swing.JPasswordField();
         btnSignupTotem = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         bannerMagna = new javax.swing.JLabel();
@@ -52,7 +65,11 @@ public class TotemSignup extends javax.swing.JFrame {
         fieldHostname.setBackground(new java.awt.Color(32, 33, 35));
         fieldHostname.setForeground(new java.awt.Color(255, 255, 255));
         fieldHostname.setBorder(null);
-        fieldHostname.setCaretColor(new java.awt.Color(255, 255, 255));
+        fieldHostname.setCaretColor(new java.awt.Color(32, 33, 35));
+        fieldHostname.setDisabledTextColor(new java.awt.Color(32, 33, 35));
+        fieldHostname.setDragEnabled(true);
+        fieldHostname.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        fieldHostname.setSelectionColor(new java.awt.Color(0, 0, 255));
         fieldHostname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldHostnameActionPerformed(evt);
@@ -62,35 +79,38 @@ public class TotemSignup extends javax.swing.JFrame {
         separatorHostname.setBackground(new java.awt.Color(255, 255, 255));
         separatorHostname.setForeground(new java.awt.Color(255, 255, 255));
 
+        lblSistema.setBackground(new java.awt.Color(255, 255, 255));
+        lblSistema.setForeground(new java.awt.Color(255, 255, 255));
+        lblSistema.setText("Sistema Operacional");
+
+        fieldSistema.setBackground(new java.awt.Color(32, 33, 35));
+        fieldSistema.setForeground(new java.awt.Color(255, 255, 255));
+        fieldSistema.setBorder(null);
+        fieldSistema.setCaretColor(new java.awt.Color(32, 33, 35));
+        fieldSistema.setDisabledTextColor(new java.awt.Color(32, 33, 35));
+        fieldSistema.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        fieldSistema.setSelectionColor(new java.awt.Color(0, 0, 255));
+        fieldSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldSistemaActionPerformed(evt);
+            }
+        });
+
+        separatorSistema.setBackground(new java.awt.Color(255, 255, 255));
+        separatorSistema.setForeground(new java.awt.Color(255, 255, 255));
+
         lblLocalizacao.setBackground(new java.awt.Color(255, 255, 255));
         lblLocalizacao.setForeground(new java.awt.Color(255, 255, 255));
         lblLocalizacao.setText("Localização");
+
+        separatorLocalizacao.setBackground(new java.awt.Color(255, 255, 255));
+        separatorLocalizacao.setForeground(new java.awt.Color(255, 255, 255));
 
         fieldLocalizacao.setBackground(new java.awt.Color(32, 33, 35));
         fieldLocalizacao.setForeground(new java.awt.Color(255, 255, 255));
         fieldLocalizacao.setBorder(null);
         fieldLocalizacao.setCaretColor(new java.awt.Color(255, 255, 255));
-        fieldLocalizacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldLocalizacaoActionPerformed(evt);
-            }
-        });
-
-        separatorLocalizacao.setBackground(new java.awt.Color(255, 255, 255));
-        separatorLocalizacao.setForeground(new java.awt.Color(255, 255, 255));
-
-        lblSenha.setBackground(new java.awt.Color(255, 255, 255));
-        lblSenha.setForeground(new java.awt.Color(255, 255, 255));
-        lblSenha.setText("Senha");
-
-        separatorSenha.setBackground(new java.awt.Color(255, 255, 255));
-        separatorSenha.setForeground(new java.awt.Color(255, 255, 255));
-
-        fieldSenha.setBackground(new java.awt.Color(32, 33, 35));
-        fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
-        fieldSenha.setBorder(null);
-        fieldSenha.setCaretColor(new java.awt.Color(255, 255, 255));
-        fieldSenha.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        fieldLocalizacao.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         btnSignupTotem.setBackground(new java.awt.Color(2, 216, 240));
         btnSignupTotem.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -113,15 +133,15 @@ public class TotemSignup extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fieldSenha)
-                    .addComponent(separatorSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(lblSenha)
+                    .addComponent(fieldLocalizacao)
+                    .addComponent(separatorLocalizacao, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(lblLocalizacao)
                     .addComponent(separatorHostname)
                     .addComponent(lblHostname)
                     .addComponent(fieldHostname, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(separatorLocalizacao)
-                    .addComponent(lblLocalizacao)
-                    .addComponent(fieldLocalizacao, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                    .addComponent(separatorSistema)
+                    .addComponent(lblSistema)
+                    .addComponent(fieldSistema, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,17 +154,17 @@ public class TotemSignup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separatorHostname, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
+                .addComponent(lblSistema)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separatorSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addComponent(lblLocalizacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldLocalizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separatorLocalizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(lblSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separatorSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(btnSignupTotem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -191,9 +211,9 @@ public class TotemSignup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldHostnameActionPerformed
 
-    private void fieldLocalizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLocalizacaoActionPerformed
+    private void fieldSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldSistemaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldLocalizacaoActionPerformed
+    }//GEN-LAST:event_fieldSistemaActionPerformed
 
     private void btnSignupTotemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupTotemActionPerformed
         // TODO add your handling code here:
@@ -234,9 +254,11 @@ public class TotemSignup extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new TotemSignup().setVisible(true);
+            } catch (UnknownHostException ex) {
+                Logger.getLogger(TotemSignup.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -245,15 +267,15 @@ public class TotemSignup extends javax.swing.JFrame {
     private javax.swing.JLabel bannerMagna;
     private javax.swing.JButton btnSignupTotem;
     private javax.swing.JTextField fieldHostname;
-    private javax.swing.JTextField fieldLocalizacao;
-    private javax.swing.JPasswordField fieldSenha;
+    private javax.swing.JPasswordField fieldLocalizacao;
+    private javax.swing.JTextField fieldSistema;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblHostname;
     private javax.swing.JLabel lblLocalizacao;
-    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblSistema;
     private javax.swing.JSeparator separatorHostname;
     private javax.swing.JSeparator separatorLocalizacao;
-    private javax.swing.JSeparator separatorSenha;
+    private javax.swing.JSeparator separatorSistema;
     // End of variables declaration//GEN-END:variables
 }

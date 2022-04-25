@@ -2,9 +2,10 @@ package com.magna.swing.java.api;
 
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.magna.swing.java.database.connection.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Memory {
     Connection config = new Connection();
@@ -22,10 +23,13 @@ public class Memory {
 
         Integer toMb = 1024;
 
-        Integer fkTotem = con.queryForObject("SELECT id FROM totem WHERE hostname = " +
-                "'" + InetAddress.getLocalHost().getHostName() + "' LIMIT 1", Integer.class);
+        System.out.println("Coletando dados da memória ram...");
 
-        con.update("INSERT INTO ram VALUES(null, ?, ?, ?, ?)",
-        memoria.getEmUso() / toMb / toMb, memoria.getDisponivel() / toMb / toMb, memoria.getTotal() / toMb / toMb, fkTotem);
+        Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
+                "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);
+
+        con.update("INSERT INTO ram(uso, disponivel, total, fk_totem) VALUES(?, ?, ?, ?) ",
+                memoria.getEmUso() / toMb / toMb, memoria.getDisponivel() / toMb / toMb, memoria.getTotal() / toMb / toMb, fkTotem);
+
     }
 }
