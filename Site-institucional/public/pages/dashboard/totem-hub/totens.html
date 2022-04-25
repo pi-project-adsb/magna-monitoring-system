@@ -28,7 +28,7 @@
 
         <div class="welcome-div-box">
             <span>
-                Olá, <span id="name_user_spn">Magna</span>!
+                Olá, <span id="name_user_spn"></span>!
             </span>
             <i class="fa-solid fa-angles-right"></i>
         </div>
@@ -139,3 +139,6 @@
 
     <script src="js/totens.js"></script>
 </html>
+<script>
+    document.getElementById("name_user_spn").innerHTML = sessionStorage.NOME_EMPRESA;
+</script>

@@ -7,6 +7,10 @@ router.get("/", function (req, res) {
     userController.testar(req, res);
 });
 
+router.get("/:id", function (req, res) {
+    userController.findUserById(req, res);
+})
+
 router.post("/login", function(req, res) {
     userController.entrar(req, res);
 })

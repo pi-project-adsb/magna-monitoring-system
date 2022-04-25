@@ -37,10 +37,8 @@ function entrar() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
-                // sessionStorage.EMAIL_USUARIO = json.email;
-                // sessionStorage.NOME_USUARIO = json.nome;
-                // sessionStorage.ID_USUARIO = json.id;
-                // sessionStorage.CPF_USUARIO = json.cpf_cnpj;
+                sessionStorage.ID_EMPRESA = json.id;
+                sessionStorage.NOME_EMPRESA = json.nome;
 
                 setTimeout(function () {
                     window.location = "../loading/loading.html";

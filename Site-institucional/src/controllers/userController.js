@@ -3,7 +3,14 @@ var userModel = require("../model/userModel");
 
 function testar(req, res) {
     console.log("FUNCINOU");
-    res.json("Funcinando");
+    userModel.listar()
+        .then(
+            function(result){
+                res.json(result);
+            }
+        ).catch(function(err){
+            res.status(500).json(err.sqlMessage);
+        })
 }
 
 
@@ -71,9 +78,23 @@ function cadastrar(req, res) {
 
 }
 
+function findUserById(req, res){
+    
+    var id = req.params.id;
+
+    userModel.findUserById(id)
+        .then(
+            function(result){
+                res.json(result);
+            }
+        ).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
 
 module.exports = {
     entrar,
     testar, 
-    cadastrar
+    cadastrar,
+    findUserById
 }

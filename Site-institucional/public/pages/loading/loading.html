@@ -26,7 +26,7 @@
 
                 <div class="welcome_div">
                     <span class="welcome_user_spn" id="welcome_user_spn_id">
-                        Bem vindo, <span id="user_name">Magna</span>!
+                        Bem vindo, <span id="user_name"></span>!
                     </span>
                 </div>
             </div>
@@ -40,3 +40,6 @@
     </body>
     <script src="app.js"></script>
 </html>
+<script>
+    document.getElementById("user_name").innerHTML = sessionStorage.NOME_EMPRESA;
+</script>

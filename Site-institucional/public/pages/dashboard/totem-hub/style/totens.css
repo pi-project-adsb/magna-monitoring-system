@@ -15,7 +15,7 @@ body {
 .welcome-div-box{
     background-color: #02d8f0;
     padding: 20px;
-    width: 250px;
+    width: fit-content;
     border-radius: 0px 10px 10px 0px;
     text-align: end;
     user-select: none;
