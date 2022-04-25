@@ -13,7 +13,6 @@ public class Cpu {
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
     Processador processador = new Processador();
     DecimalFormat formatador = new DecimalFormat("0.00");
-    Double usoProcessador = Math.round((processador.getUso() / 1024 /1024)  * 100.0)/100.0;
     Double frequencia = processador.getFrequencia() * 0.000000001;
 
     public void showCpu() {
