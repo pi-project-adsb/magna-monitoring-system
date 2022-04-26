@@ -541,4 +541,9 @@ body::-webkit-scrollbar-thumb{
 .nav-list-footer li a{
     color: white;
 }
+#chartID{
+    padding-left: 20;
+    height: 300px;
+    width: 300px;
+}
 

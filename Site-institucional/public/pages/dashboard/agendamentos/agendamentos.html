@@ -120,7 +120,7 @@
                             </tr>
                             <tr class="date">
                                 <td><a href="#">10</td></a>
-                                <td><a href="#"><i class="fa-solid fa-circle-exclamation"></i>11</td></a>
+                                <td><a href="#"><i class="fa-solid fa-circle-exclamation" onclick="modal(1)"></i>11</td></a>
                                 <td><a href="#">12</td></a>
                                 <td><a href="#">13</td></a>
                                 <td><a href="#">14</td></a>
@@ -130,10 +130,10 @@
                             <tr class="date">
                                 <td><a href="#">17</td></a>
                                 <td><a href="#">18</td></a>
-                                <td><a href="#"><i class="fa-solid fa-circle-exclamation"></i>19</td></a>
+                                <td><a href="#"><i class="fa-solid fa-circle-exclamation" onclick="modal(1)"></i>19</td></a>
                                 <td><a href="#">20</td></a>
                                 <td><a href="#">21</td></a>
-                                <td><a href="#"><i class="fa-solid fa-circle-exclamation"></i>22</td></a>
+                                <td><a href="#"><i class="fa-solid fa-circle-exclamation" onclick="modal(1)"></i>22</td></a>
                                 <td><a href="#">23</td></a>
                             </tr>
                             <tr class="date">
@@ -141,7 +141,7 @@
                                 <td><a href="#">25</td></a>
                                 <td><a href="#">26</td></a>
                                 <td><a href="#">27</td></a>
-                                <td><a href="#"><i class="fa-solid fa-circle-exclamation"></i>28</td></a>
+                                <td><a href="#"><i class="fa-solid fa-circle-exclamation" onclick="modal(1)"></i>28</td></a>
                                 <td><a href="#">29</td></a>
                                 <td><a href="#">30</td></a>
                             </tr>
@@ -157,8 +157,40 @@
                         </table>
                     </div>
                 </section>
-
         </main>
+        <div id="myModal_1" class="modal">
+
+            <div class="modal-content">
+                <span id="close_1" class="close">&times;</span>
+                
+                <div id="agendamento_content">
+                    <img src="/Site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
+                    
+                </div>
+                <div class="agend-desc">
+                    <h1 class="agend_title">Agendamento #5433</h1>
+                    <div class="desc">
+                        <div class="agend-box">
+                            <span class="agend-motivo">Motivo:</span>
+                            <span class="agend-res">Avaliação</span>
+                        </div>
+                        <div class="agend-box">
+                            <span class="agend-motivo">Data agendada:</span>
+                            <span class="agend-res">19/04/2022</span>
+                        </div>
+                        <div class="agend-box">
+                            <span class="agend-motivo">Situação:</span>
+                            <span class="agend-res">Leve</span>
+                        </div>
+                        <div class="agend-box">
+                            <span class="agend-motivo">Descrição:</span>
+                            <span class="agend-res">Apenas uma avaliação geral do sistema, com a finalidade de checagem para ver se está tudo ok.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
     </body>
     <script src="../global/global.js"></script>
 </html>

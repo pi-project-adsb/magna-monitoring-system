@@ -60,3 +60,79 @@
 .date > td > a{
     color: white;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #3a3a3a;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #3a3a3a;
+    width: 50%;
+    height: fit-content;
+    border-radius: 15px;
+    animation: modal_in 700ms forwards;
+    user-select: none;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* ALTERAÇÕES */
+  
+  #box_content-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+  }
+
+  #agendamento_content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#agendamento_content img{
+    max-width: 200px;
+}
+.agend_title{
+    color: white;
+    margin: 10px 0;
+    text-decoration: underline;
+}
+.agend-box{
+    margin: 5px 0;
+}
+.agend-motivo{
+    color: white;
+    font-size: 20px;
+}
+.agend-res{
+    color: white;
+    font-weight: 300;
+}
