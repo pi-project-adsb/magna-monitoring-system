@@ -55,7 +55,6 @@ function cadastrar() {
         if (resposta.ok) {
             window.alert("Cadastro realizado com sucesso!");
             console.log(resposta.json);
-            window.location = "Site-institucional/public/index.html";
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
