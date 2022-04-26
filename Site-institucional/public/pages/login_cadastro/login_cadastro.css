@@ -19,6 +19,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .content-box{
     width: 800px;
@@ -56,6 +57,8 @@ body{
     border: 1px solid #333;
     font-size: 15px;
     transition: 0.6s;
+    background-color: transparent;
+    cursor: pointer;
 }
 .btn:hover{
     background-color: #333;
@@ -153,4 +156,30 @@ body{
     justify-content: space-between;
     width: 60%;
     padding: 2.5vh;
+}
+
+.form_hide{
+    animation: down 500ms forwards;
+    animation-timing-function: ease-out;
+}
+.form_ap{
+    animation: up 500ms forwards;
+    animation-timing-function: ease-in;
+}
+
+@keyframes down {
+    from {
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(100vh);
+    }
+}
+@keyframes up {
+    from {
+        transform: translateY(100vh);
+    }
+    to{
+        transform: translateY(0);
+    }
 }
