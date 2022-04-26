@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/e2229bd305.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../global/global.css">
+        <link rel="stylesheet" href="alertas.css">
+        <title>Alertas</title>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav-bar">
+                <ul class="nav-list">
+                    <div class="left-nav-items">
+                        <a href="home.html">
+                            <li class="nav-item">DASHBOARD - MAGNA</li>
+                        </a>
+                    </div>
+                    <div class="right-nav-items">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                        <li class="nav-item">
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-caret-down"></i>
+                            </span>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-container">
+            <div class="container_navigation">
+                <div class="navigation active">
+                    <ul>
+                        <li class="toggle">
+                            <i class="fa-solid fa-bars open"></i>
+                            <i class="fa-solid fa-xmark close"></i>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="../home/home.html">
+                                <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="../limites/limites.html">
+                                <span class="icon"><i class="fa-solid fa-chart-bar"></i></span>
+                                <span class="title">Limites</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="../agendamentos/agendamentos.html">
+                                <span class="icon"><i class="fa-solid fa-calendar-check"></i></span>
+                                <span class="title">Agendamentos</span>
+                            </a>
+                        </li>
+                        <li class="list active">
+                            <b></b>
+                            <b></b>
+                            <a href="../alertas/alertas.html">
+                                <span class="icon"><i class="fa-solid fa-bell"></i></span>
+                                <span class="title">Alertas</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="/Site-institucional/public/index.html">
+                                <span class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                                <span class="title">Log-out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="sections">
+                <div class="alerts-box">
+                    <div class="alert">
+                        <div class="alert-header">
+                            <span class="title_alert">USO DE RAM EXCEDEU 65%!</span>
+                            <span>
+                                <span class="alert_time">24/04 - 16h32</span>
+                                <i class="fa-solid fa-circle-exclamation red"></i>
+                            </span>
+                        </div>
+                        <span class="alert_desc"><span id="name_user"></span>, seu uso de RAM excedeu o limite estabelecido por você nos limites!</span>
+                    </div>
+
+                    <div class="alert">
+                        <div class="alert-header">
+                            <span class="title_alert">USO DE RAM PERTO DO LIMITE!</span>
+                            <span>
+                                <span class="alert_time">24/04 - 16h14</span>
+                                <i class="fa-solid fa-circle-exclamation yellow"></i>
+                            </span>
+                        </div>
+                        <span class="alert_desc"><span id="name_user2"></span>, seu uso de RAM está perto do limite de 65% estabelecido por você!</span>
+                    </div>
+
+                    <div class="alert">
+                        <div class="alert-header">
+                            <span class="title_alert">USO DE CPU PERTO DO LIMITE!</span>
+                            <span>
+                                <span class="alert_time">24/04 - 12h33</span>
+                                <i class="fa-solid fa-circle-exclamation yellow"></i>
+                            </span>
+                        </div>
+                        <span class="alert_desc"><span id="name_user3"></span>, seu uso de CPU está perto do limite estabelecido por você!</span>
+                    </div>
+
+                    <div class="alert">
+                        <div class="alert-header">
+                            <span class="title_alert">PROCESSOS ACIMA DO ESPERADO</span>
+                            <span>
+                                <span class="alert_time">23/04 - 13h50</span>
+                                <i class="fa-solid fa-circle-exclamation yellow"></i>
+                            </span>
+                        </div>
+                        <span class="alert_desc"><span id="name_user4"></span>, o número de processos deste totem está bem elevado. Revisão recomendada.</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <script src="../global/global.js"></script>
+</html>
+
+<script>
+    document.getElementById('name_user').innerHTML = sessionStorage.NOME_EMPRESA;
+    document.getElementById('name_user2').innerHTML = sessionStorage.NOME_EMPRESA;
+    document.getElementById('name_user3').innerHTML = sessionStorage.NOME_EMPRESA;
+    document.getElementById('name_user4').innerHTML = sessionStorage.NOME_EMPRESA;
+</script>

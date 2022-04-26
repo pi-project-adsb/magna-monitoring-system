@@ -378,11 +378,12 @@ body::-webkit-scrollbar-thumb{
   
   /* Modal Content */
   .modal-content {
-    background-color: rgb(197, 197, 197);
+    background-color: #3a3a3a;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #3a3a3a;
     width: 50%;
+    height: fit-content;
     border-radius: 15px;
     animation: modal_in 700ms forwards;
     user-select: none;
@@ -412,6 +413,72 @@ body::-webkit-scrollbar-thumb{
     padding: 30px;
   }
 
+  #agendamento_content{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+  }
+  .forms-agend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .forms-agend input{
+      margin: 5px;
+      border: none;
+      padding: 2px;
+  }
+  .box-agendinput{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+  }
+  .box-agendselect{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+  }
+  .box-agendselect select{
+      border-radius: 10px;
+      padding: 5px 10px;
+      margin: 5px;
+      background-color: white;
+  }
+  .box-agendinput textarea{
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+  }
+  .box-agendinput textarea:focus{
+        outline: none;
+  }
+  .box-agendinput input[type="date"]{
+      border-radius: 10px;
+      padding: 5px 10px;
+  }
+  .forms-agend input:focus{
+    outline: none;
+    }
+  #agendamento_content img{
+      max-width: 200px;
+  }
+  .box-agendselect select:focus{
+    outline: none;
+  }
+  .btn{
+      padding: 5px 10px;
+      background-color: #02d8f0;
+      color: #131515;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+
 /* CPU MODAL */
 
 .component-desc{
@@ -429,18 +496,22 @@ body::-webkit-scrollbar-thumb{
 }
 .right-content i{
     font-size: 100px;
+    color: #02d8f0;
 }
 .component-name{
     font-size: 18px;
     font-weight: 400;
 }
 .component-desc .component-desc-box span:nth-child(1){
-    color: #000;
+    color: white;
 }
 .component-desc .component-desc-box span:nth-child(2){
     font-size: 20px;
     font-weight: 600;
-    color: #333;
+    color: white;
+}
+.left-content{
+    color: white;
 }
 
 
@@ -471,141 +542,3 @@ body::-webkit-scrollbar-thumb{
     color: white;
 }
 
-
-
-
-/*  */
-.navigation{
-    position: fixed;
-    top: 20%;
-    left: 20px;
-    bottom: 20%;
-    width: 250px;
-    border-radius: 12px;
-    box-sizing: initial;
-    border-left: 5px solid #02d8f0;
-    transition: width 0.5s;
-    background: #02d8f0;
-    overflow-x: hidden;
-}
-.navigation.active{
-    width: 70px;
-}
-.navigation ul{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding-left: 5px;
-    padding-top: 40px;
-}
-.navigation ul li{
-    position: relative;
-    list-style: none;
-    width: 100%;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-}
-.navigation ul li.active{
-    background: #fff;
-}
-.navigation ul li a{
-    position: relative;
-    display: block;
-    width: 100%;
-    display: flex;
-    text-decoration: none;
-    color: #fff;
-}
-.navigation ul li.active a{
-    color: #333;
-}
-.navigation ul li b:nth-child(1)
-{
-    position: absolute;
-    top: -20px;
-    height: 20px;
-    width: 100%;
-    background: #fff;
-    display: none;
-}
-.navigation ul li b:nth-child(1)::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-bottom-right-radius: 20px;
-    background: #02d8f0;
-}
-.navigation ul li b:nth-child(2)
-{
-    position: absolute;
-    bottom: -20px;
-    height: 20px;
-    width: 100%;
-    background: #fff;
-    display: none;
-}
-.navigation ul li b:nth-child(2)::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-top-right-radius: 20px;
-    background: #02d8f0;
-}
-.navigation ul li.active b:nth-child(1),
-.navigation ul li.active b:nth-child(2){
-    display: block;
-}
-
-.navigation ul li a .icon{
-    position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    line-height: 70px;
-    text-align: center;
-}
-.navigation ul li a .icon ion-icon{
-    font-size: 1.5em;
-}
-.navigation ul li a .title{
-    position: relative;
-    display: block;
-    padding-left: 10px;
-    height: 60px;
-    line-height: 60px;
-    white-space: normal;
-}
-.toggle{
-    margin-bottom: 5vh;
-    display: flex;
-    justify-content: center;
-}
-.toggle.active{
-    background: #7ac120;
-}
-.toggle i{
-    position: absolute;
-    color: #fff;
-    font-size: 34px;
-    display: none;
-}
-.toggle i.close,
-.toggle.active i.open
-{
-    display: block;
-}
-.toggle i.open,
-.toggle.active i.close
-{
-    display: none;
-}
-.container_navigation{
-    width: 250px;
-}

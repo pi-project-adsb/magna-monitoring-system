@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="style/home.css">
     <title>Dashboard</title>
 </head>
@@ -41,7 +42,7 @@
     <main class="main-container">
 
         <div class="container_navigation">
-            <div class="navigation">
+            <div class="navigation active">
                 <ul>
                     <li class="toggle">
                         <i class="fa-solid fa-bars open"></i>
@@ -82,7 +83,7 @@
                     <li class="list">
                         <b></b>
                         <b></b>
-                        <a href="#">
+                        <a href="/Site-institucional/public/index.html">
                             <span class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
                             <span class="title">Log-out</span>
                         </a>
@@ -193,12 +194,24 @@
                     </div>
                     <hr class="line">
                     <div class="update">
-                        <i class="fa-solid fa-calendar-pen"></i>
+                        <i class="fa-solid fa-pen"></i>
                         <span onclick="modal(1)">Agendar</span>
                     </div>
                 </div>
                 <div class="card-box-1">
-
+                    <div class="card-box-header">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <div class="card-box-info">
+                            <span class="box-info-title">Dias até a manutenção</span>
+                            <span class="box-info-number">15</span>
+                        </div>
+                    </div>
+                    <hr class="line">
+                    <div class="update">
+                        <i class="fa-solid fa-calendar-pen"></i>
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                        <span>Atualizar</span>
+                    </div>
                 </div>
                 <div class="card-box-1">
                     <div class="card-box-header">
@@ -446,9 +459,35 @@
 
         <div class="modal-content">
             <span id="close_1" class="close">&times;</span>
-
-            <div id="box_content-modal">
-                <img src="/public/assets/images/logos-png/magna_logo_black.png" alt="">
+            
+            <div id="agendamento_content">
+                <img src="/Site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
+                <div class="forms-agend">
+                    <div class="box-agendselect">
+                        <span>Selecione o motivo</span>
+                        <select name="" id="">
+                            <option value="" selected disabled>-- Selecione --</option>
+                            <option value="">Troca de equipamento</option>
+                            <option value="">Manunteção</option>
+                            <option value="">Avaliação</option>
+                            <option value="">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="box-agendinput">
+                        <span class="box-agend_title">
+                            <span>Selecione a data do agendamento</span>
+                        </span>
+                        <input type="date">
+                    </div>
+                    <div class="box-agendinput">
+                        <span class="box-agend_title">
+                            <span>Detalhe seu problema</span>
+                        </span>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="btn">Agendar</button>
+                </div>
             </div>
 
         </div>
@@ -579,7 +618,7 @@
                 <li><a href="#">MAGNA</a></li>
             </ul>
     
-            <img src="/site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
+            <img src="/Site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
         </div>
     </footer>
 

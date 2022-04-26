@@ -17,3 +17,46 @@
     display: flex;
     align-items: center;
 }
+.calendar-content{
+    background: #08151E;
+    border: 1px solid #B3AFB2;
+    border-radius: 10px;
+    padding: 3vh 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.calendar-content h1{
+    margin: 10px;
+    color: #02d8f0;
+}
+.day-of-week, .date{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.day-of-week > * {
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    color: #B3AFB2;
+    margin-bottom: 2vh;
+    border: 1px solid #B3AFB2;
+}
+.date > * {
+    border: 1px solid #02d8f0;
+    padding: 2vh 1.5vw;
+    color: #B3AFB2;
+    width: 5vw;
+}
+.date > td > a{
+    display: flex;
+    justify-content: space-around;
+}
+.date > td > a > i{
+    color: rgb(222, 81, 81);
+    font-size: 19px;
+}
+.date > td > a{
+    color: white;
+}

@@ -121,7 +121,7 @@ body{
     width: 100%;
     display: flex;
     text-decoration: none;
-    color: #fff;
+    color: #333;
 }
 .navigation ul li.active a{
     color: #333;
@@ -176,6 +176,7 @@ body{
     height: 60px;
     line-height: 70px;
     text-align: center;
+    color: #333;
 }
 .navigation ul li a .icon ion-icon{
     font-size: 1.5em;
@@ -187,6 +188,7 @@ body{
     height: 60px;
     line-height: 60px;
     white-space: normal;
+    color: #333;
 }
 .toggle{
     margin-bottom: 5vh;
@@ -198,20 +200,33 @@ body{
 }
 .toggle i{
     position: absolute;
-    color: #fff;
+    color: #333;
     font-size: 34px;
     display: none;
 }
 .toggle i.close,
 .toggle.active i.open
 {
-    display: block;
+    display: none;
 }
 .toggle i.open,
 .toggle.active i.close
 {
-    display: none;
+    display: block;
 }
 .container_navigation{
     width: 250px;
+}
+
+/* SCROLL BAR */
+
+body::-webkit-scrollbar{
+    width: 8px;
+}
+body::-webkit-scrollbar-track{
+    background: #131515;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: #02d8f0;
+    border-radius: 25px;
 }
