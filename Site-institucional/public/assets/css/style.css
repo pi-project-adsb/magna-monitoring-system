@@ -233,6 +233,11 @@ header {
 
 .section-project--right {
     width: 500px;
+    margin-top: 60px;
+    font-size: 15px;
+    flex: 2;
+    text-align: justify;
+    text-justify: inter-word;   
 }
 
 .section-project--right img { 
@@ -253,7 +258,7 @@ header {
     text-justify: inter-word;
 }
 
-.section-invertproject--right p {
+.section-invertproject--left p {
     font-size: 45px;
 }
 
