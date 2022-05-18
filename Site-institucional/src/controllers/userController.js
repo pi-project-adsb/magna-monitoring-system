@@ -92,9 +92,25 @@ function findUserById(req, res){
         })
 }
 
+function numberTotem(req, res){
+
+    var id = req.params.id;
+
+    userModel.numberTotem(id)
+        .then(
+            function(result){
+                res.json(result);
+            }
+        ).catch(function(err) {
+            res.status(500).json(err.sqlMessage);
+        })
+
+}
+
 module.exports = {
     entrar,
     testar, 
     cadastrar,
-    findUserById
+    findUserById,
+    numberTotem
 }

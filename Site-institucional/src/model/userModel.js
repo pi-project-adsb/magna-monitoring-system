@@ -23,11 +23,19 @@ function findUserById(id){
     `);
 }
 
+function numberTotem(id){
+    return bd.execQuery(`
+        SELECT e.id AS id_empresa, t.id AS id_totem FROM totem t 
+        INNER JOIN empresa e ON fk_empresa = e.id WHERE e.id = ${id} 
+    `);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    findUserById
+    findUserById,
+    numberTotem
 }
 
 
