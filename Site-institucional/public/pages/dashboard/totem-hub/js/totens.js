@@ -1,23 +1,23 @@
 document.getElementById("name_user_spn").innerHTML = sessionStorage.NOME_EMPRESA;
+var id = sessionStorage.ID_EMPRESA;
+var numberID = [];
 
 function totens() {
 
-    fetch("/users/totem/1", {
+    fetch(`/users/totem/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     }).then(function (response) {
         if (response.ok) {
-            response.json().then(json => {
-
-                console.log(JSON.stringify(json));
+            response.json().then(json => {  
 
                 for (var i = 0; i < json.length; i++) {
-                    console.log(json[i].id_totem);
+
                     let section = document.getElementById('section_one');
-                    let totem_box = document.createElement('div');
                     let totem_img = document.createElement('div');
+                    let totem_box = document.createElement('div');
                     let i_icon = document.createElement('i');
                     let totem_desc = document.createElement('div');
                     let totem_name = document.createElement('div');
@@ -29,22 +29,24 @@ function totens() {
                     totem_box.className = 'totem-box';
                     totem_img.className = 'totem-img';
                     i_icon.className = 'fa-solid fa-display';
-
                     totem_desc.className = 'totem-description';
                     totem_name.className = 'totem-name';
-                    a.href = "../home/home.html";
                     i_icon_href.className = 'fa-solid fa-circle-right';
+                    i_icon_href.id = `${json[i].id_totem}`;
 
                     // APPEND CHIELDS
                     section.appendChild(totem_box);
                     totem_box.appendChild(totem_img);
                     totem_box.appendChild(totem_desc);
-                    totem_img.appendChild(i_icon)
+                    totem_img.appendChild(i_icon);
                     totem_desc.appendChild(totem_name);
-                    // totem_name.appendChild(span_name_totem.innerHTML = `TOTEM #${i}`);
+                    totem_name.appendChild(span_name_totem);
+                    span_name_totem.innerHTML = `${json[i].name_totem} #${i + 1}`;
+                    i_icon_href.click();
                     totem_desc.appendChild(a);
                     a.appendChild(i_icon_href);
                 }
+
             });
         } else {
             console.log("Erro ao localizar o totem");
@@ -56,6 +58,14 @@ function totens() {
 
     return false;
 }
+
+
+const btn_i = document.querySelectorAll('.fa-circle-right');
+btn_i.forEach(i => {
+    i.addEventListener('click', (e) => {
+        console.log('caixa clicada', e);
+    })
+})
 
 // fazer rota para retorno de dados do totem para a dashboard após o clique do usuário em determinado totem.
 // colocar hostname no totem-box para identificação do mesmo
