@@ -12,7 +12,7 @@ public class Memory {
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
     Memoria memoria = new Memoria();
 
-    public void showMemory() {
+    public void showMemory(Memoria memoria) {
         System.out.println("-".repeat(30));
         System.out.println(memoria.getEmUso() / 1024 / 1024);
         System.out.println("-".repeat(30));

@@ -3,6 +3,7 @@ package com.magna.datacapture;
 import com.magna.datacapture.api.entity.Cpu;
 import com.magna.datacapture.api.entity.Memory;
 import com.magna.datacapture.api.entity.Network;
+import com.magna.datacapture.api.entity.Record;
 import com.magna.datacapture.api.entity.Totem;
 import com.magna.datacapture.api.entity.groups.Disk;
 import com.magna.datacapture.api.entity.groups.Process;
@@ -27,6 +28,7 @@ public class Application {
         Connection config = new Connection();
         JdbcTemplate con = new JdbcTemplate(config.getDatasource());
         Network network = new Network();
+        Record record =  new Record();
         InetAddress addr = InetAddress.getLocalHost();
         Validation validation = new Validation();
 
@@ -34,7 +36,7 @@ public class Application {
 
 
         List<TotemRepository> macAdvancedUse = con.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
-                new BeanPropertyRowMapper<>(TotemRepository.class), new Object[]{network.getMAC(addr)});
+                new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
 
         if (macAdvancedUse.isEmpty()) {
             totem.saveTotem();
@@ -43,10 +45,7 @@ public class Application {
         System.out.println("\nSeu sistema está rodando!\n");
 
         while (true) {
-            memory.saveMemory();
-            disk.saveDisk();
-            cpu.saveCpu();
-            process.saveProcess();
+            record.saveRecord();
         }
     }
 }
