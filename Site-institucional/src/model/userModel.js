@@ -25,8 +25,8 @@ function findUserById(id){
 
 function numberTotem(id){
     return bd.execQuery(`
-        SELECT e.id AS id_empresa, t.id AS id_totem FROM totem t 
-        INNER JOIN empresa e ON fk_empresa = e.id WHERE e.id = ${id} 
+        SELECT e.id AS id_empresa, t.id AS id_totem, t.hostname AS name_totem FROM totem t 
+        INNER JOIN empresa e ON fk_empresa = e.id WHERE e.id = ${id};
     `);
 }
 
