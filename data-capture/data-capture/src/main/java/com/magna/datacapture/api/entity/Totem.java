@@ -36,7 +36,7 @@ public class Totem {
                 for (Volume volume : volumeGroup) {
                     con.update(
                             "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, " +
-                            "modelo_disco, total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu" +
+                            "modelo_disco, total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu," +
                             "total_ram, fk_empresa) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                             InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName, disco.getModelo(),
