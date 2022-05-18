@@ -11,6 +11,10 @@ router.get("/:id", function (req, res) {
     userController.findUserById(req, res);
 })
 
+router.get("/totem/:id", function (req, res){
+    userController.numberTotem(req, res);
+})
+
 router.post("/login", function(req, res) {
     userController.entrar(req, res);
 })
@@ -18,5 +22,6 @@ router.post("/login", function(req, res) {
 router.post("/signup", function(req, res) {
     userController.cadastrar(req, res);
 })
+
 
 module.exports = router;

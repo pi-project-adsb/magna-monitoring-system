@@ -40,10 +40,7 @@ function entrar() {
                 sessionStorage.ID_EMPRESA = json.id;
                 sessionStorage.NOME_EMPRESA = json.nome;
 
-                setTimeout(function () {
-                    window.location = "../loading/loading.html";
-                }, 1000); // apenas para exibir o loading
-
+                window.location = "../loading/loading.html";
             });
 
         } else {
