@@ -33,7 +33,6 @@ function totens() {
                     totem_name.className = 'totem-name';
                     i_icon_href.className = 'fa-solid fa-circle-right';
                     i_icon_href.id = `${json[i].id_totem}`;
-                    
 
                     // APPEND CHIELDS
                     section.appendChild(totem_box);
@@ -52,6 +51,7 @@ function totens() {
                     i.addEventListener("click", () => {
                         sessionStorage.clear;
                         sessionStorage.ID_TOTEM = i.id;
+                        window.location = '../home/home.html';
                     })
                 });
 
