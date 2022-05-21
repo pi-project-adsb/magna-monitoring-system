@@ -22,7 +22,6 @@ public class Application {
     public static void main(String[] args) throws InterruptedException, UnknownHostException, SocketException, RuntimeException {
         Disk disk = new Disk();
         Cpu cpu = new Cpu();
-        Totem totem = new Totem();
         Memory memory = new Memory();
         Process process = new Process();
         Connection config = new Connection();
@@ -39,13 +38,14 @@ public class Application {
                 new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
 
         if (macAdvancedUse.isEmpty()) {
-            totem.saveTotem();
+            validation.saveTotem();
         }
 
         System.out.println("\nSeu sistema está rodando!\n");
 
         while (true) {
             record.saveRecord();
+            process.saveProcess();
         }
     }
 }
