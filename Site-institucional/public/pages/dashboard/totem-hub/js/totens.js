@@ -33,6 +33,7 @@ function totens() {
                     totem_name.className = 'totem-name';
                     i_icon_href.className = 'fa-solid fa-circle-right';
                     i_icon_href.id = `${json[i].id_totem}`;
+                    
 
                     // APPEND CHIELDS
                     section.appendChild(totem_box);
@@ -42,10 +43,17 @@ function totens() {
                     totem_desc.appendChild(totem_name);
                     totem_name.appendChild(span_name_totem);
                     span_name_totem.innerHTML = `${json[i].name_totem} #${i + 1}`;
-                    i_icon_href.click();
                     totem_desc.appendChild(a);
                     a.appendChild(i_icon_href);
                 }
+
+                let btn = document.querySelectorAll(".fa-solid.fa-circle-right");
+                btn.forEach(i => {
+                    i.addEventListener("click", () => {
+                        sessionStorage.clear;
+                        sessionStorage.ID_TOTEM = i.id;
+                    })
+                });
 
             });
         } else {
@@ -60,12 +68,6 @@ function totens() {
 }
 
 
-const btn_i = document.querySelectorAll('.fa-circle-right');
-btn_i.forEach(i => {
-    i.addEventListener('click', (e) => {
-        console.log('caixa clicada', e);
-    })
-})
 
 // fazer rota para retorno de dados do totem para a dashboard após o clique do usuário em determinado totem.
 // colocar hostname no totem-box para identificação do mesmo
