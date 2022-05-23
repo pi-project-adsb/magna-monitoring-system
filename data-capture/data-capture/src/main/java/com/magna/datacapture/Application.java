@@ -1,11 +1,7 @@
 package com.magna.datacapture;
 
-import com.magna.datacapture.api.entity.Cpu;
-import com.magna.datacapture.api.entity.Memory;
 import com.magna.datacapture.api.entity.Network;
 import com.magna.datacapture.api.entity.Record;
-import com.magna.datacapture.api.entity.Totem;
-import com.magna.datacapture.api.entity.groups.Disk;
 import com.magna.datacapture.api.entity.groups.Process;
 import com.magna.datacapture.database.Connection;
 import com.magna.datacapture.external.Validation;
@@ -13,16 +9,13 @@ import com.magna.datacapture.repository.TotemRepository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.io.IOException;
 import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws InterruptedException, UnknownHostException, SocketException, RuntimeException {
-        Disk disk = new Disk();
-        Cpu cpu = new Cpu();
-        Memory memory = new Memory();
+    public static void main(String[] args) throws InterruptedException, IOException, RuntimeException {
+
         Process process = new Process();
         Connection config = new Connection();
         JdbcTemplate con = new JdbcTemplate(config.getDatasource());
