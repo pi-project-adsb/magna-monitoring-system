@@ -7,6 +7,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var userRouter = require("./src/routes/users");
+var dataRouter = require("./src/routes/dados");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
@@ -16,6 +17,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/users", userRouter);
+app.use("/dados", dataRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

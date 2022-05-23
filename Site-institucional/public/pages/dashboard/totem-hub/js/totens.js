@@ -4,7 +4,7 @@ var numberID = [];
 
 function totens() {
 
-    fetch(`/users/totem/${id}`, {
+    fetch(`/users/hub/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -51,6 +51,7 @@ function totens() {
                     i.addEventListener("click", () => {
                         sessionStorage.clear;
                         sessionStorage.ID_TOTEM = i.id;
+                        console.log(sessionStorage.ID_TOTEM);
                         window.location = '../home/home.html';
                     })
                 });

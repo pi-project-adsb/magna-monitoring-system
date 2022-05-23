@@ -30,12 +30,26 @@ function numberTotem(id){
     `);
 }
 
+function findTotemById(id){
+    return bd.execQuery(`
+        SELECT * FROM totem WHERE id = ${id};
+    `);
+}
+
+function agendar(motivo, data_agendamento, descricao, fk_totem){
+    return bd.execQuery(`
+        INSERT INTO agendamentos (motivo, data_agendamento, descricao, fk_totem) VALUES (${motivo}, ${data_agendamento}, ${descricao}, ${fk_totem});
+    `);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     findUserById,
-    numberTotem
+    numberTotem,
+    findTotemById,
+    agendar
 }
 
 

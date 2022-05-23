@@ -107,10 +107,44 @@ function numberTotem(req, res){
 
 }
 
+function findTotemById(req, res){
+
+    var id = req.params.id;
+
+    userModel.findTotemById(id)
+        .then(
+            function(result){
+                res.json(result);
+            }
+        ).catch(function(err) {
+            res.status(500).json(err.sqlMessage);
+        })
+
+}
+
+
+function agendar(req, res){
+    var motivo = req.body.motivoServer;
+    var data_agendamento = req.body.data_agendamentoServer;
+    var descricao = req.body.descricaoServer;
+    var fk_totem = req.body.fk_totemServer;
+
+    userModel.agendar(motivo, data_agendamento, descricao, fk_totem)
+        .then(
+            function(result){
+                res.json(result);
+            }
+        ).catch(function(err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
 module.exports = {
     entrar,
     testar, 
     cadastrar,
     findUserById,
-    numberTotem
+    numberTotem,
+    findTotemById,
+    agendar
 }

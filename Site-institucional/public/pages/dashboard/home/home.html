@@ -15,7 +15,7 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="fakeData();">
+<body>
     <header class="header">
         <nav class="nav-bar">
             <ul class="nav-list">
@@ -91,7 +91,7 @@
                 </ul>
             </div>
         </div>
-        
+
 
         <div class="sections">
             <section class="first-section" id="cpu_container">
@@ -109,7 +109,7 @@
                     <div class="right-content">
                         <div class="buttons">
                             <button class="btn-header active" onclick="page(1)">CPU</button>
-                            <button class="btn-header" onclick="page(2)">RAM</button>
+                            <button class="btn-header" onclick="page(2)" id="btn_RAM">RAM</button>
                             <button class="btn-header" onclick="page(3)">Disco</button>
                         </div>
                     </div>
@@ -255,23 +255,23 @@
                     <div class="card-box-content">
                         <span class="specification-box">
                             <span class="name_specification">Sistema operacional: </span>
-                            <span class="specification">Windows 10</span>
+                            <span class="specification" id="sistema_op"></span>
                         </span>
                         <span class="specification-box">
-                            <span class="name_specification">Tipo de arquitetura: </span>
-                            <span class="specification">64Bits</span>
+                            <span class="name_specification">Localização: </span>
+                            <span class="specification" id="localization"></span>
                         </span>
                         <span class="specification-box">
                             <span class="name_specification">Nome do dispositivo: </span>
-                            <span class="specification">DESKTOP-JHKL14S</span>
+                            <span class="specification" id="hostname"></span>
                         </span>
                         <span class="specification-box">
                             <span class="name_specification">Tipo de usuário:</span>
                             <span class="specification">Administrador</span>
                         </span>
                         <span class="specification-box">
-                            <span class="name_specification">ID do dispositivo: </span>
-                            <span class="specification">E941C838-934D-4430-A65E-83979D773D9F</span>
+                            <span class="name_specification">Endereço MAC: </span>
+                            <span class="specification" id="mac_adress"></span>
                         </span>
                     </div>
                 </div>
@@ -459,34 +459,42 @@
 
         <div class="modal-content">
             <span id="close_1" class="close">&times;</span>
-            
+
             <div id="agendamento_content">
                 <img src="/Site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
-                <div class="forms-agend">
-                    <div class="box-agendselect">
-                        <span>Selecione o motivo</span>
-                        <select name="" id="">
-                            <option value="" selected disabled>-- Selecione --</option>
-                            <option value="">Troca de equipamento</option>
-                            <option value="">Manunteção</option>
-                            <option value="">Avaliação</option>
-                            <option value="">Outros</option>
-                        </select>
+                <div id="forms-agend">
+                    <div class="forms-agend">
+                        <div class="box-agendselect">
+                            <span>Selecione o motivo</span>
+                            <select name="" id="motivo_agendamento_slct">
+                                <option value="" selected disabled>-- Selecione --</option>
+                                <option value="Troca de equipamento">Troca de equipamento</option>
+                                <option value="Manunteção">Manunteção</option>
+                                <option value="Avaliação">Avaliação</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+    
+                        <div class="box-agendinput">
+                            <span class="box-agend_title">
+                                <span>Selecione a data do agendamento</span>
+                            </span>
+                            <input type="date" id="data_agendamento_inpt">
+                        </div>
+                        <div class="box-agendinput">
+                            <span class="box-agend_title">
+                                <span>Detalhe seu problema</span>
+                            </span>
+                            <textarea name="" id="descricao_text" cols="30" rows="10"></textarea>
+                        </div>
+                        <button class="btn" onclick="agendamento();">Agendar</button>
                     </div>
-                    
-                    <div class="box-agendinput">
-                        <span class="box-agend_title">
-                            <span>Selecione a data do agendamento</span>
-                        </span>
-                        <input type="date">
+                </div>
+                <div id="hide_agend" style="display: none;">
+                    <div class="hidden agendamento">
+                        <h1>Agendamento realizado com sucesso!</h1>
+                        <i class="fa-solid fa-check"></i>
                     </div>
-                    <div class="box-agendinput">
-                        <span class="box-agend_title">
-                            <span>Detalhe seu problema</span>
-                        </span>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-                    </div>
-                    <button class="btn">Agendar</button>
                 </div>
             </div>
 
@@ -502,15 +510,15 @@
             <div id="box_content-modal">
                 <div class="left-content">
                     <h1 class="component-title">CPU</h1>
-                    <h2 class="component-name">Intel(R) Core(TM) i7-2600k CPU @ 3.40GHz</h2>
+                    <h2 class="component-name" id="modelo_cpu"></h2>
                     <div class="component-desc">
                         <div class="component-desc-box">
                             <span>Utilização</span>
-                            <span>20%</span>
+                            <span></span>
                         </div>
                         <div class="component-desc-box">
                             <span>Velocidade</span>
-                            <span>3.96 GHz</span>
+                            <span id="frequencia_cpu"><span>GHz</span></span>
                         </div>
                         <div class="component-desc-box">
                             <span>Processos</span>
@@ -518,7 +526,7 @@
                         </div>
                         <div class="component-desc-box">
                             <span>Threads</span>
-                            <span>5100</span>
+                            <span id="threads_cpu"></span>
                         </div>
                     </div>
                 </div>
@@ -617,17 +625,97 @@
                 <li><a href="#">SOBRE NÓS</a></li>
                 <li><a href="#">MAGNA</a></li>
             </ul>
-    
+
             <img src="/Site-institucional/public/assets/images/logos-png/magna_logo_white.png" alt="">
         </div>
     </footer>
 
 </body>
-    <script src="js/app.js"></script>
-    <script src="js/app2.js"></script>
-    <script src="../global/global.js"></script>
-    <script src="js/app3.js"></script>
+<script src="js/app.js"></script>
+<script src="js/app2.js"></script>
+<script src="js/getData.js"></script>
+<script src="../global/global.js"></script>
+<script src="js/app3.js"></script>
+
 </html>
+
 <script>
-    
+
+    // window.onload = totem();
+
+    var id = sessionStorage.ID_TOTEM;
+
+    function totem() {
+
+        fetch(`/users/totem/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(json => {
+                    for (var i = 0; i < json.length; i++) {
+                        document.getElementById('sistema_op').innerHTML = `${(json[i].sistema_op)}`;
+                        document.getElementById('hostname').innerHTML = `${(json[i].hostname)}`;
+                        document.getElementById('mac_adress').innerHTML = `${(json[i].endereco_mac)}`;
+                        document.getElementById('localization').innerHTML = `${(json[i].localizacao)}`;
+                        document.getElementById('modelo_cpu').innerHTML = `${(json[i].modelo_cpu)}`;
+                        document.getElementById('frequencia_cpu').innerHTML = `${(json[i].frequencia_cpu)}`;
+                        document.getElementById('threads_cpu').innerHTML = `${(json[i].threads_cpu)}`;
+                    }
+                });
+            } else {
+                console.log("Erro ao localizar o totem");
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function agendamento() {
+
+        var motivo = document.getElementById('motivo_agendamento_slct').value;
+        var data_agendamento = document.getElementById('data_agendamento_inpt').value;
+        var descricao = document.getElementById('descricao_text').value;
+        var fk_totem = id;
+        
+        if(motivo == '' || data_agendamento == '' || descricao == ''){
+            window.alert('Preencha todos os campos para prosseguir!');
+        }else{
+            fetch(`/dashboard/agendar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                motivoServer: motivo,
+                data_agendamentoServer: data_agendamento,
+                descricaoServer: descricao,
+                fk_totemServer: fk_totem
+            })
+        }).then(function(response) {
+            if(response.ok){
+                document.getElementById('forms-agend').style.display = 'none';
+                document.getElementById('hide_agend').style.display = 'block';
+                motivo_agendamento_slct.value = '';
+                data_agendamento_inpt.value = '';
+                descricao_text.value = '';
+
+                setTimeout(() => {
+                    document.getElementById('forms-agend').style.display = 'block';
+                    document.getElementById('hide_agend').style.display = 'none';
+                }, 2000);
+            }else{
+                alert('Houve um erro no agendamento!')
+            }
+        }).catch(function(err) {
+            console.log(err);
+        })
+        return false;
+        }
+    }
 </script>
