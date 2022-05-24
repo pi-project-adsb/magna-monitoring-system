@@ -1,35 +1,5 @@
 var numbers = [];
 
-function fakeData(){
-    setInterval(() => {
-        for(let i = 0; i < 100; i++){
-            numbers.push(Math.random() * (2 - 1.5) + 1.5);
-        }
-    }, 2000);
-}   
-
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
-        datasets: [{
-            label: 'My First dataset',
-            data: numbers,
-            fill: false,
-            borderColor: '#02d8f0',
-            tension: 0.1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
 const ctx2 = document.getElementById('myChart2').getContext('2d');
 const myChart2 = new Chart(ctx2, {
     type: 'line',
