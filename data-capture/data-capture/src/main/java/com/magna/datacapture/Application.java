@@ -11,14 +11,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws InterruptedException, IOException, RuntimeException {
+    public static void main(String[] args) throws InterruptedException, IOException, RuntimeException, SQLException, ClassNotFoundException {
 
         Process process = new Process();
-        Connection config = new Connection();
-        JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+        Connection configAzure = new Connection("azure");
+        JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
         Network network = new Network();
         Record record =  new Record();
         InetAddress addr = InetAddress.getLocalHost();
@@ -27,7 +28,7 @@ public class Application {
         validation.sendValidation();
 
 
-        List<TotemRepository> macAdvancedUse = con.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
+        List<TotemRepository> macAdvancedUse = conAzure.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
                 new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
 
         if (macAdvancedUse.isEmpty()) {

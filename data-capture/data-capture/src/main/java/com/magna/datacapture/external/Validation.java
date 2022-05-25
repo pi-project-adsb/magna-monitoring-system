@@ -19,8 +19,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Validation {
-    Connection config = new Connection();
-    JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+
+    Connection configMysql = new Connection("mysql");
+    JdbcTemplate conMysql = new JdbcTemplate(configMysql.getDatasource());
+
+    Connection configAzure = new Connection("azure");
+    JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
+    
     Scanner leitor = new Scanner(System.in);
     String testString;
     String emailaddress;
@@ -28,7 +33,7 @@ public class Validation {
     Integer fkEmpresa;
     List<EmpresaRepository> userAdvancedUse;
 
-    public void inputEmail(){
+    public void inputEmail() {
         boolean b = false;
 
         do {
@@ -45,13 +50,13 @@ public class Validation {
         } while (!b);
     }
 
-    public void inputPass(){
+    public void inputPass() {
         System.out.println("Digite sua senha: ");
         userPass = leitor.nextLine();
 
         System.out.println("\nCarregando...");
 
-        userAdvancedUse = con.query("SELECT * FROM empresa WHERE email = ? AND senha = ?",
+        userAdvancedUse = conAzure.query("SELECT * FROM empresa WHERE email = ? AND senha = ?",
                 new BeanPropertyRowMapper<>(EmpresaRepository.class), emailaddress, userPass);
 
         if (userAdvancedUse.isEmpty()) {
@@ -77,8 +82,6 @@ public class Validation {
     }
 
     public void saveTotem() throws UnknownHostException, SocketException {
-        Connection config = new Connection();
-        JdbcTemplate con = new JdbcTemplate(config.getDatasource());
         Network network = new Network();
         Looca looca = new Looca();
         DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
@@ -91,17 +94,26 @@ public class Validation {
 
         System.out.println(testString);
 
-        fkEmpresa = con.queryForObject("SELECT id FROM empresa WHERE email = " +
-                "'" + emailaddress + "'", Integer.class);
+        fkEmpresa = conAzure.queryForObject("SELECT id FROM empresa WHERE email = "
+                + "'" + emailaddress + "'", Integer.class);
+        
+            System.out.println("Inserindo na Azure");
+            conAzure.update(
+                    "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+                    + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+                    grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+                    processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
 
-        con.update(
-            "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, " +
-                "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
-            grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
-            processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
-
+            System.out.println("Inserindo no MySQL");
+            conMysql.update(
+                    "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+                    + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+                    grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+                    processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
 
     }
 

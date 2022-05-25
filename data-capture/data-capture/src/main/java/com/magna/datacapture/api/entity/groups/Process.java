@@ -11,8 +11,11 @@ import java.net.UnknownHostException;
 import java.util.List;
 
 public class Process {
-    Connection config = new Connection();
-    JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+    Connection configMysql = new Connection("mysql");
+    JdbcTemplate conMysql = new JdbcTemplate(configMysql.getDatasource());
+
+    Connection configAzure = new Connection("azure");
+    JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
 
     public void listProcess() {
         Looca looca = new Looca();
@@ -35,11 +38,15 @@ public class Process {
         System.out.println("Coletando dados dos processos...");
         for (Processo processo : processos) {
 
-            Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
+            Integer fkTotem = conAzure.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
                     "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);
 
-            con.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
+            conAzure.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
                     processo.getPid(), processo.getNome(), processo.getUsoCpu(), processo.getUsoMemoria(), fkTotem);
+
+            conMysql.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
+                    processo.getPid(), processo.getNome(), processo.getUsoCpu(), processo.getUsoMemoria(), fkTotem);
+            
         }
         System.out.println("Quantidade de processos: " + processosGroup.getTotalProcessos());
     }

@@ -7,19 +7,27 @@ import com.github.britooo.looca.api.group.discos.Volume;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.magna.datacapture.database.Connection;
+import com.magna.datacapture.database.Database;
+import com.magna.datacapture.repository.TotemRepository;
 import org.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 public class Record {
 
-    Connection config = new Connection();
-    JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+    Connection configMysql = new Connection("mysql");
+    JdbcTemplate conMysql = new JdbcTemplate(configMysql.getDatasource());
+
+    Connection configAzure = new Connection("azure");
+    JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
+
     Processador processador = new Processador();
     Memoria memoria = new Memoria();
     Looca looca = new Looca();
@@ -28,9 +36,7 @@ public class Record {
     List<Disco> discos = grupoDeDiscos.getDiscos();
     JSONObject json = new JSONObject();
 
-
-
-    public void saveRecord() throws InterruptedException, IOException {
+    public void saveRecord() throws InterruptedException, IOException, SQLException, ClassNotFoundException {
         Thread.sleep(1000);
 
         Integer toMb = 1024;
@@ -47,33 +53,47 @@ public class Record {
                 Long memUso = memoria.getEmUso() / toMb / toMb;
                 Double cpuUso = processador.getUso();
 
-
-
                 if (memUso > 2000) {
-                    json.put("text", "" +
-                            ":fire: *ALERTA - MEMÓRIA* :fire:\n\n" +
-                            "MEMÓRIA COM USO ACIMA DO RECOMENDADO\n");
+                    json.put("text", ""
+                            + ":fire: *ALERTA - MEMÓRIA* :fire:\n\n"
+                            + "MEMÓRIA COM USO ACIMA DO RECOMENDADO\n");
                     Slack.enviarMensagem(json);
 
                 }
                 if (discoUso > 500) {
-                    json.put("text", "" +
-                            ":fire: *ALERTA - DISCO* :fire:\n\n" +
-                            "DISCO COM USO ACIMA DO RECOMENDADO\n");
+                    json.put("text", ""
+                            + ":fire: *ALERTA - DISCO* :fire:\n\n"
+                            + "DISCO COM USO ACIMA DO RECOMENDADO\n");
                     Slack.enviarMensagem(json);
                 }
                 if (cpuUso > 25.0) {
-                    json.put("text", "" +
-                            ":fire: *ALERTA - CPU* :fire:\n\n" +
-                            "CPU COM USO ACIMA DO RECOMENDADO\n");
+                    json.put("text", ""
+                            + ":fire: *ALERTA - CPU* :fire:\n\n"
+                            + "CPU COM USO ACIMA DO RECOMENDADO\n");
                     Slack.enviarMensagem(json);
                 }
-                    Integer fkTotem = con.queryForObject("SELECT TOP 1 id FROM totem WHERE hostname = " +
-                            "'" + InetAddress.getLocalHost().getHostName() + "' ORDER BY id DESC", Integer.class);
 
-                    con.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)" +
-                                    " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                            discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotem, LocalDateTime.now());
+//                    Integer fkTotem = conAzure.queryForObject("select top 1 id from totem where hostname = " +
+//                            "'" + InetAddress.getLocalHost().getHostName() + "' order by id desc", Integer.class);
+//                List<TotemRepository> fkTotem = conAzure.query("SELECT id FROM totem WHERE hostname = ? ",
+//                        new BeanPropertyRowMapper<>(TotemRepository.class), new Object[]{InetAddress.getLocalHost().getHostName()} );
+                Database database = new Database();
+           
+                Integer fkTotem = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
+                
+                System.out.println(fkTotem);
+
+                System.out.println("Inserindo na Azure");
+                // Insert para Azure
+                conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
+                        + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
+                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotem, LocalDateTime.now());
+
+                System.out.println("Inserindo no MySQL");
+                // Insert para MySql
+                conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
+                        + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
+                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotem, LocalDateTime.now());
 
             }
         }
