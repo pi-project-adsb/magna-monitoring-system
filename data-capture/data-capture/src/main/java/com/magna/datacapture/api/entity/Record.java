@@ -77,8 +77,6 @@ public class Record {
                 Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
                 Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
 
-                System.out.println(fkTotemAzure);
-
                 System.out.println("Inserindo na Azure");
                 // Insert para Azure
                 conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
