@@ -563,12 +563,13 @@
         var motivo = document.getElementById('motivo_agendamento_slct').value;
         var data_agendamento = document.getElementById('data_agendamento_inpt').value;
         var descricao = document.getElementById('descricao_text').value;
+        var status_concluido = 0;
         var fk_totem = id;
         
         if(motivo == '' || data_agendamento == '' || descricao == ''){
             window.alert('Preencha todos os campos para prosseguir!');
         }else{
-            fetch(`/dashboard/agendar`, {
+            fetch(`/users/dashboard/agendar`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -577,6 +578,7 @@
                 motivoServer: motivo,
                 data_agendamentoServer: data_agendamento,
                 descricaoServer: descricao,
+                status_concluidoServer: status_concluido,
                 fk_totemServer: fk_totem
             })
         }).then(function(response) {
