@@ -101,71 +101,21 @@
                             Performance
                         </span>
                         <h1 class="title-section">
-                            CPU
-                            <i class="fa-solid fa-circle-info" onclick="modal(2)"></i>
+                            <h1 id="component_name_title">CPU</h1>
+                            <i class="fa-solid fa-circle-info" onclick="modal(2)" id="modal_in_component"></i>
                             <span class="status-component">| Status: OK</span>
                         </h1>
                     </div>
                     <div class="right-content">
                         <div class="buttons">
-                            <button class="btn-header active" onclick="page(1)">CPU</button>
-                            <button class="btn-header" onclick="page(2)" id="btn_RAM">RAM</button>
-                            <button class="btn-header" onclick="page(3)">Disco</button>
+                            <button class="btn-header active" onclick="getData(1);" id="cpu_btn">CPU</button>
+                            <button class="btn-header" onclick="getData(2);" id="ram_btn">RAM</button>
+                            <button class="btn-header" onclick="getData(3);" id="disk_btn">Disco</button>
                         </div>
                     </div>
                 </div>
                 <div class="chart">
                     <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
-                </div>
-            </section>
-
-            <section class="first-section" id="ram_container" style="display: none;">
-                <div class="section-header">
-                    <div class="left-content">
-                        <span class="first-title">
-                            Performance
-                        </span>
-                        <h1 class="title-section">
-                            Memória RAM
-                            <i class="fa-solid fa-circle-info" onclick="modal(3)"></i>
-                            <span class="status-component">| Status: OK</span>
-                        </h1>
-                    </div>
-                    <div class="right-content">
-                        <div class="buttons">
-                            <button class="btn-header" onclick="page(1)">CPU</button>
-                            <button class="btn-header active" onclick="page(2), getData(2)">RAM</button>
-                            <button class="btn-header" onclick="page(3)">Disco</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="chart">
-                    <canvas id="myChart2" style="width: 100%; height: 100%;"></canvas>
-                </div>
-            </section>
-
-            <section class="first-section" id="disk_container" style="display: none;">
-                <div class="section-header">
-                    <div class="left-content">
-                        <span class="first-title">
-                            Performance
-                        </span>
-                        <h1 class="title-section">
-                            Disco
-                            <i class="fa-solid fa-circle-info" onclick="modal(4)"></i>
-                            <span class="status-component">| Status: OK</span>
-                        </h1>
-                    </div>
-                    <div class="right-content">
-                        <div class="buttons">
-                            <button class="btn-header" onclick="page(1)">CPU</button>
-                            <button class="btn-header" onclick="page(2)">RAM</button>
-                            <button class="btn-header active" onclick="page(3)">Disco</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="chart">
-                    <canvas id="myChart3" style="width: 100%; height: 100%"></canvas>
                 </div>
             </section>
 
