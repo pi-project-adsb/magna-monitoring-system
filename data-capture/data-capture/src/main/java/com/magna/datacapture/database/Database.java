@@ -1,9 +1,6 @@
 
 package com.magna.datacapture.database;
 
-import com.magna.datacapture.repository.TotemRepository;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author TotemSystem
+ * @author Magna
  */
 public class Database {
     
@@ -115,53 +112,4 @@ public class Database {
         return id;
 
     }
-
-    public Boolean existeEstacao(String nomeEstacao, String local) throws SQLException, ClassNotFoundException {
-        Class.forName(this.getDriver(local)); /* Aqui registra */
-        Connection conexão = DriverManager.getConnection(this.getURL(local), this.getLogin(local), this.getSenha(local));
-
-        PreparedStatement pesquisa = conexão.prepareStatement(String.format("select nome_estacao from tb_estacao where nome_estacao = '%s'", nomeEstacao));
-        ResultSet resultado = pesquisa.executeQuery();
-
-        if (resultado.next()) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    public Boolean validarLogin(String email, String senha, String local) throws SQLException, ClassNotFoundException {
-        
-        Class.forName(this.getDriver(local)); /* Aqui registra */
-        Connection conexão = DriverManager.getConnection(this.getURL(local), this.getLogin(local), this.getSenha(local));
-        PreparedStatement pesquisa = conexão.prepareStatement(String.format("select * from tb_usuario where email = '%s' and  senha = '%s'", email, senha));
-        ResultSet resultado = pesquisa.executeQuery();
-
-        if (resultado.next()) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    public Boolean existeHostname(String local) throws SQLException, ClassNotFoundException {
-
-
-        TotemRepository totem = new TotemRepository();
-        // Class.forName(this.getDriver(local)); /* Aqui registra */
-        Connection connection = DriverManager.getConnection(this.getURL(local), this.getLogin(local), this.getSenha(local));
-        PreparedStatement pesquisa = connection.prepareStatement(String.format("select hostname from totem where hostname = '%s'", totem.getHostname()));
-        ResultSet resultado = pesquisa.executeQuery();
-
-        if (resultado.next()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-        
-
 }
