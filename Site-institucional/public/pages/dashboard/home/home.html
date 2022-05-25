@@ -134,7 +134,7 @@
                     <div class="right-content">
                         <div class="buttons">
                             <button class="btn-header" onclick="page(1)">CPU</button>
-                            <button class="btn-header active" onclick="page(2)">RAM</button>
+                            <button class="btn-header active" onclick="page(2), getData(2)">RAM</button>
                             <button class="btn-header" onclick="page(3)">Disco</button>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                         <i class="fa-solid fa-hard-drive"></i>
                         <div class="card-box-info">
                             <span class="box-info-title">Disco livre</span>
-                            <span class="box-info-number">396GB</span>
+                            <span class="box-info-number" id="total_disco"></span>
                         </div>
                     </div>
                     <hr class="line">
@@ -231,8 +231,8 @@
 
             <section class="third-section">
                 <div class="card-box-2">
-                    <h1 class="card-title">Logs de erro</h1>
-                    <h2 class="card-subtitle">mês</h2>
+                    <h1 class="card-title">Manutenções no mês</h1>
+                    <h2 class="card-subtitle">Contagem</h2>
                     <div class="chart">
                         <canvas id="myChart4" style="width: 100%; height: 100%"></canvas>
                     </div>
@@ -273,6 +273,10 @@
                             <span class="name_specification">Endereço MAC: </span>
                             <span class="specification" id="mac_adress"></span>
                         </span>
+                        <span class="specification-box">
+                            <span class="name_specification">Totem status: </span>
+                            <span class="specification" id="totem_status"></span>
+                        </span>
                     </div>
                 </div>
             </section>
@@ -280,14 +284,14 @@
             <section class="fourth-section">
                 <div class="box">
                     <h1 class="table-box-title">Processos</h1>
-                    <table class="table process">
+                    <table class="table process" id="table_process">
                         <tr>
                             <th class="table-header">
                                 <div>Nome</div>
                             </th>
                             <th class="table-header">
                                 <div>
-                                    <span>Status</span>
+                                    <span>PID</span>
                                 </div>
                             </th>
                             <th class="table-header">
@@ -302,103 +306,12 @@
                                     <span>Memória</span>
                                 </div>
                             </th>
-                            <th class="table-header">
-                                <div>
-                                    <span class="disk_usage"></span>
-                                    <span>Disco</span>
-                                </div>
-                            </th>
                         </tr>
                         <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
-                        </tr>
-                        <tr class="table-row-desc">
-                            <td class="table-desc process">Windows Explorer</td>
-                            <td class="table-desc process">OK</td>
-                            <td class="table-desc process">0.1%</td>
-                            <td class="table-desc process">59.7 MB</td>
-                            <td class="table-desc process">0 MB/s</td>
+                            <td class="table-desc process" id="process_name"></td>
+                            <td class="table-desc process"></td>
+                            <td class="table-desc process"></td>
+                            <td class="table-desc process"></td>
                         </tr>
                     </table>
                 </div>
@@ -641,52 +554,22 @@
 
 <script>
 
-    // window.onload = totem();
-
     var id = sessionStorage.ID_TOTEM;
 
-    function totem() {
-
-        fetch(`/users/totem/${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (response) {
-            if (response.ok) {
-                response.json().then(json => {
-                    for (var i = 0; i < json.length; i++) {
-                        document.getElementById('sistema_op').innerHTML = `${(json[i].sistema_op)}`;
-                        document.getElementById('hostname').innerHTML = `${(json[i].hostname)}`;
-                        document.getElementById('mac_adress').innerHTML = `${(json[i].endereco_mac)}`;
-                        document.getElementById('localization').innerHTML = `${(json[i].localizacao)}`;
-                        document.getElementById('modelo_cpu').innerHTML = `${(json[i].modelo_cpu)}`;
-                        document.getElementById('frequencia_cpu').innerHTML = `${(json[i].frequencia_cpu)}`;
-                        document.getElementById('threads_cpu').innerHTML = `${(json[i].threads_cpu)}`;
-                    }
-                });
-            } else {
-                console.log("Erro ao localizar o totem");
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
+    // window.onload = totem();
 
     function agendamento() {
 
         var motivo = document.getElementById('motivo_agendamento_slct').value;
         var data_agendamento = document.getElementById('data_agendamento_inpt').value;
         var descricao = document.getElementById('descricao_text').value;
+        var status_concluido = 0;
         var fk_totem = id;
         
         if(motivo == '' || data_agendamento == '' || descricao == ''){
             window.alert('Preencha todos os campos para prosseguir!');
         }else{
-            fetch(`/dashboard/agendar`, {
+            fetch(`/users/dashboard/agendar`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -695,6 +578,7 @@
                 motivoServer: motivo,
                 data_agendamentoServer: data_agendamento,
                 descricaoServer: descricao,
+                status_concluidoServer: status_concluido,
                 fk_totemServer: fk_totem
             })
         }).then(function(response) {

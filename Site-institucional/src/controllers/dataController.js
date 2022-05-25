@@ -48,8 +48,26 @@ function getDataDisk(req, res) {
         });
 }
 
+function getProcessTotem(req, res) {
+
+    var id_totem = req.params.id;
+
+    dataModel.getProcessTotem(id_totem)
+        .then(function (result) {
+            if (result.length > 0) {
+                res.status(200).json(result);
+            } else {
+                res.status(204).send("Nenhum processo encontrado!");
+            }
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+
 module.exports = {
     getDataCPU,
     getDataRAM,
-    getDataDisk
+    getDataDisk,
+    getProcessTotem
 }

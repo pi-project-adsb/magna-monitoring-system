@@ -72,11 +72,6 @@ public class Record {
                             + "CPU COM USO ACIMA DO RECOMENDADO\n");
                     Slack.enviarMensagem(json);
                 }
-
-//                    Integer fkTotem = conAzure.queryForObject("select top 1 id from totem where hostname = " +
-//                            "'" + InetAddress.getLocalHost().getHostName() + "' order by id desc", Integer.class);
-//                List<TotemRepository> fkTotem = conAzure.query("SELECT id FROM totem WHERE hostname = ? ",
-//                        new BeanPropertyRowMapper<>(TotemRepository.class), new Object[]{InetAddress.getLocalHost().getHostName()} );
                 Database database = new Database();
 
                 Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");

@@ -36,9 +36,9 @@ function findTotemById(id){
     `);
 }
 
-function agendar(motivo, data_agendamento, descricao, fk_totem){
+function agendar(motivo, data_agendamento, descricao, status_concluido, fk_totem){
     return bd.execQuery(`
-        INSERT INTO agendamentos (motivo, data_agendamento, descricao, fk_totem) VALUES (${motivo}, ${data_agendamento}, ${descricao}, ${fk_totem});
+        INSERT INTO agendamento (motivo, data_agendamento, descricao, status_concluido, fk_totem) VALUES ('${motivo}', '${data_agendamento}', '${descricao}', ${status_concluido}, ${fk_totem});
     `);
 }
 

@@ -127,9 +127,10 @@ function agendar(req, res){
     var motivo = req.body.motivoServer;
     var data_agendamento = req.body.data_agendamentoServer;
     var descricao = req.body.descricaoServer;
+    var status_concluido = req.body.status_concluidoServer;
     var fk_totem = req.body.fk_totemServer;
 
-    userModel.agendar(motivo, data_agendamento, descricao, fk_totem)
+    userModel.agendar(motivo, data_agendamento, descricao, status_concluido, fk_totem)
         .then(
             function(result){
                 res.json(result);
