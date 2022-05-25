@@ -17,6 +17,18 @@ router.get("/3/:id", function (req, res){
     dataController.getDataDisk(req, res);
 });
 
+router.get("/1/real-time/:id", function (req, res){
+    dataController.getDataRealCPU(req, res);
+});
+
+router.get("/2/real-time/:id", function (req, res){
+    dataController.getDataRealRAM(req, res);
+});
+
+router.get("/3/real-time/:id", function (req, res){
+    dataController.getDataRealDisk(req, res);
+});
+
 router.get("/processos/:id", function(req, res){
     dataController.getProcessTotem(req, res);
 });

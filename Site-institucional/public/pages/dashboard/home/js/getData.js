@@ -3,20 +3,39 @@ var id_totem = sessionStorage.ID_TOTEM;
 
 window.onload = getData(1);
 
+let data_number = 1;
+
 function getData(data_type) {
 
+    data_number = data_type;
+
     fetch(`/dados/${data_type}/${id_totem}`, {
-            cache: 'no-store'
-        })
+        cache: 'no-store'
+    })
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (res) {
                     res.reverse();
 
-                    plotGraph(res, id_totem);
+                    plotGraph(res, data_type);
                     getProcess();
                     totem();
                 });
+
+                if (data_type == 1) {
+                    document.getElementById('component_name_title').innerHTML = "CPU";
+                    document.getElementById('modal_in_component').onclick = modal(2);
+                    var cpu_btn = document.getElementById('cpu_btn');
+                } else if (data_type == 2) {
+                    document.getElementById('component_name_title').innerHTML = "Memória RAM";
+                    document.getElementById('modal_in_component').onclick = modal(3);
+                    var cpu_btn = document.getElementById('ram_btn');
+                } else if (data_type == 3) {
+                    document.getElementById('component_name_title').innerHTML = "Disco";
+                    document.getElementById('modal_in_component').onclick = modal(4);
+                    var cpu_btn = document.getElementById('disk_btn');
+                }
+
             } else {
                 console.log("Nenhum dado encontrado!");
             }
@@ -25,13 +44,13 @@ function getData(data_type) {
         })
 }
 
-function plotGraph(res, id_totem) {
+function plotGraph(res, data_type) {
 
     var dados = {
         labels: [],
         datasets: [{
             yAxisID: 'y-cpu',
-            label: 'CPU',
+            label: 'DADOS',
             borderColor: '#32B9CD',
             backgroundColor: '#32b9cd8f',
             fill: true,
@@ -42,10 +61,21 @@ function plotGraph(res, id_totem) {
     for (var i = 0; i < res.length; i++) {
         var register = res[i];
         dados.labels.push(register.dh_registro);
-        dados.datasets[0].data.push(register.uso_cpu);
+        if (data_type == 1) {
+            dados.datasets[0].data.push(register.uso_cpu);
+        } else if (data_type == 2) {
+            dados.datasets[0].data.push(register.uso_ram);
+        } else if (data_type == 3) {
+            dados.datasets[0].data.push(register.uso_disco);
+        }
     }
 
-    const ctx = myChart.getContext('2d');
+    let chartStatus = Chart.getChart("myChart"); 
+    if (chartStatus != undefined) {
+        chartStatus.destroy();
+    }
+
+    var ctx = myChart.getContext('2d');
     window.grafico_linha = new Chart(ctx, {
         type: 'line',
         data: dados,
@@ -108,6 +138,25 @@ function totem() {
 
     return false;
 }
+
+
+function refreshGraph(id_totem, dados){
+
+
+    fetch(`/dados/${data_number}/real-time/${id_totem}`, {cache: 'no-store'}).then(function(response){
+        if(response.ok){
+            response.json().then(function(newRegister){
+                dados.labels.shift();
+                dados.labels.push(newRegister[0].dh_registro);
+                dados.datasets[0].data.shift();
+                dados.datasets[0].data.push(newRegister[0].)
+            })
+        }
+    })
+
+}
+
+
 
 function getProcess() {
 

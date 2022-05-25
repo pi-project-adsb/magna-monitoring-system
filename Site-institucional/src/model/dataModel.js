@@ -24,11 +24,23 @@ function getDataDisk(id_totem) {
     );
 }
 
-// function getDataRamRealTime(id_totem){
-//     return bd.execQuery(`
-//         SELECT uso_ram, 
-//     `)
-// }
+function getDataRealCPU(id_totem){
+    return bd.execQuery(`
+        SELECT TOP 1 uso_cpu, dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
+    `)
+}
+
+function getDataRealRAM(id_totem){
+    return bd.execQuery(`
+        SELECT TOP 1 uso_cpu, dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
+    `)
+}
+
+function getDataRealDisk(id_totem){
+    return bd.execQuery(`
+        SELECT TOP 1 uso_cpu, dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
+    `)
+}
 
 function getProcessTotem(id_totem){
     return bd.execQuery(
@@ -40,5 +52,8 @@ module.exports = {
     getDataCPU,
     getDataRAM,
     getDataDisk,
-    getProcessTotem
+    getProcessTotem,
+    getDataRealCPU,
+    getDataRealRAM,
+    getDataRealDisk
 }
