@@ -94,11 +94,11 @@ public class UserLogin extends javax.swing.JFrame {
                 try {
                     btnLoginActionPerformed(evt);
                 } catch (UnknownHostException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 } catch (SocketException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         });
@@ -170,7 +170,7 @@ public class UserLogin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(bannerMagna, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -261,8 +261,6 @@ public class UserLogin extends javax.swing.JFrame {
                 this.dispose();
 
                 RunningScreen runningScreen = new RunningScreen();
-
-network.getMAC(addr)
             }
             
             

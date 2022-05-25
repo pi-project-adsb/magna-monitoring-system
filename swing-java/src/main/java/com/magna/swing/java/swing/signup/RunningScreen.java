@@ -45,8 +45,6 @@ public class RunningScreen extends javax.swing.JFrame {
                     recordData.saveRecord();
                 } catch (InterruptedException | IOException | SQLException | ClassNotFoundException ex) {
                     Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }, begin, timeInterval);
