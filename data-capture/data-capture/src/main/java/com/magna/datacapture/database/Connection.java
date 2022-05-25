@@ -11,7 +11,7 @@ public class Connection {
 
         if (local.equals("mysql")) {
             datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            datasource.setUrl("jdbc:mysql://magnaSQL:3306/bd_magna");
+            datasource.setUrl("jdbc:mysql://127.0.0.1:3306/bd_magna");
             datasource.setUsername("root");
             datasource.setPassword("urubu100");
 
