@@ -88,9 +88,13 @@ public class Logger {
 
                 String agoraFormatado = agora.format(formatter);
 
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 10; i++) {
                     if (memoria.getEmUso() > 5000) {
                         escreverTexto.printf(agoraFormatado + " highMemory: " + memoria.getTotal() /1024/1024 + ", " + memoria.getEmUso()/1024/1024 + ", " + memoria.getDisponivel()/1024/1024 +"\n");
+                    }
+
+                    if (processador.getUso() > 20) {
+                        escreverTexto.printf(agoraFormatado + " highCpu: " + processador.getNome() + processador.getFrequencia() /1024/1024 + processador.getUso() +"\n");
                     }
 
                     escreverTexto.printf(agoraFormatado + " memory: " + memoria.getTotal() /1024/1024 + ", " + memoria.getEmUso()/1024/1024 + ", " + memoria.getDisponivel()/1024/1024 +"\n");

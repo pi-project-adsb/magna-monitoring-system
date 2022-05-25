@@ -106,3 +106,4 @@ dist
 # TernJS port file
 .tern-port
 /data-capture/data-capture/target/
+/swing-java/target/

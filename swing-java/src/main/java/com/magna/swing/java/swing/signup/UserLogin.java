@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.magna.swing.java.swing.signup;
 
-import com.magna.swing.java.api.Memory;
+import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.discos.DiscosGroup;
+import com.github.britooo.looca.api.group.memoria.Memoria;
+import com.github.britooo.looca.api.group.processador.Processador;
 import com.magna.swing.java.database.connection.Connection;
 import com.magna.swing.java.database.connection.repository.EmpresaRepository;
 import com.magna.swing.java.database.connection.repository.TotemRepository;
@@ -210,11 +209,21 @@ public class UserLogin extends javax.swing.JFrame {
         TotemSignup totemSignup = new TotemSignup();
         String passwordGetText = new String(fieldSenha.getPassword());
 //        Network net = new Network();
-        Connection config = new Connection();
-        JdbcTemplate con = new JdbcTemplate(config.getDataSource());
+        Connection configMysql = new Connection("mysql");
+        JdbcTemplate conMysql = new JdbcTemplate(configMysql.getDatasource());
 
+        Connection configAzure = new Connection("azure");
+        JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
+        Processador processador = new Processador();
+        Network network = new Network();
+        Looca looca = new Looca();
+        DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
+        Memoria memoria = new Memoria();
+        Double frequencia = processador.getFrequencia() * 0.000000001;
+
+        String osName = System.getProperty("os.name");
         
-        userAdvancedUse = con.query("SELECT * FROM empresa WHERE email = ? AND senha = ?",
+        userAdvancedUse = conAzure.query("SELECT * FROM empresa WHERE email = ? AND senha = ?",
         new BeanPropertyRowMapper<>(EmpresaRepository.class), fieldEmail.getText(), passwordGetText);
         
         
@@ -225,7 +234,7 @@ public class UserLogin extends javax.swing.JFrame {
         else {
             InetAddress addr = InetAddress.getLocalHost();
             
-            List<TotemRepository> macAdvancedUse = con.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
+            List<TotemRepository> macAdvancedUse = conAzure.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
                 new BeanPropertyRowMapper<>(TotemRepository.class), new Object[]{network.getMAC(addr)});
             
             if (macAdvancedUse.isEmpty()) {
@@ -237,13 +246,17 @@ public class UserLogin extends javax.swing.JFrame {
                 totemSignup.setVisible(true);
                 lblError.setVisible(false);
 
-                Integer fkEmpresa = con.queryForObject("SELECT id FROM empresa WHERE email = ?",
+                Integer fkEmpresa = conAzure.queryForObject("SELECT id FROM empresa WHERE email = ?",
                     Integer.class, fieldEmail.getText());
 
-                con.update("INSERT INTO totem (hostname, localizacao, totem_status, sistema_operacional, fk_empresa, endereco_mac)VALUES (?, ?, ?, ?, ?, ?)",
-                        InetAddress.getLocalHost().getHostName(), null, null, System.getProperty("os.name"), fkEmpresa, network.getMAC(addr));
-                lblError.setVisible(true);
-            
+                conAzure.update(
+                    "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+                    + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+                    grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+                    processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
+    
             } else {
                 this.dispose();
 
