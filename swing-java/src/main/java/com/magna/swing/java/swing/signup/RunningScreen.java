@@ -4,15 +4,11 @@
  */
 package com.magna.swing.java.swing.signup;
 
-import com.magna.swing.java.api.Cpu;
-import com.magna.swing.java.api.Memory;
-import com.magna.swing.java.api.Record;
-import com.magna.swing.java.api.Totem;
-import com.magna.swing.java.api.groups.Disk;
 import com.magna.swing.java.api.groups.ProcessGroup;
+import com.magna.swing.java.api.groups.RecordData;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.Timer;
+import java.sql.SQLException;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,12 +18,8 @@ import java.util.logging.Logger;
  * @author Gustavo
  */
 public class RunningScreen extends javax.swing.JFrame {
-    Memory memory = new Memory();
-    Cpu cpu = new Cpu();
-    Disk disk = new Disk();
     ProcessGroup processGroup = new ProcessGroup();
-    Record record = new Record();
-    
+    RecordData recordData = new RecordData();
     /**
      * Creates new form RunningScreen
      * @throws java.lang.InterruptedException
@@ -50,10 +42,8 @@ public class RunningScreen extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    record.saveRecord();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnknownHostException ex) {
+                    recordData.saveRecord();
+                } catch (InterruptedException | IOException | SQLException | ClassNotFoundException ex) {
                     Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
