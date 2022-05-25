@@ -71,5 +71,16 @@
             <version>7.2.2.jre11</version>
         </dependency>
         
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220320</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
