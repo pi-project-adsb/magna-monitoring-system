@@ -17,4 +17,8 @@ router.get("/3/:id", function (req, res){
     dataController.getDataDisk(req, res);
 });
 
+router.get("/processos/:id", function(req, res){
+    dataController.getProcessTotem(req, res);
+});
+
 module.exports = router;
