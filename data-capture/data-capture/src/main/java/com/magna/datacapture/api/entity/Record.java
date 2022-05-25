@@ -78,22 +78,23 @@ public class Record {
 //                List<TotemRepository> fkTotem = conAzure.query("SELECT id FROM totem WHERE hostname = ? ",
 //                        new BeanPropertyRowMapper<>(TotemRepository.class), new Object[]{InetAddress.getLocalHost().getHostName()} );
                 Database database = new Database();
-           
-                Integer fkTotem = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
-                
-                System.out.println(fkTotem);
+
+                Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
+                Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
+
+                System.out.println(fkTotemAzure);
 
                 System.out.println("Inserindo na Azure");
                 // Insert para Azure
                 conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
                         + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotem, LocalDateTime.now());
+                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotemAzure, LocalDateTime.now());
 
                 System.out.println("Inserindo no MySQL");
                 // Insert para MySql
                 conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
                         + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotem, LocalDateTime.now());
+                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotemMySql, LocalDateTime.now());
 
             }
         }

@@ -15,23 +15,30 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws InterruptedException, IOException, RuntimeException, SQLException, ClassNotFoundException {
 
+    public static void main(String[] args) throws InterruptedException, IOException, RuntimeException, SQLException, ClassNotFoundException {
         Process process = new Process();
+        
         Connection configAzure = new Connection("azure");
         JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
+        
+        Connection configMysql = new Connection("mysql");
+        JdbcTemplate conMysql = new JdbcTemplate(configMysql.getDatasource());
+        
         Network network = new Network();
-        Record record =  new Record();
+        Record record = new Record();
         InetAddress addr = InetAddress.getLocalHost();
         Validation validation = new Validation();
 
         validation.sendValidation();
 
-
-        List<TotemRepository> macAdvancedUse = conAzure.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
+        List<TotemRepository> macAdvancedUseAzure = conAzure.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
                 new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
 
-        if (macAdvancedUse.isEmpty()) {
+        List<TotemRepository> macAdvancedUseMysql = conMysql.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
+                new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
+
+        if (macAdvancedUseAzure.isEmpty() || macAdvancedUseMysql.isEmpty()) {
             validation.saveTotem();
         }
 
@@ -43,5 +50,3 @@ public class Application {
         }
     }
 }
-
-

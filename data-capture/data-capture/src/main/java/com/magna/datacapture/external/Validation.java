@@ -8,6 +8,7 @@ import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.magna.datacapture.api.entity.Network;
 import com.magna.datacapture.database.Connection;
+import com.magna.datacapture.database.Database;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.magna.datacapture.repository.EmpresaRepository;
@@ -15,6 +16,7 @@ import com.magna.datacapture.repository.EmpresaRepository;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +27,7 @@ public class Validation {
 
     Connection configAzure = new Connection("azure");
     JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
-    
+
     Scanner leitor = new Scanner(System.in);
     String testString;
     String emailaddress;
@@ -81,7 +83,7 @@ public class Validation {
         return emailaddress;
     }
 
-    public void saveTotem() throws UnknownHostException, SocketException {
+    public void saveTotem() throws UnknownHostException, SocketException, SQLException, ClassNotFoundException {
         Network network = new Network();
         Looca looca = new Looca();
         DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
@@ -94,26 +96,28 @@ public class Validation {
 
         System.out.println(testString);
 
-        fkEmpresa = conAzure.queryForObject("SELECT id FROM empresa WHERE email = "
-                + "'" + emailaddress + "'", Integer.class);
-        
-            System.out.println("Inserindo na Azure");
-            conAzure.update(
-                    "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
-                    + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
-                    grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
-                    processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
+        Database database = new Database();
 
-            System.out.println("Inserindo no MySQL");
-            conMysql.update(
-                    "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
-                    + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
-                    grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
-                    processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
+        Integer fkEmpresaAzure = database.getFkEmpresa(emailaddress, "azure");
+        Integer fkEmpresaMysql = database.getFkEmpresa(emailaddress, "mysql");
+
+        System.out.println("Inserindo na Azure");
+        conAzure.update(
+                "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+                + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+                grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+                processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaAzure);
+
+        System.out.println("Inserindo no MySQL");
+        conMysql.update(
+                "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+                + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+                grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+                processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaMysql);
 
     }
 

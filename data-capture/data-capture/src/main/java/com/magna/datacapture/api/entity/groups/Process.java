@@ -42,11 +42,11 @@ public class Process {
 
             Database database = new Database();
 
-            Integer fkTotem = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
+            Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
             Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
 
             conAzure.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
-                    processo.getPid(), processo.getNome(), processo.getUsoCpu() / 1024 / 1024, processo.getUsoMemoria() / 1024 / 1024, fkTotem);
+                    processo.getPid(), processo.getNome(), processo.getUsoCpu() / 1024 / 1024, processo.getUsoMemoria() / 1024 / 1024, fkTotemAzure);
 
             conMysql.update("INSERT INTO processo(pid, nome, consumo_cpu, consumo_ram, fk_totem) VALUES(?, ?, ?, ?, ?) ",
                     processo.getPid(), processo.getNome(), "processo.getUsoCpu()", processo.getUsoMemoria() / 1024 / 1024, fkTotemMySql);
