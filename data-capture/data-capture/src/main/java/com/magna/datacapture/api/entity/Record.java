@@ -28,8 +28,6 @@ public class Record {
     List<Disco> discos = grupoDeDiscos.getDiscos();
     JSONObject json = new JSONObject();
 
-
-
     public void saveRecord() throws InterruptedException, IOException {
         Thread.sleep(1000);
 
@@ -74,7 +72,6 @@ public class Record {
                     con.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)" +
                                     " VALUES(?, ?, ?, ?, ?, ?, ?) ",
                             discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotem, LocalDateTime.now());
-
             }
         }
     }

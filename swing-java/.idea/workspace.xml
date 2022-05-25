@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5303d6be-c65a-4701-89fb-ed78809e34e6" name="Changes" comment="" />
+    <list default="true" id="5303d6be-c65a-4701-89fb-ed78809e34e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/SwingJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/SwingJava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/SwingJava.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/SwingJava.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/database/connection/repository/EmpresaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/database/connection/repository/EmpresaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/database/connection/repository/TotemRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/database/connection/repository/TotemRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/external/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/external/Network.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/RunningScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/RunningScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/RunningScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/RunningScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/TotemSignup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/UserLogin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/UserLogin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/UserLogin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/UserLogin$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/UserLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/swing/signup/UserLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,13 +48,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../magna-monitoring-system/data-capture/data-capture" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/home/gustavo.moraes@VALEMOBI.CORP/Área de Trabalho/magna-monitoring-system/data-capture/data-capture"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Gustavo\Desktop\swing-java\src\main\java\com\magna\swing\java\api" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="SwingJava" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.magna.swing.java.SwingJava" />
+      <module name="swing-java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.magna.swing.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SwingJava" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

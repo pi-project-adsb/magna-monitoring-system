@@ -6,9 +6,11 @@ package com.magna.swing.java.swing.signup;
 
 import com.magna.swing.java.api.Cpu;
 import com.magna.swing.java.api.Memory;
+import com.magna.swing.java.api.Record;
 import com.magna.swing.java.api.Totem;
 import com.magna.swing.java.api.groups.Disk;
 import com.magna.swing.java.api.groups.ProcessGroup;
+import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,6 +26,7 @@ public class RunningScreen extends javax.swing.JFrame {
     Cpu cpu = new Cpu();
     Disk disk = new Disk();
     ProcessGroup processGroup = new ProcessGroup();
+    Record record = new Record();
     
     /**
      * Creates new form RunningScreen
@@ -47,13 +50,12 @@ public class RunningScreen extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    memory.saveMemory();
-                    disk.saveDisk();
-                    cpu.saveCpu();
-                    processGroup.saveProcess();
+                    record.saveRecord();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnknownHostException ex) {
+                    Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
