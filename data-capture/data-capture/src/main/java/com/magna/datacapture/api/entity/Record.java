@@ -75,7 +75,7 @@ public class Record {
                 Database database = new Database();
 
                 Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
-                Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
+            //    Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
 
                 System.out.println("Inserindo na Azure");
                 // Insert para Azure
@@ -85,9 +85,9 @@ public class Record {
 
                 System.out.println("Inserindo no MySQL");
                 // Insert para MySql
-                conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
-                        + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotemMySql, LocalDateTime.now());
+           //    conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
+            //            + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
+               //         discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotemMySql, LocalDateTime.now());
 
             }
         }
