@@ -5,6 +5,7 @@ import com.magna.datacapture.api.entity.Record;
 import com.magna.datacapture.api.entity.groups.Process;
 import com.magna.datacapture.database.Connection;
 import com.magna.datacapture.external.Validation;
+import com.magna.datacapture.logger.LoggerFile;
 import com.magna.datacapture.repository.TotemRepository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -47,6 +48,8 @@ public class Application {
         while (true) {
             record.saveRecord();
             process.saveProcess();
+            LoggerFile.criarLogger();
+            LoggerFile.escreverLogger();
         }
     }
 }

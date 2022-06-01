@@ -6,9 +6,12 @@ package com.magna.swing.java.swing.signup;
 
 import com.magna.swing.java.api.groups.ProcessGroup;
 import com.magna.swing.java.api.groups.RecordData;
+import com.magna.swing.java.logger.LoggerFile;
+
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
+import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,6 +133,7 @@ public class RunningScreen extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Timer timer = new Timer();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -159,8 +163,14 @@ public class RunningScreen extends javax.swing.JFrame {
             public void run() {
                 try {
                     new RunningScreen().setVisible(true);
+                    for (int i = 0; i < 5; i++) {
+                        LoggerFile.criarLogger();
+                        LoggerFile.escreverLogger();
+                    }
                 } catch (InterruptedException | UnknownHostException ex) {
                     Logger.getLogger(RunningScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         });

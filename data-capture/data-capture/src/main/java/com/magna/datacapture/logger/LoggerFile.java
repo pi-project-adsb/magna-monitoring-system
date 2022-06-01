@@ -1,11 +1,9 @@
-package br.com.bandtec.java.logger;
+package com.magna.datacapture.logger;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
-import org.json.JSONObject;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -17,7 +15,7 @@ import java.util.Calendar;
  *
  * @author vinic
  */
-public class Logger {
+public class LoggerFile {
 
     static FileOutputStream arquivo;
     static String timeStamp;
@@ -85,7 +83,7 @@ public class Logger {
                 loopEscrever.close();
 
             } catch (IOException e) {
-                Logger.loggerException(e);
+                LoggerFile.loggerException(e);
             }
         } else {
             System.out.println("Sem Sucesso, não temos suporte para esse sistema operacional");
