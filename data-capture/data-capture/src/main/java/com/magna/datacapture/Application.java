@@ -36,10 +36,10 @@ public class Application {
         List<TotemRepository> macAdvancedUseAzure = conAzure.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
                 new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
 
-        List<TotemRepository> macAdvancedUseMysql = conMysql.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
-                new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
-
-        if (macAdvancedUseAzure.isEmpty() || macAdvancedUseMysql.isEmpty()) {
+       // List<TotemRepository> macAdvancedUseMysql = conMysql.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
+       //         new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
+//|| macAdvancedUseMysql.isEmpty()
+        if (macAdvancedUseAzure.isEmpty() ) {
             validation.saveTotem();
         }
 

@@ -99,7 +99,7 @@ public class Validation {
         Database database = new Database();
 
         Integer fkEmpresaAzure = database.getFkEmpresa(emailaddress, "azure");
-        Integer fkEmpresaMysql = database.getFkEmpresa(emailaddress, "mysql");
+ //       Integer fkEmpresaMysql = database.getFkEmpresa(emailaddress, "mysql");
 
         System.out.println("Inserindo na Azure");
         conAzure.update(
@@ -111,13 +111,13 @@ public class Validation {
                 processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaAzure);
 
         System.out.println("Inserindo no MySQL");
-        conMysql.update(
-                "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
-                + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
-                grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
-                processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaMysql);
+   //     conMysql.update(
+    //            "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+      //          + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+      //          + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      //          InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+      //          grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+      //          processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaMysql);
 
     }
 
