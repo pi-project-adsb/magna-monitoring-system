@@ -253,7 +253,7 @@ public class UserLogin extends javax.swing.JFrame {
                     "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
                     + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+                    InetAddress.getLocalHost().getHostName(), totemSignup.fieldLocalização.getText(), "Running", network.getMAC(addr), osName,
                     grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
                     processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresa);
     

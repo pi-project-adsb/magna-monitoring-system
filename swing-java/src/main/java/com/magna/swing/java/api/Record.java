@@ -6,6 +6,7 @@ import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.discos.Volume;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
+import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.magna.swing.java.database.connection.Connection;
 import com.magna.swing.java.database.connection.Database;
 import org.json.JSONObject;
@@ -32,6 +33,7 @@ public class Record {
     DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
     List<Disco> discos = grupoDeDiscos.getDiscos();
     JSONObject json = new JSONObject();
+    Temperatura temp = new Temperatura();
 
     public void saveRecord() throws InterruptedException, IOException, SQLException, ClassNotFoundException {
         Thread.sleep(1000);
@@ -74,10 +76,10 @@ public class Record {
 
                 Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
               //  Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
-
-                conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
-                        + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                        discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotemAzure, LocalDateTime.now());
+                
+                conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro, temperatura_cpu)"
+                        + " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ",
+                        discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotemAzure, LocalDateTime.now(), temp.getTemperatura());
 
            //     conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
             //            + " VALUES(?, ?, ?, ?, ?, ?, ?) ",

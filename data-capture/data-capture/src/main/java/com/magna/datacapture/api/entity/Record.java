@@ -6,6 +6,7 @@ import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.discos.Volume;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
+import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.magna.datacapture.database.Connection;
 import com.magna.datacapture.database.Database;
 import com.magna.datacapture.repository.TotemRepository;
@@ -35,6 +36,7 @@ public class Record {
     DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
     List<Disco> discos = grupoDeDiscos.getDiscos();
     JSONObject json = new JSONObject();
+    Temperatura temperatura = new Temperatura();
 
     public void saveRecord() throws InterruptedException, IOException, SQLException, ClassNotFoundException {
         Thread.sleep(1000);
@@ -79,9 +81,9 @@ public class Record {
 
                 System.out.println("Inserindo na Azure");
                 // Insert para Azure
-                conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
-                        + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotemAzure, LocalDateTime.now());
+                conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro, temperatura_cpu)"
+                        + " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ",
+                        discoUso, discoDisp, processador.getUso(), memDisp, memUso, fkTotemAzure, LocalDateTime.now(), null);
 
                 System.out.println("Inserindo no MySQL");
                 // Insert para MySql
