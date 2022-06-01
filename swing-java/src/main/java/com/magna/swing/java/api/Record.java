@@ -73,15 +73,15 @@ public class Record {
                 Database database = new Database();
 
                 Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
-                Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
+              //  Integer fkTotemMySql = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "mysql");
 
                 conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
                         + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
                         discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotemAzure, LocalDateTime.now());
 
-                conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
-                        + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
-                        discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotemMySql, LocalDateTime.now());
+           //     conMysql.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro)"
+            //            + " VALUES(?, ?, ?, ?, ?, ?, ?) ",
+             //           discoUso, discoDisp, cpuUso, memDisp, memUso, fkTotemMySql, LocalDateTime.now());
             }
         }
     }

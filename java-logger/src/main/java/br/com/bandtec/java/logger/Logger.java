@@ -1,23 +1,27 @@
 package br.com.bandtec.java.logger;
 
+import br.com.bandtec.java.database.Connection;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
-import org.json.JSONObject;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
  * @author vinic
  */
 public class Logger {
+
+    Connection configAzure = new Connection("azure");
+    JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
 
     static FileOutputStream arquivo;
     static String timeStamp;
@@ -46,6 +50,19 @@ public class Logger {
         }
     }
 
+    public void importData(Connection con, String filename) {
+
+        try {
+            System.out.println("Inserindo na Azure");
+            // Insert para Azure
+            conAzure.update("LOAD DATA INFILE ? INTO TABLE testtable (text,price);",
+                    filename);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 //    public static void criarJson() throws FileNotFoundException, UnsupportedEncodingException {
 //        String caminho = null;
 //        if (System.getProperty("os.name").startsWith("Windows")) {
@@ -65,7 +82,6 @@ public class Logger {
 //        writer.println(json);
 //        writer.close();
 //    }
-
     public static void escreverLogger() throws IOException {
         Processador processador = new Processador();
         Looca looca = new Looca();
@@ -90,15 +106,15 @@ public class Logger {
 
                 for (int i = 0; i < 10; i++) {
                     if (memoria.getEmUso() > 5000) {
-                        escreverTexto.printf(agoraFormatado + " highMemory: " + memoria.getTotal() /1024/1024 + ", " + memoria.getEmUso()/1024/1024 + ", " + memoria.getDisponivel()/1024/1024 +"\n");
+                        escreverTexto.printf(agoraFormatado + " highMemory: " + memoria.getTotal() / 1024 / 1024 + ", " + memoria.getEmUso() / 1024 / 1024 + ", " + memoria.getDisponivel() / 1024 / 1024 + "\n");
                     }
 
                     if (processador.getUso() > 20) {
-                        escreverTexto.printf(agoraFormatado + " highCpu: " + processador.getNome() + processador.getFrequencia() /1024/1024 + processador.getUso() +"\n");
+                        escreverTexto.printf(agoraFormatado + " highCpu: " + processador.getNome() + processador.getFrequencia() / 1024 / 1024 + processador.getUso() + "\n");
                     }
 
-                    escreverTexto.printf(agoraFormatado + " memory: " + memoria.getTotal() /1024/1024 + ", " + memoria.getEmUso()/1024/1024 + ", " + memoria.getDisponivel()/1024/1024 +"\n");
-                    escreverTexto.printf(agoraFormatado + " cpu: " + processador.getNome() + processador.getFrequencia() /1024/1024 + processador.getUso() +"\n");
+                    escreverTexto.printf(agoraFormatado + " memory: " + memoria.getTotal() / 1024 / 1024 + ", " + memoria.getEmUso() / 1024 / 1024 + ", " + memoria.getDisponivel() / 1024 / 1024 + "\n");
+                    escreverTexto.printf(agoraFormatado + " cpu: " + processador.getNome() + processador.getFrequencia() / 1024 / 1024 + processador.getUso() + "\n");
                     escreverTexto.printf(agoraFormatado + " disk: " + discosGroup.getTamanhoTotal() + "\n");
                 }
 

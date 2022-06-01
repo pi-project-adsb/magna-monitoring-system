@@ -20,5 +20,7 @@ public class App {
                 }
             }
         }, 0, 5000);
+
+       Logger.importData()
     }
 }
