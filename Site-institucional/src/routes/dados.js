@@ -33,4 +33,35 @@ router.get("/processos/:id", function(req, res){
     dataController.getProcessTotem(req, res);
 });
 
+router.get("/agendamentos/:id", function(req, res){
+    dataController.getNextAgend(req, res);
+});
+
+router.post("/1/limites", function(req, res){
+    dataController.updateRAMParams(req, res);
+});
+
+router.post("/2/limites", function(req, res){
+    dataController.updateCPUParams(req, res);
+});
+
+router.post("/3/limites", function(req, res){
+    dataController.updateDiskParams(req, res);
+});
+
+router.post("/4/limites", function(req, res){
+    dataController.updateProcParams(req, res);
+});
+
+// ROTAS PARA  PARAMETRIZAÇÃO
+
+router.get("/limites/:id", function(req, res){
+    dataController.getParams(req, res);
+});
+
+// UPDATE
+
+
+// talvez possa ser post
+
 module.exports = router;

@@ -73,9 +73,9 @@
                     <li class="list">
                         <b></b>
                         <b></b>
-                        <a href="../alertas/alertas.html">
-                            <span class="icon"><i class="fa-solid fa-bell"></i></span>
-                            <span class="title">Alertas</span>
+                        <a href="../totem-hub/totens.html">
+                            <span class="icon"><i class="fa-solid fa-circle-arrow-left"></i></span>
+                            <span class="title">Hub de totens</span>
                         </a>
                     </li>
                     <li class="list">
@@ -104,15 +104,15 @@
 
                     <div class="alerts-box">
                         <span class="alert-title">De quanto em quanto tempo deseja receber seus dados?</span>
-                        <select name="" id="slct_time">
-                            <option value="" selected>Tempo real</option>
-                            <option value="">1 minuto</option>
-                            <option value="">3 minutos</option>
+                        <select name="" id="slct_time_ram">
+                            <option value="1">1 segundo</option>
+                            <option value="2">2 segundos</option>
+                            <option value="3">3 segundos</option>
                         </select>
                     </div>
                     <div class="alerts-box">
-                        <span class="alert-title">Qual o limite de uso de RAM para o plot de alertas?</span>
-                        <input type="number" placeholder="Digite o limite">
+                        <span class="alert-title">Qual o limite de uso de RAM para o plot de alertas? (em MB)</span>
+                        <input type="number" placeholder="Digite o limite" id="limite_ram">
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Deseja que o uso de memória RAM faça parte da manutenção
@@ -120,7 +120,7 @@
                         <span class="span_radio">SIM<input type="radio" name="manu" checked></span>
                         <span class="span_radio">NÃO<input type="radio" name="manu"></span>
                     </div>
-                    <button class="btn">Atualizar</button>
+                    <button class="btn" onclick="updateParams(1);">Atualizar</button>
                 </div>
             </section>
             <section class="limits cpu" id="cpu">
@@ -138,22 +138,22 @@
 
                     <div class="alerts-box">
                         <span class="alert-title">De quanto em quanto tempo deseja receber seus dados?</span>
-                        <select name="" id="slct_time">
-                            <option value="" selected>Tempo real</option>
-                            <option value="">1 minuto</option>
-                            <option value="">3 minutos</option>
+                        <select name="" id="slct_time_cpu">
+                            <option value="1">1 segundo</option>
+                            <option value="2">2 segundos</option>
+                            <option value="3">3 segundos</option>
                         </select>
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Qual o limite de uso de CPU para o plot de alertas?</span>
-                        <input type="number" placeholder="Digite o limite">
+                        <input type="number" placeholder="Digite o limite" id="limite_cpu">
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Deseja que o uso de CPU faça parte da manutenção preventiva?</span>
                         <span class="span_radio">SIM<input type="radio" name="manu" checked></span>
                         <span class="span_radio">NÃO<input type="radio" name="manu"></span>
                     </div>
-                    <button class="btn">Atualizar</button>
+                    <button class="btn" onclick="updateParams(2);">Atualizar</button>
                 </div>
             </section>
             <section class="limits disk" id="disk">
@@ -171,15 +171,15 @@
 
                     <div class="alerts-box">
                         <span class="alert-title">De quanto em quanto tempo deseja receber seus dados?</span>
-                        <select name="" id="slct_time">
-                            <option value="" selected>Tempo real</option>
-                            <option value="">1 minuto</option>
-                            <option value="">3 minutos</option>
+                        <select name="" id="slct_time_disk">
+                            <option value="1">1 segundo</option>
+                            <option value="2">2 segundos</option>
+                            <option value="3">3 segundos</option>
                         </select>
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Qual o limite de uso de RAM para o plot de alertas?</span>
-                        <input type="number" placeholder="Digite o limite">
+                        <input type="number" placeholder="Digite o limite" id="limite_disk">
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Deseja que o uso de memória RAM faça parte da manutenção
@@ -187,7 +187,7 @@
                         <span class="span_radio">SIM<input type="radio" name="manu" checked></span>
                         <span class="span_radio">NÃO<input type="radio" name="manu"></span>
                     </div>
-                    <button class="btn">Atualizar</button>
+                    <button class="btn" onclick="updateParams(3);">Atualizar</button>
                 </div>
 
             </section>
@@ -207,16 +207,16 @@
 
                     <div class="alerts-box">
                         <span class="alert-title">De quanto em quanto tempo deseja receber seus dados?</span>
-                        <select name="" id="slct_time">
-                            <option value="" selected>Tempo real</option>
-                            <option value="">1 minuto</option>
-                            <option value="">3 minutos</option>
+                        <select name="" id="slct_time_proc">
+                            <option value="1">1 segundo</option>
+                            <option value="2">2 segundos</option>
+                            <option value="3">3 segundos</option>
                         </select>
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Qual o limite de quantidade de processos para o plot de
                             alertas?</span>
-                        <input type="number" placeholder="Digite o limite">
+                        <input type="number" placeholder="Digite o limite" id="limite_proc">
                     </div>
                     <div class="alerts-box">
                         <span class="alert-title">Deseja que o número de processos faça parte da manutenção
@@ -224,7 +224,7 @@
                         <span class="span_radio">SIM<input type="radio" name="manu" checked></span>
                         <span class="span_radio">NÃO<input type="radio" name="manu"></span>
                     </div>
-                    <button class="btn">Atualizar</button>
+                    <button class="btn" onclick="updateParams(4);">Atualizar</button>
                 </div>
             </section>
         </section>

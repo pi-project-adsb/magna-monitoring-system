@@ -113,7 +113,89 @@ function getDataRealDisk(req, res) {
         })
 }
 
+function getNextAgend(req, res) {
 
+    var id_totem = req.params.id;
+
+    dataModel.getNextAgend(id_totem)
+        .then(function (result) {
+            if (result.length > 0) {
+                res.status(200).json(result);
+            } else {
+                res.status(204).send("Nenhum dado encontrado!");
+            }
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function updateRAMParams(req, res) {
+
+    var tempo = req.body.tempoServer;
+    var limite_dados = req.body.limiteServer;
+    var id_totem = req.body.id_totemServer;
+
+    dataModel.updateRAMParams(tempo, limite_dados, id_totem)
+        .then(function(result){
+            res.status(200).json(result);
+        }).catch(function(err){
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function updateCPUParams(req, res) {
+
+    var tempo = req.body.tempoServer;
+    var limite_dados = req.body.limiteServer;
+    var id_totem = req.body.id_totemServer;
+
+    dataModel.updateCPUParams(tempo, limite_dados, id_totem)
+        .then(function(result){
+            res.status(200).json(result);
+        }).catch(function(err){
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function updateDiskParams(req, res) {
+
+    var tempo = req.body.tempoServer;
+    var limite_dados = req.body.limite_dadosServer;
+    var id_totem = req.body.id_totemServer;
+
+    dataModel.updateDiskParams(tempo, limite_dados, id_totem)
+        .then(function(result){
+            res.status(200).json(result);
+        }).catch(function(err){
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function updateProcParams(req, res) {
+
+    var qtd_proc = req.body.qtd_procServer;
+    var id_totem = req.body.id_totemServer;
+
+    dataModel.updateProcParams(qtd_proc, id_totem)
+        .then(function(result){
+            res.status(200).json(result);
+        }).catch(function(err){
+            res.status(500).json(err.sqlMessage);
+        })
+};
+
+function getParams(req, res){
+    var id_totem = req.params.id;
+
+    dataModel.getParams(id_totem)
+    .then(function(result){
+        if(result.length > 0){
+            res.status(200).json(result);
+        }
+    }).catch(function(err){
+        res.status(500).json(err.sqlMessage);
+    })
+}
 
 
 module.exports = {
@@ -123,5 +205,11 @@ module.exports = {
     getProcessTotem,
     getDataRealCPU,
     getDataRealRAM,
-    getDataRealDisk
+    getDataRealDisk,
+    getNextAgend,
+    updateRAMParams,
+    updateCPUParams,
+    updateDiskParams,
+    updateProcParams,
+    getParams
 }
