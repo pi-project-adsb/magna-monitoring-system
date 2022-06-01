@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5303d6be-c65a-4701-89fb-ed78809e34e6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/api/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/api/Record.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/RunningScreen.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/RunningScreen.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/logger/LoggerFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-logger/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java-logger/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-logger/src/main/java/br/com/bandtec/java/logger/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-logger/src/main/java/br/com/bandtec/java/logger/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-logger/src/main/java/br/com/bandtec/java/logger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-logger/src/main/java/br/com/bandtec/java/logger/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-logger/target/classes/br/com/bandtec/java/logger/App$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-logger/target/classes/br/com/bandtec/java/logger/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-logger/target/classes/br/com/bandtec/java/logger/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/RunningScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/RunningScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/UserLogin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/UserLogin.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/magna/swing/java/swing/signup/UserLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/magna/swing/java/api/Record.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/magna/swing/java/api/Record.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +43,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/lucas/Desktop/Repositorios Git/magna-monitoring-system/swing-java"
+    "last_opened_file_path": "C:/Users/Gustavo/Desktop/magna-monitoring-system/swing-java"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Gustavo\Desktop\swing-java\src\main\java\com\magna\swing\java\api" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.magna.swing.java.logger" />
     </key>
   </component>
   <component name="RunManager">
@@ -79,5 +84,16 @@
       <updated>1650464046913</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
