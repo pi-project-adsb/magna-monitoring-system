@@ -1,7 +1,5 @@
 package br.com.bandtec.java.logger;
 
-import com.github.britooo.looca.api.core.Looca;
-
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
