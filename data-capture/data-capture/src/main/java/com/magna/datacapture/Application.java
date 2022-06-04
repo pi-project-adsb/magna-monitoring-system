@@ -41,6 +41,7 @@ public class Application {
 //|| macAdvancedUseMysql.isEmpty()
         if (macAdvancedUseAzure.isEmpty() ) {
             validation.saveTotem();
+            validation.saveParameters();
         }
 
         System.out.println("\nSeu sistema está rodando!\n");

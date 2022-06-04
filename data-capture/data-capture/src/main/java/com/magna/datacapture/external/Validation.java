@@ -28,6 +28,15 @@ public class Validation {
     Connection configAzure = new Connection("azure");
     JdbcTemplate conAzure = new JdbcTemplate(configAzure.getDatasource());
 
+    Network network = new Network();
+    Looca looca = new Looca();
+    DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
+    Processador processador = new Processador();
+    Memoria memoria = new Memoria();
+    Double frequencia = processador.getFrequencia() * 0.000000001;
+
+    Database database = new Database();
+
     Scanner leitor = new Scanner(System.in);
     String testString;
     String emailaddress;
@@ -84,22 +93,16 @@ public class Validation {
     }
 
     public void saveTotem() throws UnknownHostException, SocketException, SQLException, ClassNotFoundException {
-        Network network = new Network();
-        Looca looca = new Looca();
-        DiscosGroup grupoDeDiscos = looca.getGrupoDeDiscos();
-        Processador processador = new Processador();
-        Memoria memoria = new Memoria();
-        Double frequencia = processador.getFrequencia() * 0.000000001;
 
         String osName = System.getProperty("os.name");
         InetAddress addr = InetAddress.getLocalHost();
 
         System.out.println(testString);
 
-        Database database = new Database();
 
         Integer fkEmpresaAzure = database.getFkEmpresa(emailaddress, "azure");
- //       Integer fkEmpresaMysql = database.getFkEmpresa(emailaddress, "mysql");
+        Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
+//        Integer fkEmpresaMysql = database.getFkEmpresa(emailaddress, "mysql");
 
         System.out.println("Inserindo na Azure");
         conAzure.update(
@@ -110,14 +113,27 @@ public class Validation {
                 grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
                 processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaAzure);
 
-        System.out.println("Inserindo no MySQL");
-   //     conMysql.update(
-    //            "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
-      //          + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
-      //          + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-      //          InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
-      //          grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
-      //          processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaMysql);
+
+//        System.out.println("Inserindo no MySQL");
+//        conMysql.update(
+//                "INSERT INTO totem (hostname, localizacao, totem_status, endereco_mac,sistema_op, "
+//                + "total_disco, modelo_cpu, frequencia_cpu, nucleos_cpu, threads_cpu, total_ram, fk_empresa) "
+//                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+//                InetAddress.getLocalHost().getHostName(), null, null, network.getMAC(addr), osName,
+//                grupoDeDiscos.getTamanhoTotal() / 1024 / 1024 / 1024, processador.getNome(), frequencia, processador.getNumeroCpusFisicas(),
+//                processador.getNumeroCpusLogicas(), memoria.getTotal() / 1024 / 1024, fkEmpresaMysql);
+
+    }
+
+    public void saveParameters() throws UnknownHostException, SQLException, ClassNotFoundException {
+
+        Integer fkTotemAzure = database.getFkTotem(InetAddress.getLocalHost().getHostName(), "azure");
+
+        conAzure.update(
+                "INSERT INTO parametrizacao (uso_ram, uso_cpu, uso_disco, qtd_proc, tempo_ram, tempo_cpu, tempo_disco, "
+                        + "manutencao_preventiva, fk_totem) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                80, 80, 80, 110, 1, 1, 1, "SIM",fkTotemAzure
+        );
 
     }
 
