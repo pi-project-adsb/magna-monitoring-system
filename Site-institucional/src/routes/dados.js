@@ -17,6 +17,10 @@ router.get("/3/:id", function (req, res){
     dataController.getDataDisk(req, res);
 });
 
+router.get("/real-time/:id", function(req, res){
+    dataController.getDataRealTime(req, res);
+})
+
 router.get("/1/real-time/:id", function (req, res){
     dataController.getDataRealCPU(req, res);
 });

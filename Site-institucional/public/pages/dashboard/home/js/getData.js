@@ -145,28 +145,61 @@ function plotGraph(res, data_type) {
     })
 
     setInterval(() => {
-        fetch(`/dados/${data_type}/real-time/${id_totem}`, {
+        fetch(`/dados/real-time/${id_totem}`, {
             cache: "no-store"
         }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (newRegister) {
+
+
+                    document.getElementById('cpu_usage_user').innerHTML = `${newRegister[0].uso_cpu}`;
+                    document.getElementById('ram_usage_user').innerHTML = `${newRegister[0].uso_ram}`;
+                    document.getElementById('disk_usage_user').innerHTML = `${newRegister[0].uso_disco}`;
+
+                    var newCpu = document.getElementById('percent-usage-cpu').innerHTML = `${newRegister[0].uso_cpu}`;
+                    var newRam = document.getElementById('percent-usage-ram').innerHTML = `${newRegister[0].uso_ram}`;
+                    var newDisk = document.getElementById('percent-usage-disk').innerHTML = `${newRegister[0].uso_disco}`;
+
+                    if(newCpu > cpu){
+                        document.getElementById('usage-cpu-spn').style.backgroundColor = 'tomato';
+                    }
+                    if(newCpu < cpu){
+                        document.getElementById('usage-cpu-spn').style.backgroundColor = '#a0d11b';
+                    }
+                    if(newRam > ram){
+                        document.getElementById('usage-ram-spn').style.backgroundColor = 'tomato';
+                    }
+                    if(newRam < ram){
+                        document.getElementById('usage-ram-spn').style.backgroundColor = '#a0d11b';
+                    }
+                    if(newDisk > disk){
+                        document.getElementById('usage-disk-spn').style.backgroundColor = 'tomato';
+                    }
+                    if(newDisk < disk){
+                        document.getElementById('usage-disk-spn').style.backgroundColor = '#a0d11b';
+                    }
+
                     dados.labels.shift();
                     dados.labels.push(newRegister[0].dh_registro);
                     dados.datasets[0].data.shift();
-                    dados.datasets[0].data.push(newRegister[0].uso_cpu);
-    
+                    if(data_type == 1){
+                        dados.datasets[0].data.push(newRegister[0].uso_cpu);
+                    }else if(data_type == 2){
+                        dados.datasets[0].data.push(newRegister[0].uso_ram);
+                    }else if(data_type == 3){
+                        dados.datasets[0].data.push(newRegister[0].uso_disco);
+                    }
+
                     window.grafico_linha.update();
-    
-                    // nextUp = setTimeout(() => plotGraph(newRegister, data_type), 2000);
                 })
             } else {
                 console.log("Nenhum dado encontrado!");
-                // nextUp = setTimeout(() => plotGraph(newRegister, data_type), 2000);
             }
         }).catch(function (err) {
             console.log(err);
         })
     }, 2000);
+
 
     let chartStatus = Chart.getChart("myChart");
     if (chartStatus != undefined) {
@@ -204,6 +237,12 @@ function plotGraph(res, data_type) {
         }
     });
 }
+
+
+function alertLog(typeLog){
+
+}
+
 
 function totem() {
 

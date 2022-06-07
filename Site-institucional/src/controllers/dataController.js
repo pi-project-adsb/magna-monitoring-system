@@ -245,6 +245,17 @@ function lastAgend(req, res) {
         })
 }
 
+function getDataRealTime(req, res) {
+    var id_totem = req.params.id;
+
+    dataModel.getDataRealTime(id_totem)
+        .then(function (result) {
+            res.status(200).json(result);
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
 
 module.exports = {
     getDataCPU,
@@ -263,5 +274,6 @@ module.exports = {
     getAgendCheck,
     getAllAgends,
     updateAgend,
-    lastAgend
+    lastAgend,
+    getDataRealTime
 }
