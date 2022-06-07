@@ -11,8 +11,8 @@ function getData(data_type) {
     }
 
     fetch(`/dados/${data_type}/${id_totem}`, {
-        cache: 'no-store'
-    })
+            cache: 'no-store'
+        })
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (res) {
@@ -26,12 +26,12 @@ function getData(data_type) {
                 var ram_btn = document.getElementById('ram_btn');
                 var disk_btn = document.getElementById('disk_btn');
 
-                btnInfo.addEventListener('click', function(){
-                    if(data_type == 1){
+                btnInfo.addEventListener('click', function () {
+                    if (data_type == 1) {
                         modal(2);
-                    }else if(data_type == 2){
+                    } else if (data_type == 2) {
                         modal(3);
-                    }else if(data_type == 3){
+                    } else if (data_type == 3) {
                         modal(4);
                     }
                 })
@@ -61,24 +61,24 @@ function getData(data_type) {
         })
 }
 
-function lastAgend(){
+function lastAgend() {
 
     fetch(`/dados/agendamentos/lastAgend/${id_totem}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
         }
-    }).then(function (response){
-        if(response.ok){
+    }).then(function (response) {
+        if (response.ok) {
             response.json().then(json => {
-                for(var i = 0; i < json.length; i++){
+                for (var i = 0; i < json.length; i++) {
                     document.getElementById('last_manun').innerHTML = `${(json[i].data_agen)}`;
                 }
             })
-        }else{
+        } else {
             console.log("ERRO NA RESPONSE");
         }
-    }).catch(function(err){
+    }).catch(function (err) {
         console.log(err);
     })
 
@@ -159,7 +159,7 @@ function plotGraph(res, data_type) {
         var minutes = data.getMinutes();
         var seconds = data.getSeconds();
         var datenow = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-        
+
         for (var i = 0; i < 200; i++) {
             b = Math.random() * (1.1 - 0) + 0;
             c = Math.random() * (625.2 - 625) + 625;
@@ -176,17 +176,22 @@ function plotGraph(res, data_type) {
         document.getElementById('percent-usage-disk').innerHTML = `${d.toFixed(1)}`;
         document.getElementById('temp_totem').innerHTML = `${e.toFixed(1)}°C`;
 
-        if(b > cpu){
+        if (b > cpu) {
             document.getElementById('usage-cpu-spn').style.backgroundColor = 'red';
-        }if(b < cpu){
+        }
+        if (b < cpu) {
             document.getElementById('usage-cpu-spn').style.backgroundColor = '#a0d11b';
-        }if(c > ram){
+        }
+        if (c > ram) {
             document.getElementById('usage-ram-spn').style.backgroundColor = 'red';
-        }if(c < ram){
+        }
+        if (c < ram) {
             document.getElementById('usage-ram-spn').style.backgroundColor = '#a0d11b';
-        }if(d > disk){
+        }
+        if (d > disk) {
             document.getElementById('usage-disk-spn').style.backgroundColor = 'red';
-        }if(d < disk){
+        }
+        if (d < disk) {
             document.getElementById('usage-disk-spn').style.backgroundColor = '#a0d11b';
         }
 
@@ -306,7 +311,9 @@ function getNextAgend() {
 function refreshGraph(id_totem, dados) {
 
 
-    fetch(`/dados/${data_number}/real-time/${id_totem}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/dados/${data_number}/real-time/${id_totem}`, {
+        cache: 'no-store'
+    }).then(function (response) {
         if (response.ok) {
             response.json().then(function (newRegister) {
                 dados.labels.shift();
@@ -329,21 +336,55 @@ function refreshGraph(id_totem, dados) {
 }
 
 
-function getAgendCheck(){
+function getAgendCheck() {
     fetch(`/dados/agendamentos/check/${id_totem}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
         }
-    }).then(function(response){
-        if(response.ok){
+    }).then(function (response) {
+        if (response.ok) {
             response.json().then(json => {
+                for (var i = 0; i < json.length; i++) {
+                    
+                    var contentModal = document.getElementById('box_content-modal-alerts');
+                    var divPlottAgend = document.createElement('div');
+                    var div2 = document.createElement('div');
+                    var divHeader = document.createElement('div');
+                    var motivoAgen = document.createElement('span');
+                    var spanIcon = document.createElement('span');
+                    var spanDate = document.createElement('span');
+                    var icon = document.createElement('i');
+                    var spanDesc = document.createElement('span');
+
+                    // CLASSES E IDs
+                    div2.className = 'alert';
+                    divHeader.className = 'alert-header';
+                    motivoAgen.className = 'title_alert';
+                    motivoAgen.innerHTML = `${(json[i].motivo)}`;
+                    // spanIcon
+                    spanDate.innerHTML = `${(json[i].data_agen)}`;
+                    icon.className = 'fa-solid fa-check';
+                    icon.style.color = 'green';
+                    spanDesc.innerHTML = `${(json[i].descricao)}`;
+
+
+                    // APPENDCHIELDS
+                    contentModal.appendChild(divPlottAgend);
+                    divPlottAgend.appendChild(div2);
+                    div2.appendChild(divHeader);
+                    div2.appendChild(spanDesc);
+                    divHeader.appendChild(motivoAgen);
+                    divHeader.appendChild(spanIcon);
+                    spanIcon.appendChild(spanDate);
+                    spanIcon.appendChild(icon);
+                }
 
             })
-        }else{
+        } else {
             console.log("ERRO NA RESPONSE");
         }
-    }).catch(function(err){
+    }).catch(function (err) {
         console.log(err);
     })
 
