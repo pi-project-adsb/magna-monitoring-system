@@ -8,7 +8,7 @@
 }
 .alerts-mid-box{
     width: 100%;
-    height: 70%;
+    height: 90%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -48,15 +48,19 @@
 .alert-title{
     color: white;
     margin-right: 10px;
+    font-size: 20px;
 }
 .alerts-box{
     margin: 2vh 0;
+    border: 1px solid #02d8f0;
+    padding: 15px 20px;
+    border-radius: 10px;
 }
-#slct_time{
+#slct_time_cpu, #slct_time_ram, #slct_time_disk, #slct_time_proc{
     border-radius: 10px;
     padding: 2px 5px;
 }
-#slct_time:focus, input[type="number"]{
+#slct_time_cpu:focus, #slct_time_ram:focus, #slct_time_disk:focus, #slct_time_proc:focus, input[type="number"]{
     outline: none;
 }
 input[type="number"]{

@@ -26,13 +26,7 @@
                 </div>
                 <div class="right-nav-items">
                     <li class="nav-item">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </li>
-                    <li class="nav-item">
-                        <span>
-                            <i class="fa-solid fa-user"></i>
-                            <i class="fa-solid fa-caret-down"></i>
-                        </span>
+                        <span id="name_user_nav_spn"></span>
                     </li>
                 </div>
             </ul>
@@ -323,7 +317,7 @@
                             </th>
                         </tr>
                         <tr class="table-row-desc">
-                            <td class="table-desc user"></td>
+                            <td class="table-desc user" id="username_table_td"></td>
                             <td class="table-desc user"></td>
                             <td class="table-desc user"></td>
                             <td class="table-desc user"></td>
@@ -577,7 +571,8 @@
 
 <script>
 
-    document.getElementById('name_user').innerHTML = sessionStorage.NOME_EMPRESA;
+    document.getElementById('name_user_nav_spn').innerHTML = sessionStorage.NOME_EMPRESA;
+    document.getElementById('username_table_td').innerHTML = sessionStorage.NOME_EMPRESA;
     var id = sessionStorage.ID_TOTEM;
 
     // window.onload = totem();

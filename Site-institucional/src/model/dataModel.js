@@ -103,7 +103,7 @@ function createAlert(){
 
 function getAgendCheck(id_totem){
     return bd.execQuery(`
-        SELECT motivo, CONVERT(VARCHAR, data_agendamento, 103) as data_agen, descricao FROM agendamento WHERE status_concluido = 0 AND fk_totem = ${id_totem}
+        SELECT motivo, CONVERT(VARCHAR, data_agendamento, 103) as data_agen, descricao FROM agendamento WHERE status_concluido = 1 AND fk_totem = ${id_totem}
     `);
 }
 

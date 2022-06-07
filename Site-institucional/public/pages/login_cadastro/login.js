@@ -39,6 +39,7 @@ function entrar() {
 
                 sessionStorage.ID_EMPRESA = json.id;
                 sessionStorage.NOME_EMPRESA = json.nome;
+                sessionStorage.EMAIL_EMPRESA = json.email;
 
                 window.location = "../loading/loading.html";
             });

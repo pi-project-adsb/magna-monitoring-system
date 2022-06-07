@@ -370,9 +370,6 @@ body::-webkit-scrollbar-thumb{
     height: 100%;
     margin: 0;
 }
-.table-row-desc{
-    
-}
 .table-header div{
     display: flex;
     flex-direction: column;

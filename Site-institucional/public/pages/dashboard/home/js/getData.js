@@ -337,10 +337,9 @@ function getAgendCheck(){
         }
     }).then(function(response){
         if(response.ok){
-            console.log("OI");
-            // response.json().then(json => {
+            response.json().then(json => {
 
-            // })
+            })
         }else{
             console.log("ERRO NA RESPONSE");
         }

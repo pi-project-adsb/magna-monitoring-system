@@ -1,3 +1,5 @@
+document.getElementById('name_user').innerHTML = sessionStorage.NOME_EMPRESA;
+
 let menuToggle = document.querySelector('.toggle');
 let navigation = document.querySelector('.navigation');
 menuToggle.onclick = function(){
