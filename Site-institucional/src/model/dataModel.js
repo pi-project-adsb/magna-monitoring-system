@@ -3,7 +3,7 @@ var bd = require('../database/config');
 function getDataCPU(id_totem) {
 
     return bd.execQuery(`
-        SELECT TOP 7 uso_cpu, dh_registro FROM registro WHERE fk_totem = ${id_totem} 
+        SELECT TOP 7 uso_cpu, CONVERT(VARCHAR, dh_registro, 120) AS dh_registro FROM registro WHERE fk_totem = ${id_totem} 
         ORDER BY id DESC;`
     );
 }
@@ -11,7 +11,7 @@ function getDataCPU(id_totem) {
 function getDataRAM(id_totem) {
 
     return bd.execQuery(`
-        SELECT TOP 7 uso_ram, dh_registro FROM registro WHERE fk_totem = ${id_totem} 
+        SELECT TOP 7 uso_ram, CONVERT(VARCHAR, dh_registro, 120) AS dh_registro FROM registro WHERE fk_totem = ${id_totem} 
         ORDER BY id DESC;`
     );
 }
@@ -19,26 +19,26 @@ function getDataRAM(id_totem) {
 function getDataDisk(id_totem) {
 
     return bd.execQuery(`
-        SELECT TOP 7 uso_disco, dh_registro FROM registro WHERE fk_totem = ${id_totem} 
+        SELECT TOP 7 uso_disco, CONVERT(VARCHAR, dh_registro, 120) AS dh_registro FROM registro WHERE fk_totem = ${id_totem} 
         ORDER BY id DESC;`
     );
 }
 
 function getDataRealCPU(id_totem){
     return bd.execQuery(`
-        SELECT TOP 1 uso_cpu, dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
+        SELECT TOP 1 uso_cpu, CONVERT(VARCHAR, dh_registro, 120) AS dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
     `)
 }
 
 function getDataRealRAM(id_totem){
     return bd.execQuery(`
-        SELECT TOP 1 uso_cpu, dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
+        SELECT TOP 1 uso_ram, CONVERT(VARCHAR, dh_registro, 120) AS dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
     `)
 }
 
 function getDataRealDisk(id_totem){
     return bd.execQuery(`
-        SELECT TOP 1 uso_cpu, dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
+        SELECT TOP 1 uso_disco, CONVERT(VARCHAR, dh_registro, 120) AS dh_registro, fk_totem from registro WHERE fk_totem = ${id_totem} ORDER BY id DESC;
     `)
 }
 

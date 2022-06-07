@@ -144,69 +144,29 @@ function plotGraph(res, data_type) {
         console.log(err);
     })
 
-
-    setInterval(function () {
-
-        let b = 0;
-        let c = 0;
-        let d = 0;
-        let e = 0;
-        var data = new Date();
-        var day = data.getDate();
-        var month = (data.getMonth() + 1);
-        var year = data.getFullYear();
-        var hours = data.getHours();
-        var minutes = data.getMinutes();
-        var seconds = data.getSeconds();
-        var datenow = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-
-        for (var i = 0; i < 200; i++) {
-            b = Math.random() * (1.1 - 0) + 0;
-            c = Math.random() * (625.2 - 625) + 625;
-            d = Math.random() * (7 - 6) + 6;
-            e = Math.random() * (52 - 51.1) + 51.1;
-        }
-
-        dados.labels.shift();
-        dados.labels.push(datenow);
-        dados.datasets[0].data.shift();
-
-        document.getElementById('percent-usage-cpu').innerHTML = `${b.toFixed(1)}`;
-        document.getElementById('percent-usage-ram').innerHTML = `${c.toFixed(1)}`;
-        document.getElementById('percent-usage-disk').innerHTML = `${d.toFixed(1)}`;
-        document.getElementById('temp_totem').innerHTML = `${e.toFixed(1)}°C`;
-
-        if (b > cpu) {
-            document.getElementById('usage-cpu-spn').style.backgroundColor = 'red';
-        }
-        if (b < cpu) {
-            document.getElementById('usage-cpu-spn').style.backgroundColor = '#a0d11b';
-        }
-        if (c > ram) {
-            document.getElementById('usage-ram-spn').style.backgroundColor = 'red';
-        }
-        if (c < ram) {
-            document.getElementById('usage-ram-spn').style.backgroundColor = '#a0d11b';
-        }
-        if (d > disk) {
-            document.getElementById('usage-disk-spn').style.backgroundColor = 'red';
-        }
-        if (d < disk) {
-            document.getElementById('usage-disk-spn').style.backgroundColor = '#a0d11b';
-        }
-
-        if (data_type == 1) {
-            dados.datasets[0].data.push(b);
-        } else if (data_type == 2) {
-            dados.datasets[0].data.push(c);
-        } else if (data_type == 3) {
-            dados.datasets[0].data.push(d);
-        }
-
-        window.grafico_linha.update();
-
-    }, `${1000}`);
-
+    setInterval(() => {
+        fetch(`/dados/${data_type}/real-time/${id_totem}`, {
+            cache: "no-store"
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (newRegister) {
+                    dados.labels.shift();
+                    dados.labels.push(newRegister[0].dh_registro);
+                    dados.datasets[0].data.shift();
+                    dados.datasets[0].data.push(newRegister[0].uso_cpu);
+    
+                    window.grafico_linha.update();
+    
+                    // nextUp = setTimeout(() => plotGraph(newRegister, data_type), 2000);
+                })
+            } else {
+                console.log("Nenhum dado encontrado!");
+                // nextUp = setTimeout(() => plotGraph(newRegister, data_type), 2000);
+            }
+        }).catch(function (err) {
+            console.log(err);
+        })
+    }, 2000);
 
     let chartStatus = Chart.getChart("myChart");
     if (chartStatus != undefined) {
@@ -346,7 +306,7 @@ function getAgendCheck() {
         if (response.ok) {
             response.json().then(json => {
                 for (var i = 0; i < json.length; i++) {
-                    
+
                     var contentModal = document.getElementById('box_content-modal-alerts');
                     var divPlottAgend = document.createElement('div');
                     var div2 = document.createElement('div');
