@@ -136,9 +136,9 @@ function updateRAMParams(req, res) {
     var id_totem = req.body.id_totemServer;
 
     dataModel.updateRAMParams(tempo, limite_dados, id_totem)
-        .then(function(result){
+        .then(function (result) {
             res.status(200).json(result);
-        }).catch(function(err){
+        }).catch(function (err) {
             res.status(500).json(err.sqlMessage);
         })
 }
@@ -150,9 +150,9 @@ function updateCPUParams(req, res) {
     var id_totem = req.body.id_totemServer;
 
     dataModel.updateCPUParams(tempo, limite_dados, id_totem)
-        .then(function(result){
+        .then(function (result) {
             res.status(200).json(result);
-        }).catch(function(err){
+        }).catch(function (err) {
             res.status(500).json(err.sqlMessage);
         })
 }
@@ -164,9 +164,9 @@ function updateDiskParams(req, res) {
     var id_totem = req.body.id_totemServer;
 
     dataModel.updateDiskParams(tempo, limite_dados, id_totem)
-        .then(function(result){
+        .then(function (result) {
             res.status(200).json(result);
-        }).catch(function(err){
+        }).catch(function (err) {
             res.status(500).json(err.sqlMessage);
         })
 }
@@ -177,24 +177,72 @@ function updateProcParams(req, res) {
     var id_totem = req.body.id_totemServer;
 
     dataModel.updateProcParams(qtd_proc, id_totem)
-        .then(function(result){
+        .then(function (result) {
             res.status(200).json(result);
-        }).catch(function(err){
+        }).catch(function (err) {
             res.status(500).json(err.sqlMessage);
         })
 };
 
-function getParams(req, res){
+function getParams(req, res) {
     var id_totem = req.params.id;
 
     dataModel.getParams(id_totem)
-    .then(function(result){
-        if(result.length > 0){
+        .then(function (result) {
+            if (result.length > 0) {
+                res.status(200).json(result);
+            }
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function getAllAgends(req, res) {
+    var id_totem = req.params.id;
+
+    dataModel.getAllAgends(id_totem)
+        .then(function (result) {
+            if (result.length > 0) {
+                res.status(200).json(result);
+            }
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+
+function getAgendCheck(req, res) {
+    var id_totem = req.params.id;
+
+    dataModel.getAgendCheck(id_totem)
+        .then(function (result) {
             res.status(200).json(result);
-        }
-    }).catch(function(err){
-        res.status(500).json(err.sqlMessage);
-    })
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function updateAgend(req, res) {
+    var idAgend = req.body.idAgendServer;
+    var id_totem = req.body.id_totemServer;
+
+    dataModel.updateAgend(idAgend, id_totem)
+        .then(function (result) {
+            res.status(200).json(result);
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
+}
+
+function lastAgend(req, res) {
+    var id_totem = req.params.id;
+
+    dataModel.lastAgend(id_totem)
+        .then(function (result) {
+            res.status(200).json(result);
+        }).catch(function (err) {
+            res.status(500).json(err.sqlMessage);
+        })
 }
 
 
@@ -211,5 +259,9 @@ module.exports = {
     updateCPUParams,
     updateDiskParams,
     updateProcParams,
-    getParams
+    getParams,
+    getAgendCheck,
+    getAllAgends,
+    updateAgend,
+    lastAgend
 }

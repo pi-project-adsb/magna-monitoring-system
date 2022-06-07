@@ -1,7 +1,7 @@
 let nextUp;
 var id_totem = sessionStorage.ID_TOTEM;
 
-window.onload = getData(1), getProcess(), getNextAgend(), totem();
+window.onload = getData(1), getProcess(), getNextAgend(), totem(), getAgendCheck(), lastAgend();
 
 function getData(data_type) {
 
@@ -25,6 +25,16 @@ function getData(data_type) {
                 var cpu_btn = document.getElementById('cpu_btn');
                 var ram_btn = document.getElementById('ram_btn');
                 var disk_btn = document.getElementById('disk_btn');
+
+                btnInfo.addEventListener('click', function(){
+                    if(data_type == 1){
+                        modal(2);
+                    }else if(data_type == 2){
+                        modal(3);
+                    }else if(data_type == 3){
+                        modal(4);
+                    }
+                })
 
                 if (data_type == 1) {
                     cpu_btn.classList.add('active');
@@ -50,6 +60,31 @@ function getData(data_type) {
             console.log(`Erro na obtenção dos dados p/ gráfico: ${err.message}`);
         })
 }
+
+function lastAgend(){
+
+    fetch(`/dados/agendamentos/lastAgend/${id_totem}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (response){
+        if(response.ok){
+            response.json().then(json => {
+                for(var i = 0; i < json.length; i++){
+                    document.getElementById('last_manun').innerHTML = `${(json[i].data_agen)}`;
+                }
+            })
+        }else{
+            console.log("ERRO NA RESPONSE");
+        }
+    }).catch(function(err){
+        console.log(err);
+    })
+
+    return false;
+}
+
 
 function plotGraph(res, data_type) {
 
@@ -80,7 +115,6 @@ function plotGraph(res, data_type) {
     let cpu = 0;
     let ram = 0;
     let disk = 0;
-    let tempo = 0;
 
     fetch(`/dados/limites/${id_totem}`, {
         method: 'GET',
@@ -116,6 +150,7 @@ function plotGraph(res, data_type) {
         let b = 0;
         let c = 0;
         let d = 0;
+        let e = 0;
         var data = new Date();
         var day = data.getDate();
         var month = (data.getMonth() + 1);
@@ -129,6 +164,7 @@ function plotGraph(res, data_type) {
             b = Math.random() * (1.1 - 0) + 0;
             c = Math.random() * (625.2 - 625) + 625;
             d = Math.random() * (7 - 6) + 6;
+            e = Math.random() * (52 - 51.1) + 51.1;
         }
 
         dados.labels.shift();
@@ -138,6 +174,7 @@ function plotGraph(res, data_type) {
         document.getElementById('percent-usage-cpu').innerHTML = `${b.toFixed(1)}`;
         document.getElementById('percent-usage-ram').innerHTML = `${c.toFixed(1)}`;
         document.getElementById('percent-usage-disk').innerHTML = `${d.toFixed(1)}`;
+        document.getElementById('temp_totem').innerHTML = `${e.toFixed(1)}°C`;
 
         if(b > cpu){
             document.getElementById('usage-cpu-spn').style.backgroundColor = 'red';
@@ -291,6 +328,28 @@ function refreshGraph(id_totem, dados) {
 
 }
 
+
+function getAgendCheck(){
+    fetch(`/dados/agendamentos/check/${id_totem}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function(response){
+        if(response.ok){
+            console.log("OI");
+            // response.json().then(json => {
+
+            // })
+        }else{
+            console.log("ERRO NA RESPONSE");
+        }
+    }).catch(function(err){
+        console.log(err);
+    })
+
+    return false;
+}
 
 
 function getProcess() {

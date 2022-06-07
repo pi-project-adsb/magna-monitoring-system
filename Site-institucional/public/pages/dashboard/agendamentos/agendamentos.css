@@ -79,9 +79,9 @@
   .modal-content {
     background-color: #3a3a3a;
     margin: auto;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid #3a3a3a;
-    width: 50%;
+    width: fit-content;
     height: fit-content;
     border-radius: 15px;
     animation: modal_in 700ms forwards;
@@ -131,8 +131,24 @@
 .agend-motivo{
     color: white;
     font-size: 20px;
+    font-weight: bold;
 }
 .agend-res{
     color: white;
     font-weight: 300;
+    font-size: 20px;
+}
+
+#div_button{
+    display: flex;
+    justify-content: center;
+}
+
+#div_button button{
+    padding: 10px;
+    background-color: #02d8f0;
+    text-align: center;
+    border-radius: 10px;
+    margin: 3px;
+    font-size: 17px;
 }

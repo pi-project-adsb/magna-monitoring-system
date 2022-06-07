@@ -144,7 +144,7 @@
                     <div class="card-box-header">
                         <i class="fa-solid fa-hard-drive"></i>
                         <div class="card-box-info">
-                            <span class="box-info-title">Disco livre</span>
+                            <span class="box-info-title">Disco total</span>
                             <span class="box-info-number" id="total_disco"></span>
                         </div>
                     </div>
@@ -158,8 +158,8 @@
                     <div class="card-box-header">
                         <i class="fa-solid fa-calendar"></i>
                         <div class="card-box-info">
-                            <span class="box-info-title">Dias sem manutenção</span>
-                            <span class="box-info-number">30</span>
+                            <span class="box-info-title">Data da última manutenção</span>
+                            <span class="box-info-number" id="last_manun">Sem registro</span>
                         </div>
                     </div>
                     <hr class="line">
@@ -173,14 +173,13 @@
                         <i class="fa-solid fa-calendar-days"></i>
                         <div class="card-box-info">
                             <span class="box-info-title">Data da próxima manutenção</span>
-                            <span class="box-info-number" id="nextManun_date"></span>
+                            <span class="box-info-number" id="nextManun_date">Sem registro</span>
                         </div>
                     </div>
                     <hr class="line">
                     <div class="update">
-                        <i class="fa-solid fa-calendar-pen"></i>
-                        <i class="fa-solid fa-arrow-rotate-right"></i>
-                        <span>Atualizar</span>
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span onclick="modal(6)">Histórico</span>
                     </div>
                 </div>
                 <div class="card-box-1">
@@ -306,11 +305,6 @@
                             </th>
                             <th class="table-header user">
                                 <div>
-                                    <span>Status</span>
-                                </div>
-                            </th>
-                            <th class="table-header user">
-                                <div>
                                     <span class="cpu_usage">25%</span>
                                     CPU
                                 </div>
@@ -329,11 +323,10 @@
                             </th>
                         </tr>
                         <tr class="table-row-desc">
-                            <td class="table-desc user">magna@gmail.com</td>
-                            <td class="table-desc user">OK</td>
-                            <td class="table-desc user">10.6%</td>
-                            <td class="table-desc user">3.388.9 MB</td>
-                            <td class="table-desc user">0.1 MB/s</td>
+                            <td class="table-desc user"></td>
+                            <td class="table-desc user"></td>
+                            <td class="table-desc user"></td>
+                            <td class="table-desc user"></td>
                         </tr>
                     </table>
                 </div>
@@ -524,6 +517,34 @@
                             </span>
                         </div>
                         <span class="alert_desc"><span id="name_user"></span>, seu uso de RAM excedeu o limite estabelecido por você nos limites!</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="myModal_6" class="modal">
+
+        <div class="modal-content">
+            <span id="close_6" class="close">&times;</span>
+
+            <div id="box_content-modal alerts">
+                <div class="content-modal-5">
+                    <div class="title-yourAlerts-box">
+                        <h1>Suas manutenções</h1>
+                    </div>
+                </div>
+                <div id="plotted-alerts">
+                    <div class="alert">
+                        <div class="alert-header">
+                            <span class="title_alert" id="motivo_agen_spn"></span>
+                            <span>
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                        </div>
+                        <span class="alert_desc"></span>
                     </div>
                 </div>
             </div>

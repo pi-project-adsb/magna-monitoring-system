@@ -95,6 +95,39 @@ function getParams(id_totem){
     `);
 }
 
+function createAlert(){
+    return bd.execQuery(`
+        INSERT INTO log_alerta (dh_alerta, titulo, descricao, recurso, checked, fk_totem) VALUES ()
+    `);
+}
+
+function getAgendCheck(id_totem){
+    return bd.execQuery(`
+        SELECT motivo, CONVERT(VARCHAR, data_agendamento, 103) as data_agen, descricao FROM agendamento WHERE status_concluido = 0 AND fk_totem = ${id_totem}
+    `);
+}
+
+function getAllAgends(id_totem){
+    return bd.execQuery(`
+        SELECT id, motivo, CONVERT(VARCHAR, data_agendamento, 23) as data_agen, descricao FROM agendamento WHERE status_concluido = 0 AND fk_totem = ${id_totem}
+    `);
+}
+
+function updateAgend(idAgend, id_totem){
+    return bd.execQuery(`
+        UPDATE agendamento
+        SET status_concluido = 1
+        WHERE id = ${idAgend} AND fk_totem = ${id_totem}
+    `);
+}
+
+function lastAgend(id_totem){
+    return bd.execQuery(`
+        SELECT TOP 1 CONVERT(VARCHAR, data_agendamento, 103) as data_agen FROM agendamento WHERE status_concluido = 1 
+        AND fk_totem = ${id_totem} ORDER BY data_agen DESC
+    `);
+}
+
 module.exports = {
     getDataCPU,
     getDataRAM,
@@ -108,5 +141,10 @@ module.exports = {
     updateCPUParams,
     updateDiskParams,
     updateProcParams,
-    getParams
+    getParams,
+    createAlert,
+    getAgendCheck,
+    getAllAgends,
+    updateAgend,
+    lastAgend
 }

@@ -37,6 +37,8 @@ router.get("/agendamentos/:id", function(req, res){
     dataController.getNextAgend(req, res);
 });
 
+// UPDATE PARAMETRIZAÇÃO
+
 router.post("/1/limites", function(req, res){
     dataController.updateRAMParams(req, res);
 });
@@ -53,15 +55,29 @@ router.post("/4/limites", function(req, res){
     dataController.updateProcParams(req, res);
 });
 
-// ROTAS PARA  PARAMETRIZAÇÃO
+// GET DE PARAMETRIZAÇÃO
 
 router.get("/limites/:id", function(req, res){
     dataController.getParams(req, res);
 });
 
-// UPDATE
 
+// AGENDAMENTOS
 
-// talvez possa ser post
+router.get("/agendamentos/check/:id", function(req, res){
+    dataController.getAgendCheck(req, res);
+});
+
+router.get("/agendamentos/notCheck/:id", function (req, res){
+    dataController.getAllAgends(req, res);
+});
+
+router.post("/agendamentos/update", function(req, res){
+    dataController.updateAgend(req, res);
+})
+
+router.get("/agendamentos/lastAgend/:id", function(req, res){
+    dataController.lastAgend(req, res);
+})
 
 module.exports = router;
