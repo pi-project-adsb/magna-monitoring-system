@@ -160,7 +160,7 @@ function updateCPUParams(req, res) {
 function updateDiskParams(req, res) {
 
     var tempo = req.body.tempoServer;
-    var limite_dados = req.body.limite_dadosServer;
+    var limite_dados = req.body.limiteServer;
     var id_totem = req.body.id_totemServer;
 
     dataModel.updateDiskParams(tempo, limite_dados, id_totem)
