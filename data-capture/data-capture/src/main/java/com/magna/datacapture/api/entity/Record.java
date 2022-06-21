@@ -115,6 +115,8 @@ public class Record {
 
                 }
 
+                System.out.println(temperatura.getTemperatura());
+                
                 System.out.println("Inserindo na Azure");
                 // Insert para Azure
                 conAzure.update("INSERT INTO registro(uso_disco, disponivel_disco, uso_cpu, disponivel_ram, uso_ram,fk_totem, dh_registro, temperatura_cpu)"

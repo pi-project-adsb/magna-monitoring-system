@@ -38,7 +38,7 @@ public class Application {
 
        // List<TotemRepository> macAdvancedUseMysql = conMysql.query("SELECT endereco_mac FROM totem WHERE endereco_mac = ?",
        //         new BeanPropertyRowMapper<>(TotemRepository.class), network.getMAC(addr));
-//|| macAdvancedUseMysql.isEmpty()
+       //|| macAdvancedUseMysql.isEmpty()
         if (macAdvancedUseAzure.isEmpty() ) {
             validation.saveTotem();
             validation.saveParameters();

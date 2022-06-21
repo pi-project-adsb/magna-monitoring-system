@@ -11,7 +11,6 @@ public class App {
             @Override
             public void run() {
                 try {
-                    Logger.criarLogger();
                     Logger.escreverLogger();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
